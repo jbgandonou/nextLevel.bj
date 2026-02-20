@@ -1,6 +1,9 @@
 import { QuizQuestion } from '../types';
+import { phase01ExtraA } from './phase-01-extra-a';
+import { phase01ExtraB } from './phase-01-extra-b';
+import { phase01ExtraC } from './phase-01-extra-c';
 
-export const phase01Questions: QuizQuestion[] = [
+const phase01Base: QuizQuestion[] = [
   // ==================== EASY (15 questions: p1-q01 to p1-q15) ====================
   {
     id: 'p1-q01',
@@ -716,4 +719,11 @@ export const phase01Questions: QuizQuestion[] = [
       'Le File Integrity Monitoring (FIM) calcule et stocke les empreintes cryptographiques (hashes) des fichiers système critiques, puis les compare régulièrement pour détecter toute modification non autorisée. Des outils comme OSSEC ou Tripwire utilisent cette technique pour identifier les compromissions et les changements suspects sur les systèmes.',
     difficulty: 'hard',
   },
+];
+
+export const phase01Questions: QuizQuestion[] = [
+  ...phase01Base,
+  ...phase01ExtraA,
+  ...phase01ExtraB,
+  ...phase01ExtraC,
 ];
