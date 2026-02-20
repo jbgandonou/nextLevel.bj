@@ -7,18 +7,14 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { useStore } from '@/store/useStore';
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
+export { ErrorBoundary } from 'expo-router';
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: '(tabs)',
 };
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -26,15 +22,15 @@ export default function RootLayout() {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
+  const loadData = useStore((s) => s.loadData);
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
   }, [error]);
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      loadData().then(() => SplashScreen.hideAsync());
     }
   }, [loaded]);
 
@@ -45,14 +41,48 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+const CustomDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: '#0d1117',
+    card: '#161b22',
+    primary: '#6BB5FF',
+  },
+};
+
+const CustomLightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#f5f6fa',
+    primary: '#4A90D9',
+  },
+};
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen
+          name="phase/[id]"
+          options={{ headerShown: true, title: 'Phase', headerBackTitle: 'Retour' }}
+        />
+        <Stack.Screen
+          name="lesson/[id]"
+          options={{ headerShown: true, title: 'Leçon', headerBackTitle: 'Retour' }}
+        />
+        <Stack.Screen
+          name="quiz/[phaseId]"
+          options={{ headerShown: false, presentation: 'fullScreenModal' }}
+        />
+        <Stack.Screen
+          name="quiz/results"
+          options={{ headerShown: false, presentation: 'fullScreenModal' }}
+        />
       </Stack>
     </ThemeProvider>
   );

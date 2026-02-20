@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nextlevel-app",
-    "slug": "nextlevel-app",
+    "name": "NextLevel.bj",
+    "slug": "nextlevel-bj",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
