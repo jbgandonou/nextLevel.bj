@@ -8,6 +8,7 @@ import { secureArchitecture } from './07-secure-architecture';
 import { applicationSecurity } from './08-application-security';
 import { cloudSecurity } from './09-cloud-security';
 import { physicalIotSecurity } from './10-physical-iot-security';
+import { governanceCompliance } from './11-governance-compliance';
 import { Lesson } from '../../types';
 
 export const phase01Lessons: Lesson[] = [
@@ -21,6 +22,7 @@ export const phase01Lessons: Lesson[] = [
   applicationSecurity,
   cloudSecurity,
   physicalIotSecurity,
+  governanceCompliance,
 ];
 
 export {
@@ -34,4 +36,5 @@ export {
   applicationSecurity,
   cloudSecurity,
   physicalIotSecurity,
+  governanceCompliance,
 };

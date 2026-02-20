@@ -8,7 +8,7 @@ export const phases: Phase[] = [
     months: 'Mois 1-2',
     tags: ['CompTIA Security+', 'Cryptographie', 'IAM', 'Réseau', 'Cloud', 'Architecture'],
     deliverable: 'Certification CompTIA Security+ SY0-701 (ou score >85% aux QCM)',
-    lessonIds: ['p1-cryptographie', 'p1-iam', 'p1-network-security', 'p1-threat-analysis', 'p1-risk-management', 'p1-incident-response', 'p1-secure-architecture', 'p1-application-security', 'p1-cloud-security', 'p1-physical-iot-security'],
+    lessonIds: ['p1-cryptographie', 'p1-iam', 'p1-network-security', 'p1-threat-analysis', 'p1-risk-management', 'p1-incident-response', 'p1-secure-architecture', 'p1-application-security', 'p1-cloud-security', 'p1-physical-iot-security', 'p1-governance-compliance'],
     color: '#4A90D9',
     icon: 'shield',
   },

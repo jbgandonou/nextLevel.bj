@@ -485,6 +485,43 @@ Les ordinateurs quantiques menacent les algorithmes actuels bases sur la factori
 
 **Scenario 4 :** *Un auditeur decouvre que votre VPN utilise 3DES. Quelle est la recommandation ?*
 → Migrer immediatement vers **AES-256-GCM**. 3DES est deprecie par le NIST depuis 2023 et vulnerable a l'attaque Sweet32 (birthday attack sur les blocs de 64 bits).
+
+---
+
+## 11. Blockchain et registres distribues (Open Public Ledger)
+
+La **blockchain** est une technologie de registre distribue (DLT - Distributed Ledger Technology) ou les transactions sont regroupees en blocs chaines cryptographiquement.
+
+### Principes de fonctionnement
+
+- **Immutabilite** : chaque bloc contient le hash du bloc precedent, rendant toute modification retroactive detectable
+- **Decentralisation** : pas d'autorite centrale, consensus entre les noeuds du reseau
+- **Transparence** : les transactions sont visibles par tous les participants (blockchain publique)
+- **Integrite** : les fonctions de hachage (SHA-256 pour Bitcoin) garantissent l'integrite des donnees
+
+### Types de blockchains
+
+| Type | Acces | Participants | Exemple |
+|------|-------|-------------|---------|
+| **Publique** | Ouvert a tous | Anonymes | Bitcoin, Ethereum |
+| **Privee** | Restreint a une organisation | Identifes et autorises | Hyperledger Fabric interne |
+| **Consortium** | Partage entre un groupe d'organisations | Membres du consortium | R3 Corda (banques) |
+
+### Applications en cybersecurite
+
+- **Verification de la supply chain** : tracer l'origine et l'integrite des composants logiciels
+- **Gestion d'identite decentralisee** (Self-Sovereign Identity) : l'utilisateur controle ses propres identifiants
+- **Certificate Transparency** : journaux publics de tous les certificats TLS emis, detectant les certificats frauduleux
+- **Integrite des logs** : stocker les hashes des journaux d'audit sur une blockchain pour empecher la falsification
+
+### Limitations
+
+- **Scalabilite** : nombre de transactions par seconde limite
+- **Confidentialite** : les blockchains publiques exposent les donnees (solutions : zero-knowledge proofs)
+- **Attaque 51%** : si un acteur controle plus de 50% de la puissance de calcul, il peut manipuler le registre
+- **Consommation energetique** : le Proof of Work est tres couteux (Proof of Stake comme alternative)
+
+> **Point Security+ :** La blockchain est un concept cryptographique de registre public distribue (open public ledger). Retenez ses proprietes de securite (immutabilite, transparence, decentralisation) et ses applications en cybersecurite (supply chain, identite, certificate transparency).
 `,
   keyPoints: [
     'AES-256-GCM est le standard de chiffrement symetrique recommande : il fournit confidentialite et integrite (AEAD). ECB ne doit jamais etre utilise car il revele des motifs dans les donnees.',

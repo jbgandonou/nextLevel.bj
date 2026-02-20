@@ -2,6 +2,7 @@ import { QuizQuestion } from '../types';
 import { phase01ExtraA } from './phase-01-extra-a';
 import { phase01ExtraB } from './phase-01-extra-b';
 import { phase01ExtraC } from './phase-01-extra-c';
+import { phase01ExtraD } from './phase-01-extra-d';
 
 const phase01Base: QuizQuestion[] = [
   // ==================== EASY (15 questions: p1-q01 to p1-q15) ====================
@@ -726,4 +727,5 @@ export const phase01Questions: QuizQuestion[] = [
   ...phase01ExtraA,
   ...phase01ExtraB,
   ...phase01ExtraC,
+  ...phase01ExtraD,
 ];
