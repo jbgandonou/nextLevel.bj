@@ -173,16 +173,48 @@ ECHANGE DE CLES (Diffie-Hellman) :
 
 En pratique, on combine toujours asymetrique + symetrique :
 
+\`\`\`diagram
+{
+  "title": "Chiffrement Hybride (TLS)",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Alice (Expediteur)",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "Genere une cle de session AES-256 aleatoire", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "Chiffre la cle de session avec la cle publique RSA de Bob", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Chiffre les donnees avec AES-256-GCM", "bg": "#d1fae5", "color": "#065f46" }
+      ],
+      "numbered": true
+    },
+    {
+      "title": "Transmission",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "dashed": true,
+      "steps": [
+        { "label": "Cle de session chiffree (RSA) + Donnees chiffrees (AES-GCM)", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Bob (Destinataire)",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Dechiffre la cle de session avec sa cle privee RSA", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Dechiffre les donnees avec la cle de session AES", "bg": "#d1fae5", "color": "#065f46" }
+      ],
+      "numbered": true
+    }
+  ],
+  "note": "C'est exactement ce que fait TLS"
+}
 \`\`\`
-1. Alice genere une cle de session AES-256 aleatoire
-2. Alice chiffre la cle de session avec la cle publique RSA de Bob
-3. Alice chiffre les donnees avec AES-256-GCM (cle de session)
-4. Alice envoie : [cle de session chiffree RSA] + [donnees chiffrees AES]
-5. Bob dechiffre la cle de session avec sa cle privee RSA
-6. Bob dechiffre les donnees avec la cle de session AES
-\`\`\`
-
-C'est exactement ce que fait TLS.
 
 ---
 
@@ -329,34 +361,40 @@ La signature numerique garantit l'**authenticite**, l'**integrite** et la **non-
 
 ### Processus etape par etape
 
-\`\`\`
-SIGNATURE (par l'expediteur - Alice) :
-
-  Document original
-       |
-  [Fonction de hachage SHA-256]
-       |
-  Hash (256 bits)
-       |
-  [Chiffrement avec cle PRIVEE d'Alice]
-       |
-  Signature numerique
-       |
-  Envoie : Document + Signature + Certificat d'Alice
-
-
-VERIFICATION (par le destinataire - Bob) :
-
-  Document recu               Signature recue
-       |                           |
-  [SHA-256]                   [Dechiffrement avec cle PUBLIQUE d'Alice]
-       |                           |
-  Hash calcule                Hash extrait
-       |                           |
-       +--------[Comparaison]------+
-                     |
-              Egal → Signature VALIDE (document intact, Alice confirmee)
-              Different → Signature INVALIDE (document modifie ou imposteur)
+\`\`\`diagram
+{
+  "title": "Signature et Verification Numerique",
+  "titleColor": "#6b21a8",
+  "sections": [
+    {
+      "title": "Signature (Alice)",
+      "titleColor": "#6b21a8",
+      "bg": "#faf5ff",
+      "borderColor": "#a855f7",
+      "steps": [
+        { "label": "Document original", "bg": "#e0e7ff", "color": "#3730a3" },
+        { "label": "Applique SHA-256 → Hash (256 bits)", "bg": "#e9d5ff", "color": "#6b21a8" },
+        { "label": "Chiffre le hash avec sa cle PRIVEE", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Obtient la Signature numerique", "bg": "#fde68a", "color": "#92400e" }
+      ],
+      "numbered": true
+    },
+    {
+      "title": "Verification (Bob)",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Recalcule SHA-256 du document recu", "bg": "#e9d5ff", "color": "#6b21a8" },
+        { "label": "Dechiffre la signature avec la cle PUBLIQUE d'Alice", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Compare les deux hashs", "bg": "#fef3c7", "color": "#92400e" },
+        { "label": "Egal → VALIDE | Different → INVALIDE", "bg": "#d1fae5", "color": "#065f46" }
+      ],
+      "numbered": true
+    }
+  ],
+  "arrowLabel": "Envoie: Document + Signature + Certificat"
+}
 \`\`\`
 
 **Algorithmes de signature :** RSA, DSA (deprecie), ECDSA, EdDSA (Ed25519)
@@ -387,24 +425,53 @@ VERIFICATION (par le destinataire - Bob) :
 - Renegociation (vulnerable a des attaques)
 - Changement de specification de chiffrement (message supprime)
 
-\`\`\`
-Handshake TLS 1.3 simplifie (1-RTT) :
-
-Client                                    Server
-  |                                         |
-  |--- Client Hello ----------------------->|
-  |    (versions, suites, key_share ECDHE)  |
-  |                                         |
-  |<-- Server Hello ----------------------- |
-  |    (version, suite, key_share ECDHE)    |
-  |<-- {EncryptedExtensions} -------------- |
-  |<-- {Certificate} ---------------------- |
-  |<-- {CertificateVerify} ---------------- |
-  |<-- {Finished} ------------------------- |
-  |                                         |
-  |--- {Finished} -----------------------> |
-  |                                         |
-  |<========= Donnees applicatives =======>|
+\`\`\`diagram
+{
+  "title": "Handshake TLS 1.3 (1-RTT)",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Client → Serveur",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "Client Hello", "detail": "Versions supportees, suites de chiffrement, key_share ECDHE", "bg": "#dbeafe", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Serveur → Client",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Server Hello", "detail": "Version choisie, suite choisie, key_share ECDHE", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "Encrypted Extensions", "bg": "#fed7aa", "color": "#9a3412" },
+        { "label": "Certificate + CertificateVerify", "bg": "#fed7aa", "color": "#9a3412" },
+        { "label": "Finished", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Client → Serveur",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "Finished", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Connexion etablie",
+      "titleColor": "#065f46",
+      "bg": "#ecfdf5",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Donnees applicatives chiffrees (bidirectionnel)", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    }
+  ],
+  "note": "Seulement 1 aller-retour (1-RTT) contre 2 pour TLS 1.2"
+}
 \`\`\`
 
 > **Point Security+ :** TLS 1.0 et 1.1 sont officiellement deprecies (RFC 8996). TLS 1.3 est le standard. Si une question mentionne PFS, la reponse implique des cles **ephemeres** (DHE ou ECDHE).

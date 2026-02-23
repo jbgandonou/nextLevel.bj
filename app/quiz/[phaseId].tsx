@@ -1,15 +1,26 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Animated, { useSharedValue, useAnimatedStyle, withSpring, withSequence } from 'react-native-reanimated';
+import { LinearGradient } from 'expo-linear-gradient';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withSequence,
+  withTiming,
+  withRepeat,
+  Easing,
+} from 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
+import Colors, { Spacing, Fonts } from '@/constants/Colors';
 import { useStore } from '@/store/useStore';
 import { phases } from '@/data/phases';
 import { getRandomQuestions } from '@/data/quizzes';
 import { QuizQuestion } from '@/data/types';
+import AnimatedPressable from '@/components/ui/AnimatedPressable';
+import GradientProgressBar from '@/components/ui/GradientProgressBar';
 
 const QUESTIONS_PER_QUIZ = 10;
 const TIMER_SECONDS = 30;
@@ -31,12 +42,38 @@ export default function QuizScreen() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const scale = useSharedValue(1);
+  const shakeX = useSharedValue(0);
+  const timerPulse = useSharedValue(1);
+
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
   }));
 
+  const shakeStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: shakeX.value }],
+  }));
+
+  const timerPulseStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: timerPulse.value }],
+  }));
+
   const phase = phases.find((p) => p.id === phaseId);
   const currentQuestion = questions[currentIndex];
+
+  // Timer pulse when < 10s
+  useEffect(() => {
+    if (timeLeft <= 10 && !showExplanation && !quizFinished) {
+      timerPulse.value = withRepeat(
+        withSequence(
+          withTiming(1.15, { duration: 400, easing: Easing.inOut(Easing.ease) }),
+          withTiming(1, { duration: 400, easing: Easing.inOut(Easing.ease) })
+        ),
+        -1, true
+      );
+    } else {
+      timerPulse.value = withTiming(1, { duration: 200 });
+    }
+  }, [timeLeft <= 10, showExplanation, quizFinished]);
 
   // Timer
   useEffect(() => {
@@ -59,6 +96,13 @@ export default function QuizScreen() {
     if (timerRef.current) clearInterval(timerRef.current);
     setSelectedIndex(-1);
     setShowExplanation(true);
+    shakeX.value = withSequence(
+      withTiming(-10, { duration: 50 }),
+      withTiming(10, { duration: 50 }),
+      withTiming(-10, { duration: 50 }),
+      withTiming(10, { duration: 50 }),
+      withTiming(0, { duration: 50 })
+    );
     setAnswers((prev) => [
       ...prev,
       { questionId: currentQuestion.id, selectedIndex: -1, correct: false },
@@ -73,13 +117,23 @@ export default function QuizScreen() {
     setSelectedIndex(index);
     setShowExplanation(true);
 
-    scale.value = withSequence(withSpring(1.05), withSpring(1));
+    if (correct) {
+      scale.value = withSequence(withSpring(1.05), withSpring(1));
+    } else {
+      shakeX.value = withSequence(
+        withTiming(-8, { duration: 50 }),
+        withTiming(8, { duration: 50 }),
+        withTiming(-8, { duration: 50 }),
+        withTiming(8, { duration: 50 }),
+        withTiming(0, { duration: 50 })
+      );
+    }
 
     setAnswers((prev) => [
       ...prev,
       { questionId: currentQuestion.id, selectedIndex: index, correct },
     ]);
-  }, [selectedIndex, currentQuestion, scale]);
+  }, [selectedIndex, currentQuestion, scale, shakeX]);
 
   const handleNext = useCallback(async () => {
     if (currentIndex < questions.length - 1) {
@@ -88,7 +142,6 @@ export default function QuizScreen() {
       setShowExplanation(false);
       setTimeLeft(TIMER_SECONDS);
     } else {
-      // Quiz finished
       const finalAnswers = answers;
       const score = finalAnswers.filter((a) => a.correct).length;
       await submitQuiz({
@@ -119,10 +172,10 @@ export default function QuizScreen() {
     return (
       <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.center}>
-          <Text style={{ color: colors.text, fontSize: 16 }}>Aucune question disponible</Text>
-          <Pressable style={[styles.backBtn, { backgroundColor: colors.tint }]} onPress={() => router.back()}>
+          <Text style={[styles.emptyText, { color: colors.text }]}>Aucune question disponible</Text>
+          <AnimatedPressable style={[styles.backBtn, { backgroundColor: colors.tint }]} onPress={() => router.back()}>
             <Text style={styles.backBtnText}>Retour</Text>
-          </Pressable>
+          </AnimatedPressable>
         </View>
       </SafeAreaView>
     );
@@ -133,23 +186,24 @@ export default function QuizScreen() {
       return { bg: colors.card, border: colors.border };
     }
     if (index === currentQuestion.correctIndex) {
-      return { bg: colors.success + '20', border: colors.success };
+      return { bg: colors.successLight, border: colors.success };
     }
     if (index === selectedIndex && index !== currentQuestion.correctIndex) {
-      return { bg: colors.error + '20', border: colors.error };
+      return { bg: colors.errorLight, border: colors.error };
     }
     return { bg: colors.card, border: colors.border };
   };
 
   const timerColor = timeLeft <= 10 ? colors.error : timeLeft <= 20 ? colors.warning : colors.success;
+  const quizProgress = (currentIndex + (showExplanation ? 1 : 0)) / questions.length;
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Header */}
-      <View style={[styles.header, { borderBottomColor: colors.border }]}>
-        <Pressable onPress={handleQuit} style={styles.quitBtn}>
+      <View style={styles.header}>
+        <AnimatedPressable onPress={handleQuit} style={styles.quitBtn}>
           <FontAwesome name="times" size={20} color={colors.textSecondary} />
-        </Pressable>
+        </AnimatedPressable>
         <View style={styles.headerCenter}>
           <Text style={[styles.headerTitle, { color: phase?.color || colors.tint }]}>
             {phase?.title || 'QCM'}
@@ -158,25 +212,29 @@ export default function QuizScreen() {
             {currentIndex + 1}/{questions.length}
           </Text>
         </View>
-        <View style={[styles.timerBadge, { backgroundColor: timerColor + '20' }]}>
-          <FontAwesome name="clock-o" size={14} color={timerColor} />
-          <Text style={[styles.timerText, { color: timerColor }]}>{timeLeft}s</Text>
-        </View>
+        <Animated.View style={timerPulseStyle}>
+          <View style={[styles.timerBadge, { backgroundColor: timerColor + '20' }]}>
+            <FontAwesome name="clock-o" size={14} color={timerColor} />
+            <Text style={[styles.timerText, { color: timerColor }]}>{timeLeft}s</Text>
+          </View>
+        </Animated.View>
       </View>
 
       {/* Progress bar */}
-      <View style={[styles.quizProgress, { backgroundColor: colors.border }]}>
-        <View style={[styles.quizProgressFill, {
-          width: `${((currentIndex + (showExplanation ? 1 : 0)) / questions.length) * 100}%`,
-          backgroundColor: phase?.color || colors.tint,
-        }]} />
+      <View style={{ paddingHorizontal: 0 }}>
+        <GradientProgressBar
+          progress={quizProgress}
+          colors={[phase?.color || colors.tint, (phase?.color || colors.tint) + 'CC'] as [string, string]}
+          height={4}
+          trackColor={colors.borderLight}
+        />
       </View>
 
       <ScrollView style={styles.scrollContent} contentContainerStyle={styles.scrollContainer}>
         {/* Difficulty badge */}
         <View style={[styles.diffBadge, {
-          backgroundColor: currentQuestion.difficulty === 'hard' ? colors.error + '20'
-            : currentQuestion.difficulty === 'medium' ? colors.warning + '20' : colors.success + '20',
+          backgroundColor: currentQuestion.difficulty === 'hard' ? colors.errorLight
+            : currentQuestion.difficulty === 'medium' ? colors.warningLight : colors.successLight,
         }]}>
           <Text style={[styles.diffText, {
             color: currentQuestion.difficulty === 'hard' ? colors.error
@@ -190,11 +248,11 @@ export default function QuizScreen() {
         <Text style={[styles.question, { color: colors.text }]}>{currentQuestion.question}</Text>
 
         {/* Options */}
-        <Animated.View style={animatedStyle}>
+        <Animated.View style={[animatedStyle, shakeStyle]}>
           {currentQuestion.options.map((option, index) => {
             const optColors = getOptionColor(index);
             return (
-              <Pressable
+              <AnimatedPressable
                 key={index}
                 style={[styles.option, { backgroundColor: optColors.bg, borderColor: optColors.border }]}
                 onPress={() => handleSelect(index)}
@@ -211,7 +269,7 @@ export default function QuizScreen() {
                 {showExplanation && index === selectedIndex && index !== currentQuestion.correctIndex && (
                   <FontAwesome name="times-circle" size={20} color={colors.error} />
                 )}
-              </Pressable>
+              </AnimatedPressable>
             );
           })}
         </Animated.View>
@@ -231,14 +289,18 @@ export default function QuizScreen() {
 
         {/* Next button */}
         {showExplanation && (
-          <Pressable
-            style={[styles.nextBtn, { backgroundColor: phase?.color || colors.tint }]}
-            onPress={handleNext}>
-            <Text style={styles.nextBtnText}>
-              {currentIndex < questions.length - 1 ? 'Question suivante' : 'Voir les résultats'}
-            </Text>
-            <FontAwesome name="arrow-right" size={16} color="#fff" />
-          </Pressable>
+          <AnimatedPressable onPress={handleNext} style={{ marginTop: Spacing.xl }}>
+            <LinearGradient
+              colors={[phase?.color || colors.tint, (phase?.color || colors.tint) + 'CC'] as [string, string]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.nextBtn}>
+              <Text style={styles.nextBtnText}>
+                {currentIndex < questions.length - 1 ? 'Question suivante' : 'Voir les résultats'}
+              </Text>
+              <FontAwesome name="arrow-right" size={16} color="#fff" />
+            </LinearGradient>
+          </AnimatedPressable>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -248,46 +310,44 @@ export default function QuizScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 16 },
+  emptyText: { fontSize: 16, fontFamily: Fonts.medium },
   header: {
-    flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 12,
-    borderBottomWidth: 1,
+    flexDirection: 'row', alignItems: 'center', paddingHorizontal: Spacing.lg, paddingVertical: Spacing.md,
   },
-  quitBtn: { padding: 8 },
+  quitBtn: { padding: Spacing.sm },
   headerCenter: { flex: 1, alignItems: 'center' },
-  headerTitle: { fontSize: 15, fontWeight: '600' },
-  questionCount: { fontSize: 12, marginTop: 2 },
+  headerTitle: { fontSize: 15, fontFamily: Fonts.semiBold },
+  questionCount: { fontSize: 12, fontFamily: Fonts.medium, marginTop: 2 },
   timerBadge: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
     paddingHorizontal: 10, paddingVertical: 6, borderRadius: 12,
   },
-  timerText: { fontSize: 14, fontWeight: '700' },
-  quizProgress: { height: 3 },
-  quizProgressFill: { height: '100%' },
+  timerText: { fontSize: 14, fontFamily: Fonts.bold },
   scrollContent: { flex: 1 },
-  scrollContainer: { padding: 20 },
-  diffBadge: { alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, marginBottom: 12 },
-  diffText: { fontSize: 12, fontWeight: '600' },
-  question: { fontSize: 18, fontWeight: '600', lineHeight: 26, marginBottom: 20 },
+  scrollContainer: { padding: Spacing.xl },
+  diffBadge: { alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10, marginBottom: Spacing.md },
+  diffText: { fontSize: 12, fontFamily: Fonts.semiBold },
+  question: { fontSize: 18, fontFamily: Fonts.semiBold, lineHeight: 26, marginBottom: Spacing.xl },
   option: {
-    flexDirection: 'row', alignItems: 'center', padding: 16, borderRadius: 14,
+    flexDirection: 'row', alignItems: 'center', padding: Spacing.lg, borderRadius: 14,
     borderWidth: 1.5, marginBottom: 10, gap: 12,
   },
   optionLetter: {
     width: 32, height: 32, borderRadius: 16, borderWidth: 1.5,
     alignItems: 'center', justifyContent: 'center',
   },
-  optionLetterText: { fontSize: 14, fontWeight: '600' },
-  optionText: { flex: 1, fontSize: 15, lineHeight: 22 },
+  optionLetterText: { fontSize: 14, fontFamily: Fonts.semiBold },
+  optionText: { flex: 1, fontSize: 15, fontFamily: Fonts.regular, lineHeight: 22 },
   explanationCard: {
-    flexDirection: 'row', gap: 10, padding: 16, borderRadius: 12,
+    flexDirection: 'row', gap: 10, padding: Spacing.lg, borderRadius: 12,
     borderLeftWidth: 4, marginTop: 10, alignItems: 'flex-start',
   },
-  explanationText: { flex: 1, fontSize: 14, lineHeight: 22 },
+  explanationText: { flex: 1, fontSize: 14, fontFamily: Fonts.regular, lineHeight: 22 },
   nextBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 10, padding: 16, borderRadius: 14, marginTop: 20,
+    gap: 10, padding: Spacing.lg, borderRadius: 14,
   },
-  nextBtnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  nextBtnText: { color: '#fff', fontSize: 16, fontFamily: Fonts.semiBold },
   backBtn: { paddingHorizontal: 24, paddingVertical: 12, borderRadius: 10, marginTop: 10 },
-  backBtnText: { color: '#fff', fontSize: 15, fontWeight: '600' },
+  backBtnText: { color: '#fff', fontSize: 15, fontFamily: Fonts.semiBold },
 });

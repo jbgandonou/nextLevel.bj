@@ -1,13 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { LinearGradient } from 'expo-linear-gradient';
+import Animated from 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
+import Colors, { Spacing, Fonts } from '@/constants/Colors';
 import { useStore } from '@/store/useStore';
 import { phases } from '@/data/phases';
 import { getQuizByPhase } from '@/data/quizzes';
+import { cardShadow } from '@/components/ui/shadows';
+import AnimatedPressable from '@/components/ui/AnimatedPressable';
+import { useStaggeredEntry } from '@/components/ui/useStaggeredEntry';
+
+function StaggeredCard({ index, children }: { index: number; children: React.ReactNode }) {
+  const animStyle = useStaggeredEntry(index, 80);
+  return <Animated.View style={animStyle}>{children}</Animated.View>;
+}
 
 export default function QuizListScreen() {
   const colorScheme = useColorScheme() ?? 'light';
@@ -24,7 +34,7 @@ export default function QuizListScreen() {
         </Text>
       </View>
 
-      {phases.map((phase) => {
+      {phases.map((phase, index) => {
         const questions = getQuizByPhase(phase.id);
         const attempts = quizAttempts.filter((a) => a.phaseId === phase.id);
         const bestScore = attempts.length > 0
@@ -35,34 +45,41 @@ export default function QuizListScreen() {
           : null;
 
         return (
-          <Pressable
-            key={phase.id}
-            style={[styles.quizCard, { backgroundColor: colors.card, borderColor: colors.border }]}
-            onPress={() => router.push(`/quiz/${phase.id}`)}>
-            <View style={[styles.iconContainer, { backgroundColor: phase.color }]}>
-              <FontAwesome name="question-circle" size={24} color="#fff" />
-            </View>
-            <View style={styles.cardContent}>
-              <Text style={[styles.cardTitle, { color: colors.text }]}>{phase.title}</Text>
-              <Text style={[styles.cardInfo, { color: colors.textSecondary }]}>
-                {questions.length} questions disponibles
-              </Text>
-              {attempts.length > 0 && (
-                <View style={styles.scoresRow}>
-                  <Text style={[styles.scoreText, { color: colors.textSecondary }]}>
-                    Dernier: <Text style={{ color: lastScore! >= 70 ? colors.success : colors.error, fontWeight: '600' }}>{lastScore}%</Text>
-                  </Text>
-                  <Text style={[styles.scoreText, { color: colors.textSecondary }]}>
-                    Meilleur: <Text style={{ color: bestScore! >= 70 ? colors.success : colors.warning, fontWeight: '600' }}>{bestScore}%</Text>
-                  </Text>
-                  <Text style={[styles.scoreText, { color: colors.textSecondary }]}>
-                    {attempts.length} tentative{attempts.length > 1 ? 's' : ''}
-                  </Text>
-                </View>
-              )}
-            </View>
-            <FontAwesome name="play-circle" size={28} color={phase.color} />
-          </Pressable>
+          <StaggeredCard key={phase.id} index={index}>
+            <AnimatedPressable
+              style={[styles.quizCard, { backgroundColor: colors.card }, cardShadow(colorScheme)]}
+              onPress={() => router.push(`/quiz/${phase.id}`)}>
+              <LinearGradient
+                colors={[phase.color, phase.color + 'CC'] as [string, string]}
+                style={styles.iconContainer}>
+                <FontAwesome name="question-circle" size={24} color="#fff" />
+              </LinearGradient>
+              <View style={styles.cardContent}>
+                <Text style={[styles.cardTitle, { color: colors.text }]}>{phase.title}</Text>
+                <Text style={[styles.cardInfo, { color: colors.textSecondary }]}>
+                  {questions.length} questions disponibles
+                </Text>
+                {attempts.length > 0 && (
+                  <View style={styles.scoresRow}>
+                    <View style={[styles.scoreBadge, { backgroundColor: lastScore! >= 70 ? colors.successLight : colors.errorLight }]}>
+                      <Text style={[styles.scoreBadgeText, { color: lastScore! >= 70 ? colors.success : colors.error }]}>
+                        Dernier: {lastScore}%
+                      </Text>
+                    </View>
+                    <View style={[styles.scoreBadge, { backgroundColor: bestScore! >= 70 ? colors.successLight : colors.warningLight }]}>
+                      <Text style={[styles.scoreBadgeText, { color: bestScore! >= 70 ? colors.success : colors.warning }]}>
+                        Best: {bestScore}%
+                      </Text>
+                    </View>
+                    <Text style={[styles.attemptText, { color: colors.textSecondary }]}>
+                      {attempts.length}x
+                    </Text>
+                  </View>
+                )}
+              </View>
+              <FontAwesome name="play-circle" size={28} color={phase.color} />
+            </AnimatedPressable>
+          </StaggeredCard>
         );
       })}
 
@@ -73,19 +90,21 @@ export default function QuizListScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 8 },
-  title: { fontSize: 24, fontWeight: 'bold' },
-  subtitle: { fontSize: 14, marginTop: 4 },
+  header: { paddingHorizontal: Spacing.xl, paddingTop: Spacing.lg, paddingBottom: Spacing.sm },
+  title: { fontSize: 24, fontFamily: Fonts.extraBold },
+  subtitle: { fontSize: 14, fontFamily: Fonts.regular, marginTop: 4 },
   quizCard: {
-    marginHorizontal: 20, marginVertical: 8, padding: 16, borderRadius: 16,
-    flexDirection: 'row', alignItems: 'center', borderWidth: 1, gap: 14,
+    marginHorizontal: Spacing.xl, marginVertical: Spacing.sm, padding: Spacing.lg, borderRadius: 16,
+    flexDirection: 'row', alignItems: 'center', gap: 14,
   },
   iconContainer: {
-    width: 48, height: 48, borderRadius: 12, alignItems: 'center', justifyContent: 'center',
+    width: 48, height: 48, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
   },
   cardContent: { flex: 1 },
-  cardTitle: { fontSize: 16, fontWeight: '600' },
-  cardInfo: { fontSize: 13, marginTop: 2 },
-  scoresRow: { flexDirection: 'row', gap: 12, marginTop: 6, flexWrap: 'wrap' },
-  scoreText: { fontSize: 12 },
+  cardTitle: { fontSize: 16, fontFamily: Fonts.semiBold },
+  cardInfo: { fontSize: 13, fontFamily: Fonts.regular, marginTop: 2 },
+  scoresRow: { flexDirection: 'row', gap: 8, marginTop: 8, flexWrap: 'wrap', alignItems: 'center' },
+  scoreBadge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
+  scoreBadgeText: { fontSize: 11, fontFamily: Fonts.semiBold },
+  attemptText: { fontSize: 11, fontFamily: Fonts.medium },
 });

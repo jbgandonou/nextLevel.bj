@@ -97,15 +97,43 @@ interface GigabitEthernet0/0
 | **PAT (Port Address Translation)** | Traduit plusieurs IP privees en une seule IP publique via les ports | Le plus courant (overload NAT) |
 | **DNAT** | Redirige le trafic entrant vers un serveur interne | Utilise pour les serveurs DMZ |
 
-\`\`\`
-PAT en action :
-
-Reseau interne                    Routeur NAT              Internet
-192.168.1.10:5001 ──┐
-192.168.1.20:5002 ──┼──> 203.0.113.1:10001-10003 ──> Internet
-192.168.1.30:5003 ──┘
-
-Le routeur maintient une table de traduction pour router les reponses.
+\`\`\`diagram
+{
+  "title": "PAT (Port Address Translation)",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Reseau interne (prive)",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "192.168.1.10:5001", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "192.168.1.20:5002", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "192.168.1.30:5003", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    },
+    {
+      "title": "Routeur NAT (traduction)",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "203.0.113.1:10001 → 10003", "detail": "Table de traduction pour router les reponses", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Internet (public)",
+      "titleColor": "#be123c",
+      "bg": "#fff1f2",
+      "borderColor": "#f43f5e",
+      "steps": [
+        { "label": "Serveurs distants", "bg": "#fecdd3", "color": "#be123c" }
+      ]
+    }
+  ],
+  "note": "Le NAT n'est PAS un mecanisme de securite — il cache la topologie mais ne remplace pas un pare-feu"
+}
 \`\`\`
 
 **Implications de securite du NAT :**
@@ -125,21 +153,35 @@ Le routeur maintient une table de traduction pour router les reponses.
 | **Transparent proxy** | Proxy invisible pour l'utilisateur (interception reseau) | Filtrage sans configuration client | Reseaux d'entreprise, ISP |
 | **Open proxy** | Proxy accessible a tous | **Aucune** - utilise pour l'anonymisation malveillante | A bloquer |
 
-\`\`\`
-Forward Proxy :
-Client interne → [Forward Proxy] → Internet
-                  - Filtre les URLs
-                  - Cache les pages
-                  - Inspecte le contenu
-                  - Journalise les acces
-
-Reverse Proxy :
-Internet → [Reverse Proxy] → Serveur Web interne
-            - SSL offloading
-            - Load balancing
-            - WAF
-            - Cache
-            - Masque l'IP du serveur reel
+\`\`\`diagram
+{
+  "title": "Forward Proxy vs Reverse Proxy",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Forward Proxy (sortant)",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "Client interne → Forward Proxy → Internet", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Filtre les URLs et cache les pages", "bg": "#f0f9ff", "color": "#1e40af" },
+        { "label": "Inspecte le contenu et journalise les acces", "bg": "#f0f9ff", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Reverse Proxy (entrant)",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Internet → Reverse Proxy → Serveur Web interne", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "SSL offloading et load balancing", "bg": "#f0fdf4", "color": "#065f46" },
+        { "label": "WAF, cache et masquage de l'IP reelle", "bg": "#f0fdf4", "color": "#065f46" }
+      ]
+    }
+  ]
+}
 \`\`\`
 
 ---
@@ -542,32 +584,70 @@ Outils de capture et analyse :
 | **Firewall zones** | 3-4 | Zones separees par des regles de pare-feu | Par zone |
 | **Microsegmentation** | 3-7 | Isolation granulaire au niveau des workloads/applications | Par application |
 
+\`\`\`diagram
+{
+  "title": "Architecture DMZ Double Pare-feu",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Internet",
+      "titleColor": "#be123c",
+      "bg": "#fff1f2",
+      "borderColor": "#f43f5e",
+      "steps": [
+        { "label": "Trafic externe", "bg": "#fecdd3", "color": "#be123c" }
+      ]
+    },
+    {
+      "title": "Pare-feu externe",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "Ports 80, 443, 25 uniquement vers DMZ", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Zone DMZ",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "dashed": true,
+      "steps": [
+        { "label": "Serveur Web + Reverse Proxy", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Serveur Mail + DNS Public", "bg": "#dbeafe", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Pare-feu interne",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "Refuse DMZ → Interne (sauf requetes initiees depuis l'interne)", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Reseau interne",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "VLAN Users — Postes de travail", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "VLAN Servers — Serveurs internes", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "VLAN DB — Base de donnees (isole)", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    }
+  ],
+  "note": "Interne → Internet via proxy + filtrage"
+}
 \`\`\`
-Architecture DMZ a double pare-feu :
 
-Internet
-    |
-[Pare-feu externe]
-    |
-    +--- DMZ ---+
-    |           |
-  Serveur Web  Serveur Mail
-  Reverse Proxy DNS Public
-    |
-[Pare-feu interne]
-    |
-    +--- Reseau interne ---+
-    |                      |
-  Postes de travail    Serveurs internes
-  (VLAN Users)         (VLAN Servers)
-                       (VLAN DB - isole)
-
-Regles :
-  Internet → DMZ : ports 80, 443, 25 uniquement
-  DMZ → Interne : REFUSE (sauf requetes initiees depuis l'interne)
-  Interne → DMZ : AUTORISE (requetes vers serveurs DMZ)
-  Interne → Internet : via proxy + filtrage
-\`\`\`
+**Regles de pare-feu :**
+- **Internet → DMZ** : ports 80, 443, 25 uniquement
+- **DMZ → Interne** : REFUSE (sauf requetes initiees depuis l'interne)
+- **Interne → DMZ** : AUTORISE (requetes vers serveurs DMZ)
+- **Interne → Internet** : via proxy + filtrage
 
 ### Zero Trust Network
 
