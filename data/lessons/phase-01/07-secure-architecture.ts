@@ -17,22 +17,59 @@ Ces principes, issus des travaux de Saltzer et Schroeder, constituent la base th
 
 La défense en profondeur consiste à superposer **plusieurs couches de sécurité** indépendantes. Si une couche est compromise, les autres continuent à protéger le système.
 
-\`\`\`
-┌─────────────────────────────────────┐
-│          Politiques & Formation     │  ← Couche humaine
-│  ┌───────────────────────────────┐  │
-│  │      Pare-feu périmétrique    │  │  ← Couche réseau
-│  │  ┌─────────────────────────┐  │  │
-│  │  │    IDS/IPS + Segments   │  │  │  ← Couche surveillance
-│  │  │  ┌───────────────────┐  │  │  │
-│  │  │  │  Contrôle d'accès │  │  │  │  ← Couche applicative
-│  │  │  │  ┌─────────────┐  │  │  │  │
-│  │  │  │  │ Chiffrement │  │  │  │  │  ← Couche données
-│  │  │  │  └─────────────┘  │  │  │  │
-│  │  │  └───────────────────┘  │  │  │
-│  │  └─────────────────────────┘  │  │
-│  └───────────────────────────────┘  │
-└─────────────────────────────────────┘
+\`\`\`diagram
+{
+  "title": "Defense en Profondeur",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Couche 1 — Humaine (externe)",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "Politiques de securite & Formation des utilisateurs", "bg": "#dbeafe", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Couche 2 — Reseau",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Pare-feu perimetrique, segmentation reseau", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    },
+    {
+      "title": "Couche 3 — Surveillance",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "IDS/IPS, monitoring, journalisation", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Couche 4 — Applicative",
+      "titleColor": "#6b21a8",
+      "bg": "#faf5ff",
+      "borderColor": "#a855f7",
+      "steps": [
+        { "label": "Controle d'acces, authentification, autorisation", "bg": "#e9d5ff", "color": "#6b21a8" }
+      ]
+    },
+    {
+      "title": "Couche 5 — Donnees (interne)",
+      "titleColor": "#be123c",
+      "bg": "#fff1f2",
+      "borderColor": "#f43f5e",
+      "steps": [
+        { "label": "Chiffrement des donnees au repos et en transit", "bg": "#fecdd3", "color": "#be123c" }
+      ]
+    }
+  ],
+  "note": "Chaque couche est independante — si une tombe, les autres protegent"
+}
 \`\`\`
 
 **Question type Security+ :** *Votre organisation souhaite protéger ses serveurs critiques. Quelle approche est la plus efficace ?*
@@ -82,32 +119,61 @@ Le modèle Zero Trust part du principe que **rien n'est fiable par défaut**, m�
 
 La DMZ est un segment réseau isolé qui héberge les services accessibles depuis Internet, tout en protégeant le réseau interne.
 
-\`\`\`
-Internet
-    │
-┌───┴───┐
-│  FW1  │  ← Pare-feu externe
-└───┬───┘
-    │
-┌───┴───────────────┐
-│       DMZ          │
-│  ┌──────┐ ┌─────┐ │
-│  │ Web  │ │ Mail│ │
-│  │Server│ │Server│ │
-│  └──────┘ └─────┘ │
-└───────┬───────────┘
-    │
-┌───┴───┐
-│  FW2  │  ← Pare-feu interne
-└───┬───┘
-    │
-┌───┴───────────────┐
-│   Réseau interne   │
-│  ┌──────┐ ┌─────┐ │
-│  │  DB  │ │ App │ │
-│  │Server│ │Server│ │
-│  └──────┘ └─────┘ │
-└────────────────────┘
+\`\`\`diagram
+{
+  "title": "Architecture DMZ Double Pare-feu",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Internet",
+      "titleColor": "#be123c",
+      "bg": "#fff1f2",
+      "borderColor": "#f43f5e",
+      "steps": [
+        { "label": "Trafic externe (potentiellement hostile)", "bg": "#fecdd3", "color": "#be123c" }
+      ]
+    },
+    {
+      "title": "Pare-feu externe (FW1)",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "Filtre le trafic entrant — ports 80, 443, 25 uniquement", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Zone DMZ",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "dashed": true,
+      "steps": [
+        { "label": "Serveur Web", "bg": "#dbeafe", "color": "#1e40af" },
+        { "label": "Serveur Mail", "bg": "#dbeafe", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Pare-feu interne (FW2)",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "Bloque tout trafic DMZ → Interne sauf requetes initiees", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Reseau interne",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Serveur Base de donnees", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "Serveur Applicatif", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    }
+  ]
+}
 \`\`\`
 
 ### Jump Box / Bastion Host
@@ -189,23 +255,52 @@ Le **VM escape** est une attaque où un attaquant s'échappe d'une machine virtu
 
 Les conteneurs partagent le noyau de l'OS hôte, ce qui les rend plus légers mais aussi potentiellement moins isolés que les VMs.
 
-\`\`\`
-┌──────────────────────────────────┐
-│          Orchestrateur           │
-│         (Kubernetes)             │
-│  ┌─────────┐  ┌─────────┐       │
-│  │Container│  │Container│       │
-│  │  App A  │  │  App B  │       │
-│  │─────────│  │─────────│       │
-│  │  Libs   │  │  Libs   │       │
-│  └─────────┘  └─────────┘       │
-│  ────────────────────────────    │
-│       Container Runtime          │
-│  ────────────────────────────    │
-│         OS Hôte (Kernel)         │
-│  ────────────────────────────    │
-│         Infrastructure           │
-└──────────────────────────────────┘
+\`\`\`diagram
+{
+  "title": "Architecture Conteneurs",
+  "titleColor": "#1e40af",
+  "sections": [
+    {
+      "title": "Orchestrateur (Kubernetes)",
+      "titleColor": "#1e40af",
+      "bg": "#eff6ff",
+      "borderColor": "#3b82f6",
+      "steps": [
+        { "label": "RBAC, Network Policies, Pod Security, Admission Controllers", "detail": "Gestion centralisee des conteneurs", "bg": "#dbeafe", "color": "#1e40af" }
+      ]
+    },
+    {
+      "title": "Conteneurs applicatifs",
+      "titleColor": "#065f46",
+      "bg": "#f0fdf4",
+      "borderColor": "#22c55e",
+      "steps": [
+        { "label": "Container App A", "detail": "Image minimale + Libs", "bg": "#d1fae5", "color": "#065f46" },
+        { "label": "Container App B", "detail": "Image minimale + Libs", "bg": "#d1fae5", "color": "#065f46" }
+      ]
+    },
+    {
+      "title": "Container Runtime",
+      "titleColor": "#9a3412",
+      "bg": "#fff7ed",
+      "borderColor": "#f97316",
+      "steps": [
+        { "label": "containerd / CRI-O", "detail": "Execution et isolation des conteneurs", "bg": "#fed7aa", "color": "#9a3412" }
+      ]
+    },
+    {
+      "title": "Infrastructure",
+      "titleColor": "#6b21a8",
+      "bg": "#faf5ff",
+      "borderColor": "#a855f7",
+      "steps": [
+        { "label": "OS Hote (Kernel partage)", "bg": "#e9d5ff", "color": "#6b21a8" },
+        { "label": "Infrastructure physique / Cloud", "bg": "#f3e8ff", "color": "#6b21a8" }
+      ]
+    }
+  ],
+  "note": "Les conteneurs partagent le noyau — moins isoles que les VMs mais plus legers"
+}
 \`\`\`
 
 **Bonnes pratiques de sécurité conteneur :**
@@ -366,6 +461,35 @@ Un site industriel utilise des systèmes SCADA :
 3. **Surveillance** des protocoles industriels (Modbus, DNP3)
 4. **Honeypots industriels** pour détecter les intrusions
 5. **TPM/Secure Boot** sur les postes de contrôle
+
+## Gestion des actifs (Asset Management)
+
+La gestion des actifs est un pilier fondamental de la sécurité : on ne peut pas protéger ce qu'on ne connaît pas. Le SY0-701 attend une compréhension claire de l'inventaire, de la classification et du cycle de vie des actifs.
+
+### Inventaire et classification des actifs
+
+Un **inventaire exhaustif** recense tous les actifs de l'organisation. On distingue deux grandes catégories :
+
+- **Actifs tangibles** : serveurs physiques, postes de travail, équipements réseau (routeurs, switches, pare-feux), appareils mobiles, supports de stockage, câblage
+- **Actifs intangibles** : logiciels, licences, données, propriété intellectuelle, brevets, réputation de marque, configurations et documentation
+
+Chaque actif doit être **classifié** selon sa criticité et sa sensibilité (public, interne, confidentiel, secret) afin de déterminer le niveau de protection approprié.
+
+### Cycle de vie des actifs
+
+Le cycle de vie comprend les étapes suivantes : **acquisition** (évaluation et achat), **déploiement** (configuration et mise en production), **utilisation** (exploitation et maintenance), **archivage** (mise hors service avec conservation des données si nécessaire) et **disposition** (destruction sécurisée ou recyclage avec effacement certifié des données).
+
+### Propriété et responsabilité (Ownership & Accountability)
+
+Chaque actif doit avoir un **propriétaire désigné** (asset owner) responsable de sa classification, de la définition des contrôles d'accès et de la validation de son utilisation. Le propriétaire n'est pas nécessairement l'utilisateur quotidien mais la personne **imputable** (accountable) de la protection de l'actif.
+
+### Outils de découverte et CMDB
+
+- **Outils de découverte automatique** : scans réseau (Nmap, Qualys), agents endpoint, protocoles SNMP pour détecter les actifs non répertoriés (shadow IT)
+- **CMDB (Configuration Management Database)** : base de données centralisée qui recense tous les actifs, leurs configurations, leurs relations et leur statut. Exemples : ServiceNow CMDB, BMC Helix. La CMDB est essentielle pour l'analyse d'impact en cas d'incident ou de changement.
+
+**Question type Security+ :** *Un administrateur découvre des serveurs non répertoriés sur le réseau. Quel processus devrait être amélioré ?*
+→ Réponse : La gestion des actifs et l'inventaire, en particulier les scans de découverte automatiques et la mise à jour de la CMDB.
 `,
   keyPoints: [
     'La défense en profondeur superpose plusieurs couches de sécurité indépendantes pour éviter tout point unique de défaillance.',
@@ -376,6 +500,7 @@ Un site industriel utilise des systèmes SCADA :
     'Les systèmes SCADA/ICS et IoT présentent des vulnérabilités uniques liées aux protocoles historiques, aux ressources limitées et aux difficultés de mise à jour.',
     'Le TPM, le HSM et les Secure Enclaves fournissent une sécurité matérielle pour les clés cryptographiques et l\'intégrité du démarrage.',
     'Les technologies de déception (honeypots, honeyfiles, honeytokens) permettent de détecter les attaquants ayant déjà pénétré le réseau.',
+    'Gestion des actifs et inventaire',
   ],
   resources: [
     {

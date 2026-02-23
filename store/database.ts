@@ -20,6 +20,7 @@ async function initDatabase(database: SQLite.SQLiteDatabase) {
     CREATE TABLE IF NOT EXISTS quiz_attempts (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       phaseId TEXT NOT NULL,
+      lessonId TEXT,
       score INTEGER NOT NULL,
       totalQuestions INTEGER NOT NULL,
       date TEXT NOT NULL,
@@ -30,6 +31,15 @@ async function initDatabase(database: SQLite.SQLiteDatabase) {
       date TEXT PRIMARY KEY
     );
   `);
+
+  // Migration: add lessonId column if it doesn't exist
+  try {
+    await database.runAsync(
+      'ALTER TABLE quiz_attempts ADD COLUMN lessonId TEXT'
+    );
+  } catch {
+    // Column already exists, ignore
+  }
 }
 
 export async function markLessonComplete(lessonId: string) {
@@ -59,14 +69,16 @@ export async function getCompletedLessons(): Promise<string[]> {
 
 export async function saveQuizAttempt(attempt: {
   phaseId: string;
+  lessonId?: string;
   score: number;
   totalQuestions: number;
   answers: { questionId: string; selectedIndex: number; correct: boolean }[];
 }) {
   const database = await getDatabase();
   await database.runAsync(
-    'INSERT INTO quiz_attempts (phaseId, score, totalQuestions, date, answers) VALUES (?, ?, ?, ?, ?)',
+    'INSERT INTO quiz_attempts (phaseId, lessonId, score, totalQuestions, date, answers) VALUES (?, ?, ?, ?, ?, ?)',
     attempt.phaseId,
+    attempt.lessonId || null,
     attempt.score,
     attempt.totalQuestions,
     new Date().toISOString(),

@@ -5,6 +5,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q01',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question: "Qu'est-ce qu'une attaque adversariale en machine learning ?",
     options: [
       "Un entraînement compétitif entre deux modèles (GAN)",
@@ -20,6 +21,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q02',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question: "Que signifie FGSM dans le contexte des attaques adversariales ?",
     options: [
       'Fast Gradient Sign Method',
@@ -35,6 +37,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q03',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Qu'est-ce qu'une attaque d'extraction de modèle (model extraction) ?",
     options: [
@@ -51,6 +54,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q04',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Qu'est-ce que le model inversion dans le contexte de la sécurité ML ?",
     options: [
@@ -67,6 +71,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q05',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "À quoi sert Prometheus dans le monitoring d'un système ML ?",
     options: [
@@ -83,6 +88,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q06',
     phaseId: 'phase-04',
+    lessonId: 'p4-drift',
     question:
       "Qu'est-ce que le concept drift dans un modèle ML en production ?",
     options: [
@@ -99,6 +105,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q07',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Quel est le rôle de Grafana dans le monitoring ML ?",
     options: [
@@ -115,6 +122,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q08',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Quelle est la différence principale entre une attaque adversariale en boîte blanche et en boîte noire ?",
     options: [
@@ -131,6 +139,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q09',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Qu'est-ce que l'adversarial training comme méthode de défense ?",
     options: [
@@ -147,6 +156,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q10',
     phaseId: 'phase-04',
+    lessonId: 'p4-drift',
     question:
       "Quel type de drift désigne un changement dans la distribution des features d'entrée sans changement dans la relation feature-cible ?",
     options: [
@@ -163,6 +173,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q11',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Qu'est-ce qu'un exemple adversarial 'transférable' ?",
     options: [
@@ -179,6 +190,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q12',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Quelle métrique Prometheus est la plus pertinente pour détecter une dégradation de performance d'un modèle ML ?",
     options: [
@@ -197,6 +209,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q13',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Comment fonctionne l'attaque PGD (Projected Gradient Descent) par rapport à FGSM ?",
     options: [
@@ -213,6 +226,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q14',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Quelle technique de défense utilise la distillation pour améliorer la robustesse adversariale ?",
     options: [
@@ -229,6 +243,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q15',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Comment un attaquant peut-il réaliser une extraction de modèle en boîte noire avec un budget de requêtes limité ?",
     options: [
@@ -245,6 +260,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q16',
     phaseId: 'phase-04',
+    lessonId: 'p4-drift',
     question:
       "Quelle approche statistique est couramment utilisée pour détecter le data drift en production ?",
     options: [
@@ -261,6 +277,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q17',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Pourquoi le gradient masking n'est-il pas considéré comme une défense fiable contre les attaques adversariales ?",
     options: [
@@ -277,6 +294,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q18',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Comment configurer une alerte Prometheus pour détecter une chute soudaine de la confiance moyenne d'un modèle ?",
     options: [
@@ -293,6 +311,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q19',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Qu'est-ce que l'attaque Carlini & Wagner (C&W) et pourquoi est-elle considérée comme puissante ?",
     options: [
@@ -309,6 +328,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q20',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Comment la technique de 'feature squeezing' aide-t-elle à détecter les exemples adversariaux ?",
     options: [
@@ -325,6 +345,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q21',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Quelle métrique permet de quantifier la robustesse adversariale d'un modèle ?",
     options: [
@@ -341,6 +362,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q22',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Qu'est-ce qu'une attaque de membership inference dans le contexte ML ?",
     options: [
@@ -357,6 +379,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q23',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Comment Grafana peut-il être utilisé pour visualiser le drift d'un modèle ML ?",
     options: [
@@ -373,6 +396,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q24',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Quelle est la formule mathématique simplifiée de l'attaque FGSM ?",
     options: [
@@ -389,6 +413,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q25',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Quel est le risque d'une attaque d'extraction de modèle pour une entreprise ?",
     options: [
@@ -405,6 +430,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q26',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Comment la technique de randomized smoothing fournit-elle des garanties de robustesse certifiées ?",
     options: [
@@ -421,6 +447,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q27',
     phaseId: 'phase-04',
+    lessonId: 'p4-drift',
     question:
       "Quelle technique permet de détecter le concept drift de manière non supervisée en production ?",
     options: [
@@ -437,6 +464,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q28',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Quelle est la différence entre une attaque adversariale ciblée et non ciblée ?",
     options: [
@@ -455,6 +483,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q29',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Comment l'attaque FGSM peut-elle être adaptée pour fonctionner dans un scénario boîte noire ?",
     options: [
@@ -471,6 +500,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q30',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Quelle technique avancée d'extraction de modèle utilise la fonctionnalité de prédiction de confiance pour maximiser l'efficacité ?",
     options: [
@@ -487,6 +517,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q31',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Comment l'attaque PGD avec restarts aléatoires améliore-t-elle la fiabilité de l'évaluation de robustesse ?",
     options: [
@@ -503,6 +534,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q32',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Comment implémenter un système de détection d'exemples adversariaux basé sur la détection d'anomalies dans l'espace latent ?",
     options: [
@@ -519,6 +551,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q33',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Quelle approche permet de rendre un modèle de model inversion moins efficace sans dégrader significativement la performance du modèle cible ?",
     options: [
@@ -535,6 +568,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q34',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Comment le TRADES (TRadeoff-inspired Adversarial DEfense via Surrogate-loss minimization) améliore-t-il l'adversarial training standard ?",
     options: [
@@ -551,6 +585,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q35',
     phaseId: 'phase-04',
+    lessonId: 'p4-extraction',
     question:
       "Quelle technique permet de détecter une attaque d'extraction de modèle via l'analyse des patterns de requêtes API ?",
     options: [
@@ -567,6 +602,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q36',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Comment implémenter un pipeline complet de monitoring de drift avec Prometheus et Grafana pour un modèle ML en production ?",
     options: [
@@ -583,6 +619,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q37',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Quelle est la limitation théorique fondamentale de la robustesse adversariale identifiée par Tsipras et al. (2019) ?",
     options: [
@@ -599,6 +636,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q38',
     phaseId: 'phase-04',
+    lessonId: 'p4-defenses',
     question:
       "Comment l'attaque AutoAttack combine-t-elle différentes méthodes pour une évaluation fiable de la robustesse ?",
     options: [
@@ -615,6 +653,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q39',
     phaseId: 'phase-04',
+    lessonId: 'p4-monitoring',
     question:
       "Comment la technique de 'model assertion' peut-elle être utilisée pour sécuriser un modèle ML en production contre les attaques adversariales et le drift ?",
     options: [
@@ -631,6 +670,7 @@ export const phase04Questions: QuizQuestion[] = [
   {
     id: 'p4-q40',
     phaseId: 'phase-04',
+    lessonId: 'p4-evasion',
     question:
       "Comment les attaques adversariales physiques (physical adversarial examples) diffèrent-elles des attaques numériques et quelles contraintes supplémentaires imposent-elles ?",
     options: [

@@ -670,6 +670,75 @@ Les outils **GRC** (Governance, Risk, and Compliance) automatisent la surveillan
 | Hybrid | Le meilleur des deux mondes |
 
 > **Conseil final** : Sur l'examen, lisez attentivement chaque scénario. Les questions de gouvernance testent votre capacité à choisir le bon concept selon le contexte. Ne confondez pas MOU et MOA, ni due diligence et due care — ce sont les pièges les plus fréquents.
+
+## 14. Programmes de sensibilisation à la sécurité (Security Awareness Training)
+
+La sensibilisation des utilisateurs est l'un des contrôles les plus efficaces et les plus testés au SY0-701. La majorité des incidents de sécurité impliquent un facteur humain — la formation est donc un investissement critique.
+
+### Objectifs des programmes de sensibilisation
+
+Un programme de sensibilisation vise à **réduire le risque humain** en développant une culture de sécurité. Les objectifs incluent : reconnaître les tentatives de phishing et d'ingénierie sociale, adopter de bonnes pratiques de gestion des mots de passe, comprendre la classification des données et les obligations de confidentialité, et savoir signaler un incident de sécurité.
+
+### Contenu typique de la formation
+
+- **Phishing et ingénierie sociale** : reconnaître les emails suspects, les prétextes téléphoniques (vishing), les SMS frauduleux (smishing) et les techniques de manipulation psychologique
+- **Gestion des mots de passe** : utilisation de gestionnaires de mots de passe, activation du MFA, dangers de la réutilisation
+- **Classification des données** : savoir identifier et manipuler les données selon leur niveau de sensibilité (public, interne, confidentiel, secret)
+- **Sécurité physique** : ne pas laisser de sessions ouvertes (clean desk policy), badges, tailgating
+- **Signalement des incidents** : procédure claire pour remonter un email suspect ou un comportement anormal
+
+### Formation basée sur les rôles (Role-Based Training)
+
+La formation ne doit pas être identique pour tous. Elle doit être **adaptée au rôle** et aux responsabilités de chaque employé :
+- **Développeurs** : sécurité applicative, OWASP Top 10, gestion des secrets
+- **Administrateurs** : durcissement, gestion des accès privilégiés, journalisation
+- **Direction / C-Level** : gestion des risques, conformité, responsabilité juridique
+- **Utilisateurs généraux** : phishing, mots de passe, classification des données
+- **Nouveaux employés** : onboarding sécurité avec signature de l'AUP (Acceptable Use Policy)
+
+### Campagnes de phishing simulé
+
+Les campagnes de phishing simulé sont un outil essentiel pour **mesurer** l'efficacité de la formation et **renforcer** les réflexes des utilisateurs. Elles consistent à envoyer de faux emails de phishing et à suivre qui clique, qui signale et qui entre des identifiants. Les utilisateurs ayant échoué reçoivent une formation ciblée immédiate.
+
+### Fréquence et métriques d'efficacité
+
+- **Fréquence** : formation initiale à l'embauche, rappels trimestriels ou semestriels, campagnes de phishing simulé mensuelles
+- **Métriques clés** : taux de clic sur les simulations de phishing (objectif : < 5%), taux de signalement des emails suspects, nombre d'incidents liés au facteur humain, taux de complétion des formations
+- **Amélioration continue** : adapter le contenu en fonction des résultats des campagnes et des tendances des menaces actuelles
+
+**Question type Security+ :** *Quel est le meilleur moyen d'évaluer l'efficacité d'un programme de sensibilisation à la sécurité ?*
+→ Réponse : Mener des campagnes de phishing simulé et mesurer le taux de clic et le taux de signalement au fil du temps.
+
+## 15. Dette technique (Technical Debt)
+
+La dette technique est un concept critique pour la sécurité qui apparaît dans le SY0-701. Elle désigne l'accumulation de choix techniques sous-optimaux qui créent des risques de sécurité croissants au fil du temps.
+
+### Définition et origine
+
+La dette technique survient lorsque des **raccourcis** sont pris dans le développement ou la maintenance des systèmes : code non documenté, correctifs temporaires devenus permanents, bibliothèques obsolètes non mises à jour, configurations par défaut laissées en production. Comme une dette financière, elle accumule des **intérêts** — plus on attend pour la corriger, plus le coût et le risque augmentent.
+
+### Types de dette technique en sécurité
+
+- **Systèmes legacy** : systèmes d'exploitation en fin de vie (Windows Server 2012, CentOS 6) qui ne reçoivent plus de correctifs de sécurité, mais restent en production car des applications critiques en dépendent
+- **Dépendances obsolètes** : bibliothèques tierces avec des CVE connues non corrigées (ex: Log4j, OpenSSL) parce que la mise à jour pourrait casser la compatibilité
+- **Configurations non durcies** : serveurs déployés rapidement avec des configurations par défaut, des ports inutiles ouverts, des comptes de service avec des mots de passe faibles
+- **Code non maintenu** : applications internes sans propriétaire clair, sans tests automatisés, dont personne ne comprend le fonctionnement complet
+- **Documentation manquante** : absence de documentation sur l'architecture réseau, les flux de données ou les dépendances entre systèmes
+
+### Impact sur la sécurité
+
+La dette technique est un **multiplicateur de risque**. Elle augmente la **surface d'attaque** (systèmes non patchés), ralentit la **réponse aux incidents** (systèmes mal documentés), complique la **conformité** (audit impossible sur des systèmes legacy) et augmente le **coût des changements** (chaque modification risque de casser quelque chose).
+
+### Gestion de la dette technique
+
+- **Inventaire** : maintenir un registre des systèmes legacy, des dépendances obsolètes et des configurations non conformes
+- **Priorisation basée sur le risque** : traiter en priorité la dette qui expose les actifs les plus critiques (données sensibles, systèmes exposés à Internet)
+- **Allocation de budget** : consacrer un pourcentage fixe du temps de développement (typiquement 20%) à la réduction de la dette technique
+- **Contrôles compensatoires** : en attendant la correction, mettre en place des contrôles supplémentaires (segmentation réseau, monitoring renforcé, WAF) pour les systèmes legacy
+- **Plan de décommissionnement** : planifier la migration ou le remplacement des systèmes en fin de vie avant qu'ils ne deviennent un risque critique
+
+**Question type Security+ :** *Une organisation utilise un serveur web sous Windows Server 2012 R2 qui héberge une application métier critique. Le système ne reçoit plus de correctifs de sécurité. Quelle est la meilleure approche ?*
+→ Réponse : Planifier la migration de l'application vers un OS supporté, et en attendant, isoler le serveur dans un segment réseau dédié avec des contrôles compensatoires (pare-feu, IPS, monitoring renforcé).
 `,
   keyPoints: [
     'Les MOU sont non contraignants (intent to cooperate), les MOA ont des obligations spécifiques, les SLA incluent des métriques mesurables et des pénalités, et les ISA sont requis pour connecter deux systèmes IT',
@@ -680,6 +749,8 @@ Les outils **GRC** (Governance, Risk, and Compliance) automatisent la surveillan
     'Le durcissement OS réduit la surface d\'attaque (proactif) via GPO/AppLocker/BitLocker sur Windows et SELinux/iptables/fail2ban sur Linux, tandis que le patching corrige des vulnérabilités connues (réactif)',
     'La gouvernance hybride combine politique centralisée et exécution décentralisée — le Board a la responsabilité ultime, le CISO définit la stratégie, le comité de sécurité prend les décisions transversales',
     'L\'automatisation de la sécurité apporte efficacité et scalabilité mais comporte des risques : complexité, point unique de défaillance, dette technique et nécessité de supportabilité continue',
+    'Programmes de sensibilisation a la securite',
+    'La dette technique (systemes legacy, dependances obsoletes, configs non durcies) est un multiplicateur de risque qui augmente la surface d\'attaque et complique la conformite',
   ],
   resources: [
     {

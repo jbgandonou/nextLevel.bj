@@ -5,6 +5,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q01',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Qu\'est-ce qu\'un conteneur Docker ?',
     options: [
       'Une machine virtuelle complète avec son propre système d\'exploitation',
@@ -20,6 +21,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q02',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quel fichier est utilisé pour définir les instructions de construction d\'une image Docker ?',
     options: ['docker-compose.yml', 'Dockerfile', 'package.json', 'Makefile'],
     correctIndex: 1,
@@ -30,6 +32,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q03',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Qu\'est-ce que Kubernetes ?',
     options: [
       'Un langage de programmation',
@@ -45,6 +48,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q04',
     phaseId: 'phase-02',
+    lessonId: 'p2-mlflow',
     question: 'Quel est le rôle principal de MLflow dans un pipeline MLOps ?',
     options: [
       'Entraîner des modèles de deep learning',
@@ -60,6 +64,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q05',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Qu\'est-ce que FastAPI ?',
     options: [
       'Une base de données NoSQL',
@@ -75,6 +80,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q06',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Que signifie CI/CD ?',
     options: [
       'Computer Integration / Computer Deployment',
@@ -90,6 +96,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q07',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quelle commande Docker permet de lister tous les conteneurs en cours d\'exécution ?',
     options: [
       'docker images',
@@ -105,6 +112,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q08',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Qu\'est-ce qu\'un Pod dans Kubernetes ?',
     options: [
       'Un cluster de serveurs',
@@ -120,6 +128,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q09',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quel outil est couramment utilisé pour orchestrer plusieurs conteneurs Docker localement ?',
     options: [
       'Docker Swarm',
@@ -135,6 +144,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q10',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Quelle décoration FastAPI est utilisée pour définir un endpoint GET ?',
     options: [
       '@app.post("/route")',
@@ -150,6 +160,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q11',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Qu\'est-ce que le "data drift" en MLOps ?',
     options: [
       'Une erreur dans le code d\'entraînement',
@@ -165,6 +176,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q12',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quel est le rôle d\'un fichier .dockerignore ?',
     options: [
       'Lister les images Docker à ne pas télécharger',
@@ -182,6 +194,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q13',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quelle instruction Dockerfile est recommandée pour réduire le nombre de couches (layers) dans une image ?',
     options: [
       'Utiliser ADD au lieu de COPY',
@@ -197,6 +210,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q14',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Qu\'est-ce qu\'un Deployment dans Kubernetes ?',
     options: [
       'Un conteneur unique en production',
@@ -212,6 +226,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q15',
     phaseId: 'phase-02',
+    lessonId: 'p2-mlflow',
     question: 'Dans MLflow Tracking, quelle fonction est utilisée pour enregistrer un paramètre d\'expérience ?',
     options: [
       'mlflow.log_metric()',
@@ -227,6 +242,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q16',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Comment FastAPI gère-t-il la validation des données d\'entrée ?',
     options: [
       'Par des décorateurs personnalisés',
@@ -242,6 +258,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q17',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quel est le rôle d\'un Service de type LoadBalancer dans Kubernetes ?',
     options: [
       'Stocker les données de configuration',
@@ -257,6 +274,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q18',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Qu\'est-ce qu\'un multi-stage build dans Docker ?',
     options: [
       'Construire plusieurs images en parallèle',
@@ -272,6 +290,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q19',
     phaseId: 'phase-02',
+    lessonId: 'p2-mlflow',
     question: 'Quel composant MLflow permet de gérer les versions de modèles et leurs transitions entre étapes (staging, production) ?',
     options: [
       'MLflow Tracking',
@@ -287,6 +306,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q20',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quelle est la différence entre une liveness probe et une readiness probe dans Kubernetes ?',
     options: [
       'La liveness vérifie le CPU, la readiness vérifie la mémoire',
@@ -302,6 +322,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q21',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quelle commande permet de surveiller les logs d\'un conteneur Docker en temps réel ?',
     options: [
       'docker inspect <container>',
@@ -317,6 +338,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q22',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Quel est l\'avantage principal de FastAPI par rapport à Flask pour servir des modèles ML ?',
     options: [
       'FastAPI a plus de plugins disponibles',
@@ -332,6 +354,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q23',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Dans un pipeline CI/CD pour le ML, quelle étape vérifie que les performances du nouveau modèle sont acceptables avant le déploiement ?',
     options: [
       'Linting du code',
@@ -347,6 +370,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q24',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quel objet Kubernetes est utilisé pour stocker des informations sensibles comme des mots de passe ?',
     options: [
       'ConfigMap',
@@ -362,6 +386,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q25',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Qu\'est-ce qu\'un "feature store" dans l\'écosystème MLOps ?',
     options: [
       'Un magasin d\'applications ML',
@@ -377,6 +402,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q26',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Quelle stratégie de déploiement Kubernetes remplace progressivement les anciennes instances par les nouvelles ?',
     options: [
       'Recreate',
@@ -392,6 +418,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q27',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Quelle fonctionnalité de FastAPI permet de gérer des opérations d\'initialisation (comme le chargement d\'un modèle ML) au démarrage de l\'application ?',
     options: [
       '@app.middleware("http")',
@@ -407,6 +434,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q28',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quel est le rôle d\'un Horizontal Pod Autoscaler (HPA) dans Kubernetes ?',
     options: [
       'Augmenter la taille du disque des Pods',
@@ -424,6 +452,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q29',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Quelle est la différence entre un déploiement Blue-Green et un déploiement Canary pour un modèle ML ?',
     options: [
       'Blue-Green est pour le développement, Canary pour la production',
@@ -439,6 +468,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q30',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Dans un Dockerfile multi-stage, comment copier un artefact de l\'étape de build nommée "builder" vers l\'image finale ?',
     options: [
       'RUN cp --from=builder /app/model.pkl /app/',
@@ -454,6 +484,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q31',
     phaseId: 'phase-02',
+    lessonId: 'p2-mlflow',
     question: 'Quel pattern permet de découpler l\'entraînement du modèle de son service d\'inférence dans une architecture MLOps ?',
     options: [
       'Monolithe',
@@ -469,6 +500,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q32',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quelle ressource Kubernetes est utilisée pour exécuter un job d\'entraînement ML qui doit s\'exécuter une seule fois ?',
     options: [
       'Deployment',
@@ -484,6 +516,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q33',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Comment implémenter un health check personnalisé dans FastAPI pour vérifier la disponibilité d\'un modèle ML chargé en mémoire ?',
     options: [
       'Utiliser un décorateur @app.health()',
@@ -499,6 +532,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q34',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quel est le rôle d\'un Ingress Controller dans Kubernetes ?',
     options: [
       'Gérer le stockage persistant',
@@ -514,6 +548,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q35',
     phaseId: 'phase-02',
+    lessonId: 'p2-fastapi',
     question: 'Qu\'est-ce que le "model serving" avec TensorFlow Serving et comment se compare-t-il à une API FastAPI ?',
     options: [
       'TF Serving est uniquement pour le développement, FastAPI pour la production',
@@ -529,6 +564,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q36',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Dans un pipeline CI/CD pour le ML, quel outil est spécifiquement conçu pour versionner les données et les pipelines ML ?',
     options: [
       'Git',
@@ -544,6 +580,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q37',
     phaseId: 'phase-02',
+    lessonId: 'p2-docker',
     question: 'Quelle stratégie Docker permet de limiter les ressources CPU et mémoire disponibles pour un conteneur ?',
     options: [
       'Docker volumes',
@@ -559,6 +596,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q38',
     phaseId: 'phase-02',
+    lessonId: 'p2-mlflow',
     question: 'Comment MLflow gère-t-il la reproductibilité d\'une expérience avec MLflow Projects ?',
     options: [
       'En sauvegardant uniquement les métriques finales',
@@ -574,6 +612,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q39',
     phaseId: 'phase-02',
+    lessonId: 'p2-kubernetes',
     question: 'Quel est l\'avantage d\'utiliser des Custom Resource Definitions (CRDs) dans Kubernetes pour les workflows ML ?',
     options: [
       'Accélérer le temps de démarrage des Pods',
@@ -589,6 +628,7 @@ export const phase02Questions: QuizQuestion[] = [
   {
     id: 'p2-q40',
     phaseId: 'phase-02',
+    lessonId: 'p2-cicd',
     question: 'Quelle approche permet de gérer le "concept drift" d\'un modèle ML en production ?',
     options: [
       'Augmenter la puissance de calcul du serveur',

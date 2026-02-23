@@ -26,6 +26,7 @@ interface AppState {
   toggleLesson: (lessonId: string) => Promise<void>;
   submitQuiz: (attempt: {
     phaseId: string;
+    lessonId?: string;
     score: number;
     totalQuestions: number;
     answers: { questionId: string; selectedIndex: number; correct: boolean }[];

@@ -5,6 +5,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q121',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce qu\'un identifiant CVE en cybersécurité ?',
     options: [
       'Un certificat de validation des équipements réseau',
@@ -19,6 +20,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q122',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est le système de notation CVSS et que représente son score ?',
     options: [
       'Un score de 0 à 100 mesurant la performance d\'un pare-feu',
@@ -33,6 +35,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q123',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est le rôle principal de l\'outil Nessus dans un environnement de sécurité ?',
     options: [
       'Gérer les identités et les accès des utilisateurs',
@@ -47,6 +50,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q124',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce que la divulgation responsable (responsible disclosure) en matière de sécurité ?',
     options: [
       'Publier immédiatement une vulnérabilité sur les réseaux sociaux',
@@ -61,6 +65,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q125',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quelles sont les phases principales d\'un test de pénétration (pentest) dans l\'ordre correct ?',
     options: [
       'Exploitation, rapport, reconnaissance, scan, post-exploitation',
@@ -75,6 +80,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q126',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est le principe d\'un programme de bug bounty ?',
     options: [
       'Un système de récompenses internes pour les employés qui respectent les politiques de sécurité',
@@ -91,6 +97,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q127',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quel est le rôle principal d\'un analyste SOC de niveau 1 (L1) ?',
     options: [
       'Développer des outils de sécurité personnalisés',
@@ -105,6 +112,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q128',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quelle est la fonction principale d\'une solution SOAR en cybersécurité ?',
     options: [
       'Chiffrer les données sensibles stockées dans le cloud',
@@ -119,6 +127,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q129',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Qu\'est-ce que le « purple teaming » en sécurité informatique ?',
     options: [
       'Une équipe dédiée à la gestion des identités et des accès',
@@ -133,6 +142,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q130',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quel est l\'objectif principal d\'un honeypot dans une infrastructure de sécurité ?',
     options: [
       'Accélérer le trafic réseau en répartissant la charge',
@@ -147,6 +157,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q131',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quels sont les principaux avantages de l\'automatisation de la sécurité dans un SOC ?',
     options: [
       'Augmenter le nombre d\'alertes générées et complexifier les processus',
@@ -161,6 +172,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q132',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quelle est la différence entre un SLA et un SLO dans le contexte de la sécurité ?',
     options: [
       'Le SLA est un protocole réseau, le SLO est un algorithme de chiffrement',
@@ -177,6 +189,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q133',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel est l\'objectif principal d\'une solution DLP (Data Loss Prevention) ?',
     options: [
       'Compresser les données pour économiser de l\'espace de stockage',
@@ -191,6 +204,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q134',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quelle est la différence entre le chiffrement au repos (at rest) et le chiffrement en transit ?',
     options: [
       'Le chiffrement au repos protège les données stockées, le chiffrement en transit protège les données circulant sur le réseau',
@@ -205,6 +219,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q135',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quels sont les niveaux typiques de classification des données dans une organisation, du moins au plus sensible ?',
     options: [
       'Brouillon, Final, Archivé, Supprimé',
@@ -219,6 +234,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q136',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quelle est la différence entre la tokenisation et le masquage de données (data masking) ?',
     options: [
       'La tokenisation est réversible et le masquage est irréversible ; les deux méthodes sont identiques',
@@ -233,6 +249,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q137',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que l\'effacement cryptographique (cryptographic erasure) ?',
     options: [
       'Un processus de formatage complet d\'un disque dur avec plusieurs passes',
@@ -247,6 +264,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q138',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Pourquoi une politique de rétention des données est-elle importante pour une organisation ?',
     options: [
       'Uniquement pour réduire les coûts de stockage informatique',
@@ -263,6 +281,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q139',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est l\'amélioration majeure de WPA3 par rapport à WPA2 ?',
     options: [
       'L\'utilisation d\'un câble Ethernet obligatoire en complément',
@@ -277,6 +296,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q140',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Qu\'est-ce qu\'une attaque « evil twin » (jumeau maléfique) dans le contexte des réseaux sans fil ?',
     options: [
       'Un virus qui se duplique sur deux appareils simultanément',
@@ -291,6 +311,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q141',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'En quoi consiste une attaque de désauthentification (deauthentication) sur un réseau Wi-Fi ?',
     options: [
       'Changer le mot de passe du routeur à distance',
@@ -305,6 +326,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q142',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Comment détecte-t-on les points d\'accès non autorisés (rogue AP) dans un réseau d\'entreprise ?',
     options: [
       'En vérifiant manuellement chaque prise Ethernet du bâtiment',
@@ -319,6 +341,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q143',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est la différence entre le Bluesnarfing et le Bluejacking ?',
     options: [
       'Le Bluesnarfing est légal, le Bluejacking est illégal',
@@ -333,6 +356,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q144',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Que propose le mode WPA3-Enterprise 192 bits et à qui est-il destiné ?',
     options: [
       'Un mode simplifié pour les petites entreprises avec un chiffrement de base',
@@ -349,6 +373,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q145',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel est le principe fondamental de l\'architecture Zero Trust ?',
     options: [
       'Faire confiance aux utilisateurs internes mais vérifier les utilisateurs externes',
@@ -363,6 +388,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q146',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce que le SASE (Secure Access Service Edge) ?',
     options: [
       'Un type de pare-feu matériel installé en périphérie du réseau',
@@ -377,6 +403,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q147',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel est le rôle de sécurité d\'une passerelle API (API gateway) ?',
     options: [
       'Héberger les bases de données des applications web',
@@ -391,6 +418,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q148',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Comment un service mesh améliore-t-il la sécurité dans une architecture de microservices ?',
     options: [
       'En regroupant tous les microservices dans un seul conteneur',
@@ -405,6 +433,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q149',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Pourquoi est-il important de scanner le code Infrastructure as Code (IaC) comme Terraform ou CloudFormation ?',
     options: [
       'Pour vérifier la syntaxe grammaticale des commentaires dans le code',
@@ -419,6 +448,7 @@ export const phase01ExtraC: QuizQuestion[] = [
   {
     id: 'p1-q150',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce que le concept de micro-périmètre dans une architecture de sécurité ?',
     options: [
       'Un petit pare-feu physique installé sur chaque poste de travail',

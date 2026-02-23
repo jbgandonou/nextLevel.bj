@@ -15,12 +15,24 @@ export const allQuizzes: Record<string, QuizQuestion[]> = {
   'phase-06': phase06Questions,
 };
 
+const allQuestionsFlat: QuizQuestion[] = Object.values(allQuizzes).flat();
+
 export function getQuizByPhase(phaseId: string): QuizQuestion[] {
   return allQuizzes[phaseId] || [];
 }
 
 export function getRandomQuestions(phaseId: string, count: number = 10): QuizQuestion[] {
   const questions = getQuizByPhase(phaseId);
+  const shuffled = [...questions].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+export function getQuizByLesson(lessonId: string): QuizQuestion[] {
+  return allQuestionsFlat.filter((q) => q.lessonId === lessonId);
+}
+
+export function getRandomQuestionsByLesson(lessonId: string, count: number = 10): QuizQuestion[] {
+  const questions = getQuizByLesson(lessonId);
   const shuffled = [...questions].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 }

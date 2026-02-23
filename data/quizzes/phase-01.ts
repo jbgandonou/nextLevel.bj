@@ -3,12 +3,14 @@ import { phase01ExtraA } from './phase-01-extra-a';
 import { phase01ExtraB } from './phase-01-extra-b';
 import { phase01ExtraC } from './phase-01-extra-c';
 import { phase01ExtraD } from './phase-01-extra-d';
+import { phase01ExtraE } from './phase-01-extra-e';
 
 const phase01Base: QuizQuestion[] = [
   // ==================== EASY (15 questions: p1-q01 to p1-q15) ====================
   {
     id: 'p1-q01',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel type de chiffrement utilise la même clé pour chiffrer et déchiffrer les données ?',
     options: [
       'Chiffrement asymétrique',
@@ -24,6 +26,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q02',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel protocole est utilisé pour sécuriser les communications web via HTTPS ?',
     options: ['FTP', 'TLS/SSL', 'SNMP', 'Telnet'],
     correctIndex: 1,
@@ -34,6 +37,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q03',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Qu\'est-ce qu\'un pare-feu (firewall) ?',
     options: [
       'Un logiciel antivirus',
@@ -49,6 +53,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q04',
     phaseId: 'phase-01',
+    lessonId: 'p1-risk-management',
     question: 'Que signifie l\'acronyme CIA en sécurité informatique ?',
     options: [
       'Computer Intelligence Agency',
@@ -64,6 +69,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q05',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel type d\'attaque consiste à envoyer des emails frauduleux pour voler des informations ?',
     options: ['DDoS', 'Phishing', 'Brute force', 'SQL injection'],
     correctIndex: 1,
@@ -74,6 +80,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q06',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est la fonction principale d\'un système IDS (Intrusion Detection System) ?',
     options: [
       'Bloquer automatiquement les attaques',
@@ -89,6 +96,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q07',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que l\'authentification multi-facteurs (MFA) ?',
     options: [
       'Utiliser plusieurs mots de passe différents',
@@ -104,6 +112,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q08',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quel port est utilisé par défaut par le protocole HTTPS ?',
     options: ['80', '22', '443', '8080'],
     correctIndex: 2,
@@ -114,6 +123,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q09',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel type de malware se réplique automatiquement sans intervention de l\'utilisateur ?',
     options: ['Virus', 'Ver (Worm)', 'Cheval de Troie', 'Spyware'],
     correctIndex: 1,
@@ -124,6 +134,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q10',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quelle est la différence principale entre le hachage et le chiffrement ?',
     options: [
       'Le hachage est plus rapide que le chiffrement',
@@ -139,6 +150,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q11',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quel est le rôle d\'un VPN (Virtual Private Network) ?',
     options: [
       'Accélérer la connexion Internet',
@@ -154,6 +166,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q12',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que le principe du moindre privilège ?',
     options: [
       'Donner à tous les utilisateurs les mêmes droits',
@@ -169,6 +182,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q13',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel algorithme de hachage est considéré comme obsolète et non sécurisé ?',
     options: ['SHA-256', 'SHA-3', 'MD5', 'bcrypt'],
     correctIndex: 2,
@@ -179,6 +193,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q14',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce qu\'une attaque par déni de service (DoS) ?',
     options: [
       'Voler des données confidentielles',
@@ -194,6 +209,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q15',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel est le rôle principal d\'une PKI (Infrastructure à Clés Publiques) ?',
     options: [
       'Filtrer le trafic réseau',
@@ -211,6 +227,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q16',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est la différence entre un IDS et un IPS ?',
     options: [
       'L\'IDS est matériel, l\'IPS est logiciel',
@@ -226,6 +243,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q17',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Dans le protocole TLS, quel est le rôle du "handshake" initial ?',
     options: [
       'Transférer les données utilisateur',
@@ -241,6 +259,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q18',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Quel type d\'attaque exploite les vulnérabilités des entrées utilisateur dans les applications web pour exécuter du code SQL malveillant ?',
     options: [
       'Cross-Site Scripting (XSS)',
@@ -256,6 +275,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q19',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que le protocole RADIUS est principalement utilisé pour ?',
     options: [
       'Le chiffrement des emails',
@@ -271,6 +291,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q20',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quelle méthode de contrôle d\'accès se base sur des étiquettes de sécurité attribuées aux sujets et aux objets ?',
     options: [
       'Contrôle d\'accès discrétionnaire (DAC)',
@@ -286,6 +307,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q21',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Qu\'est-ce qu\'une attaque de type "Man-in-the-Middle" (MITM) ?',
     options: [
       'Une attaque qui surcharge un serveur de requêtes',
@@ -301,6 +323,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q22',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est le but principal d\'un test de pénétration (pentest) ?',
     options: [
       'Installer des mises à jour de sécurité',
@@ -316,6 +339,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q23',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quelle technique permet de stocker les mots de passe de manière sécurisée dans une base de données ?',
     options: [
       'Chiffrement réversible avec AES',
@@ -331,6 +355,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q24',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que le protocole SAML est utilisé pour ?',
     options: [
       'Le chiffrement de fichiers',
@@ -346,6 +371,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q25',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quel type de scan réseau identifie les ports ouverts sur une machine cible ?',
     options: [
       'Scan de vulnérabilités',
@@ -361,6 +387,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q26',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel concept de sécurité stipule qu\'aucun utilisateur ou système ne doit être automatiquement considéré comme fiable ?',
     options: [
       'Défense en profondeur',
@@ -376,6 +403,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q27',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quelle est la première étape d\'un plan de réponse aux incidents ?',
     options: [
       'Éradication de la menace',
@@ -391,6 +419,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q28',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce qu\'un certificat numérique X.509 contient principalement ?',
     options: [
       'La clé privée du propriétaire et son mot de passe',
@@ -406,6 +435,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q29',
     phaseId: 'phase-01',
+    lessonId: 'p1-risk-management',
     question: 'Quel type d\'analyse de risque attribue des valeurs monétaires aux actifs et aux pertes potentielles ?',
     options: [
       'Analyse qualitative',
@@ -421,6 +451,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q30',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quel protocole est utilisé pour l\'authentification sécurisée dans les environnements Windows Active Directory ?',
     options: ['NTLM v1', 'Kerberos', 'PAP', 'CHAP'],
     correctIndex: 1,
@@ -431,6 +462,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q31',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce que le "sandboxing" en sécurité informatique ?',
     options: [
       'Chiffrer les données au repos',
@@ -446,6 +478,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q32',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle norme ISO est spécifiquement dédiée au management de la sécurité de l\'information ?',
     options: ['ISO 9001', 'ISO 27001', 'ISO 14001', 'ISO 22301'],
     correctIndex: 1,
@@ -456,6 +489,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q33',
     phaseId: 'phase-01',
+    lessonId: 'p1-risk-management',
     question: 'Qu\'est-ce que l\'ALE (Annualized Loss Expectancy) en gestion des risques ?',
     options: [
       'Le coût total de remplacement d\'un actif',
@@ -471,6 +505,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q34',
     phaseId: 'phase-01',
+    lessonId: 'p1-risk-management',
     question: 'Quel type de contrôle de sécurité vise à décourager les attaquants potentiels ?',
     options: [
       'Contrôle préventif',
@@ -486,6 +521,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q35',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quel protocole est utilisé pour la gestion sécurisée des équipements réseau à distance, en remplacement de Telnet ?',
     options: ['FTP', 'SSH', 'HTTP', 'SMTP'],
     correctIndex: 1,
@@ -498,6 +534,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q36',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Dans le cadre d\'un échange Diffie-Hellman, quel problème mathématique garantit la sécurité du protocole ?',
     options: [
       'La factorisation de grands nombres premiers',
@@ -513,6 +550,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q37',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle attaque cible spécifiquement le processus de résolution DNS pour rediriger le trafic vers un serveur malveillant ?',
     options: [
       'ARP Spoofing',
@@ -528,6 +566,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q38',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel mécanisme de sécurité empêche l\'exécution de code dans les zones mémoire réservées aux données ?',
     options: [
       'ASLR (Address Space Layout Randomization)',
@@ -543,6 +582,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q39',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est la principale vulnérabilité du protocole WEP pour les réseaux Wi-Fi ?',
     options: [
       'Utilisation de mots de passe trop courts',
@@ -558,6 +598,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q40',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Dans le modèle Bell-LaPadula, que signifie la propriété "No Write Down" (propriété étoile) ?',
     options: [
       'Un sujet ne peut pas lire des données d\'un niveau supérieur',
@@ -573,6 +614,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q41',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Quel type d\'attaque exploite les conditions de concurrence (race conditions) dans un système ?',
     options: [
       'Attaque par rejeu (Replay)',
@@ -588,6 +630,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q42',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quelle technique cryptographique permet de prouver la connaissance d\'un secret sans le révéler ?',
     options: [
       'Chiffrement homomorphe',
@@ -603,6 +646,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q43',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que le "Perfect Forward Secrecy" (PFS) garantit dans une communication TLS ?',
     options: [
       'Que le certificat du serveur ne peut pas être falsifié',
@@ -618,6 +662,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q44',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle attaque utilise des requêtes DNS pour amplifier le volume de trafic dirigé vers une victime ?',
     options: [
       'DNS Tunneling',
@@ -633,6 +678,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q45',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Dans le cadre du NIST Cybersecurity Framework, quelles sont les cinq fonctions principales ?',
     options: [
       'Prévenir, Détecter, Analyser, Contenir, Récupérer',
@@ -648,6 +694,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q46',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce que l\'attaque "Pass-the-Hash" permet à un attaquant de faire ?',
     options: [
       'Déchiffrer un mot de passe haché',
@@ -663,6 +710,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q47',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel est le principal avantage de la cryptographie sur courbes elliptiques (ECC) par rapport à RSA ?',
     options: [
       'ECC est plus ancien et mieux testé',
@@ -678,6 +726,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q48',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel cadre d\'attaque est couramment utilisé par les équipes de sécurité pour modéliser les tactiques et techniques des attaquants ?',
     options: [
       'OWASP Top 10',
@@ -693,6 +742,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q49',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que le "Certificate Pinning" et quel problème résout-il ?',
     options: [
       'Renouveler automatiquement les certificats expirés',
@@ -708,6 +758,7 @@ const phase01Base: QuizQuestion[] = [
   {
     id: 'p1-q50',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quelle technique permet de détecter les modifications non autorisées des fichiers système en comparant leurs empreintes cryptographiques ?',
     options: [
       'Analyse heuristique',
@@ -728,4 +779,5 @@ export const phase01Questions: QuizQuestion[] = [
   ...phase01ExtraB,
   ...phase01ExtraC,
   ...phase01ExtraD,
+  ...phase01ExtraE,
 ];

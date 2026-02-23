@@ -5,6 +5,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q01',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel service AWS est spécifiquement conçu pour entraîner et déployer des modèles ML à grande échelle ?',
     options: [
       'AWS Lambda',
@@ -20,6 +21,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q02',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel service Azure permet de créer des pipelines ML automatisés avec une interface visuelle ?',
     options: [
       'Azure DevOps',
@@ -35,6 +37,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q03',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel service AWS permet d\'utiliser des modèles de fondation (foundation models) via une API ?',
     options: [
       'AWS Comprehend',
@@ -50,6 +53,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q04',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel est l\'avantage principal d\'utiliser un endpoint SageMaker Serverless par rapport à un endpoint en temps réel ?',
     options: [
       'Une latence plus faible pour chaque requête',
@@ -65,6 +69,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q05',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel service Azure fournit des API prêtes à l\'emploi pour la vision par ordinateur, le langage et la parole ?',
     options: [
       'Azure Cosmos DB',
@@ -80,6 +85,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q06',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel composant d\'Azure OpenAI Service permet d\'implémenter le RAG (Retrieval-Augmented Generation) ?',
     options: [
       'Azure Blob Storage seul',
@@ -95,6 +101,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q07',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Qu\'est-ce qu\'un SageMaker Model Registry et à quoi sert-il ?',
     options: [
       'Un registre DNS pour les modèles',
@@ -110,6 +117,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q08',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Comment sécuriser les données d\'entraînement dans Amazon SageMaker ?',
     options: [
       'Les données sont automatiquement sécurisées sans action',
@@ -125,6 +133,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q09',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quel service AWS permet de détecter automatiquement le biais dans les modèles ML ?',
     options: [
       'AWS CloudWatch',
@@ -140,6 +149,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q10',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-ml',
     question: 'Quelle est la différence principale entre Azure OpenAI Service et l\'API OpenAI directe ?',
     options: [
       'Les modèles sont différents',
@@ -157,6 +167,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q11',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Quel principe de sécurité cloud stipule que le fournisseur et le client partagent les responsabilités ?',
     options: [
       'Le principe de moindre privilège',
@@ -172,6 +183,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q12',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Quelle est la meilleure pratique pour gérer les secrets (clés API, mots de passe) dans le cloud ?',
     options: [
       'Les stocker dans le code source avec le reste de l\'application',
@@ -187,6 +199,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q13',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Qu\'est-ce que le principe de "defense in depth" en sécurité cloud ?',
     options: [
       'Utiliser un seul pare-feu très puissant',
@@ -202,6 +215,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q14',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Pourquoi est-il critique d\'activer le MFA sur les comptes root/administrateur du cloud ?',
     options: [
       'Pour accélérer la connexion',
@@ -217,6 +231,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q15',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Quel outil AWS permet de vérifier automatiquement la conformité des configurations de sécurité ?',
     options: [
       'Amazon Lex',
@@ -232,6 +247,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q16',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Quelle est la meilleure pratique pour sécuriser un bucket S3 contenant des données ML sensibles ?',
     options: [
       'Rendre le bucket public pour faciliter l\'accès des services ML',
@@ -247,6 +263,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q17',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Qu\'est-ce qu\'un VPC endpoint et pourquoi est-il important pour les services ML dans le cloud ?',
     options: [
       'Un DNS public pour accéder au VPC',
@@ -262,6 +279,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q18',
     phaseId: 'phase-06',
+    lessonId: 'p6-cloud-security',
     question: 'Quel service permet de détecter des comportements suspects et des menaces dans un compte AWS ?',
     options: [
       'Amazon Comprehend',
@@ -279,6 +297,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q19',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Quel est le principe le plus important de la rédaction technique ?',
     options: [
       'Utiliser un vocabulaire le plus sophistiqué possible',
@@ -294,6 +313,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q20',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Qu\'est-ce qu\'un ADR (Architecture Decision Record) ?',
     options: [
       'Un rapport de bugs architecturaux',
@@ -309,6 +329,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q21',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Quelle structure est recommandée pour documenter une API REST ?',
     options: [
       'Un simple fichier texte avec des exemples',
@@ -324,6 +345,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q22',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Quelle est la meilleure pratique pour documenter un modèle ML destiné à la production ?',
     options: [
       'Un simple README avec le nom du modèle',
@@ -339,6 +361,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q23',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Quel format est recommandé pour écrire un post-mortem après un incident en production ?',
     options: [
       'Un message Slack informel',
@@ -354,6 +377,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q24',
     phaseId: 'phase-06',
+    lessonId: 'p6-technical-writing',
     question: 'Quel outil permet de générer automatiquement de la documentation à partir de commentaires dans le code Python ?',
     options: [
       'Webpack',
@@ -371,6 +395,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q25',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Quel élément est le plus important dans un portfolio de sécurité IA ?',
     options: [
       'Le nombre total de projets listés',
@@ -386,6 +411,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q26',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Quelle plateforme est la plus appropriée pour publier des projets de sécurité ML open-source ?',
     options: [
       'Instagram',
@@ -401,6 +427,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q27',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Quel type de projet de portfolio démontre le mieux des compétences en sécurité des LLM ?',
     options: [
       'Un site web personnel avec un beau design',
@@ -416,6 +443,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q28',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Comment présenter efficacement un projet de portfolio à un recruteur technique ?',
     options: [
       'Lister uniquement les technologies utilisées',
@@ -431,6 +459,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q29',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Quelle est la valeur ajoutée de contribuer à des projets open-source de sécurité IA pour un portfolio ?',
     options: [
       'Cela n\'a aucune valeur pour un portfolio',
@@ -446,6 +475,7 @@ export const phase06Questions: QuizQuestion[] = [
   {
     id: 'p6-q30',
     phaseId: 'phase-06',
+    lessonId: 'p6-portfolio',
     question: 'Quel élément différencie un portfolio senior d\'un portfolio junior en sécurité IA ?',
     options: [
       'Le nombre de langages de programmation listés',

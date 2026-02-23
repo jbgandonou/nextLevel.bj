@@ -5,6 +5,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q01',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question: 'Que signifie OWASP dans le contexte de la sécurité ML ?',
     options: [
       'Open Web Application Security Project',
@@ -20,6 +21,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q02',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Qu'est-ce que le data poisoning dans le contexte de la sécurité ML ?",
     options: [
@@ -36,6 +38,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q03',
     phaseId: 'phase-03',
+    lessonId: 'p3-sbom',
     question: "Qu'est-ce qu'un SBOM (Software Bill of Materials) ?",
     options: [
       'Un algorithme de chiffrement pour les modèles ML',
@@ -51,6 +54,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q04',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       'Quelle est la première étape pour sécuriser les secrets dans un projet ML ?',
     options: [
@@ -67,6 +71,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q05',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Quel risque principal est lié à l'utilisation de modèles pré-entraînés téléchargés depuis Internet ?",
     options: [
@@ -83,6 +88,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q06',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       "Dans le OWASP ML Top 10, que désigne le risque d'Input Manipulation ?",
     options: [
@@ -99,6 +105,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q07',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       "Quel fichier doit être utilisé pour empêcher les secrets d'être versionnés avec Git ?",
     options: ['.gitconfig', '.gitignore', '.gitmodules', '.gitattributes'],
@@ -110,6 +117,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q08',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Qu'est-ce que la supply chain security dans le contexte du ML ?",
     options: [
@@ -126,6 +134,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q09',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       'Quel format de sérialisation Python est connu pour ses vulnérabilités de sécurité dans le contexte ML ?',
     options: ['JSON', 'CSV', 'Pickle', 'YAML safe_load'],
@@ -137,6 +146,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q10',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Quelle pratique est essentielle pour gérer les dépendances d'un projet ML de manière sécurisée ?",
     options: [
@@ -153,6 +163,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q11',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       "À quoi sert l'outil git-secrets développé par AWS ?",
     options: [
@@ -169,6 +180,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q12',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       'Quel est le principal objectif du chiffrement des données au repos dans un pipeline ML ?',
     options: [
@@ -187,6 +199,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q13',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       "Dans le OWASP ML Top 10, quel risque est associé à un contrôle d'accès insuffisant sur le modèle lui-même ?",
     options: [
@@ -203,6 +216,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q14',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Comment une attaque de type label flipping affecte-t-elle un modèle de classification ?",
     options: [
@@ -219,6 +233,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q15',
     phaseId: 'phase-03',
+    lessonId: 'p3-sbom',
     question:
       "Quel outil peut être utilisé pour générer automatiquement un SBOM pour un projet Python ?",
     options: [
@@ -235,6 +250,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q16',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       'Quelle stratégie de défense est la plus efficace contre le data poisoning dans un dataset collaboratif ?',
     options: [
@@ -251,6 +267,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q17',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Qu'est-ce qu'une attaque de type model supply chain dans le contexte de Hugging Face Hub ?",
     options: [
@@ -267,6 +284,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q18',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       "Quel mécanisme HashiCorp Vault utilise-t-il pour limiter l'exposition des secrets ?",
     options: [
@@ -283,6 +301,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q19',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Quelle vulnérabilité est spécifiquement liée à l'utilisation de pip install sans vérification ?",
     options: [
@@ -299,6 +318,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q20',
     phaseId: 'phase-03',
+    lessonId: 'p3-sbom',
     question:
       "Quel standard est recommandé pour le format d'un SBOM dans l'industrie ?",
     options: [
@@ -315,6 +335,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q21',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       "Comment le concept de 'least privilege' s'applique-t-il à un pipeline ML ?",
     options: [
@@ -331,6 +352,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q22',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Quelle technique permet de détecter si un dataset d'entraînement a été empoisonné ?",
     options: [
@@ -347,6 +369,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q23',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       "Quel risque OWASP ML Top 10 est directement lié à la fuite d'informations sensibles via les prédictions du modèle ?",
     options: [
@@ -363,6 +386,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q24',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       "Pourquoi est-il dangereux de stocker des clés API dans des variables d'environnement sur un serveur partagé ?",
     options: [
@@ -379,6 +403,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q25',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Qu'est-ce qu'une attaque de type backdoor dans un modèle ML ?",
     options: [
@@ -395,6 +420,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q26',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Quel outil permet de scanner les vulnérabilités dans les dépendances Python d'un projet ML ?",
     options: [
@@ -411,6 +437,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q27',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       'Quelle mesure de sécurité est recommandée lors du déploiement d\'un modèle ML via une API REST ?',
     options: [
@@ -427,6 +454,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q28',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Comment la signature cryptographique des modèles contribue-t-elle à la supply chain security ?",
     options: [
@@ -445,6 +473,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q29',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Dans une attaque de clean-label poisoning, quelle est la particularité qui la rend difficile à détecter ?",
     options: [
@@ -461,6 +490,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q30',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Quel mécanisme de défense utilise la technique de 'differential privacy' pour protéger les données d'entraînement ?",
     options: [
@@ -477,6 +507,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q31',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Comment l'attaque de trojan insertion via transfer learning fonctionne-t-elle ?",
     options: [
@@ -493,6 +524,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q32',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Quelle technique avancée permet de détecter un backdoor dans un modèle de deep learning sans accès aux données d'entraînement ?",
     options: [
@@ -509,6 +541,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q33',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Dans un pipeline MLOps, comment implémenter un contrôle d'intégrité de bout en bout des artefacts ML ?",
     options: [
@@ -525,6 +558,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q34',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Qu'est-ce que l'attaque de gradient leakage et comment peut-elle compromettre la confidentialité dans le federated learning ?",
     options: [
@@ -541,6 +575,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q35',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Comment un attaquant peut-il exploiter la sérialisation pickle dans un fichier .pkl de modèle PyTorch ?",
     options: [
@@ -557,6 +592,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q36',
     phaseId: 'phase-03',
+    lessonId: 'p3-sbom',
     question:
       "Quelle approche permet de créer un SBOM qui couvre non seulement les dépendances logicielles mais aussi les composants ML spécifiques (datasets, modèles) ?",
     options: [
@@ -573,6 +609,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q37',
     phaseId: 'phase-03',
+    lessonId: 'p3-owasp-ml',
     question:
       "Dans le contexte de la sécurité ML, qu'est-ce que le 'model watermarking' et comment protège-t-il la propriété intellectuelle ?",
     options: [
@@ -589,6 +626,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q38',
     phaseId: 'phase-03',
+    lessonId: 'p3-secrets',
     question:
       "Comment implémenter une rotation sécurisée des secrets pour les endpoints d'inférence ML en production sans interruption de service ?",
     options: [
@@ -605,6 +643,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q39',
     phaseId: 'phase-03',
+    lessonId: 'p3-data-poisoning',
     question:
       "Quelle est la différence fondamentale entre une attaque de data poisoning ciblée (targeted) et une attaque indiscriminée (untargeted) ?",
     options: [
@@ -621,6 +660,7 @@ export const phase03Questions: QuizQuestion[] = [
   {
     id: 'p3-q40',
     phaseId: 'phase-03',
+    lessonId: 'p3-supply-chain',
     question:
       "Comment la technique de Trusted Execution Environment (TEE) peut-elle être utilisée pour protéger un modèle ML en production ?",
     options: [

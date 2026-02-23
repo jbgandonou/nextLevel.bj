@@ -5,6 +5,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q51',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce que la défense en profondeur (Defense in Depth) ?',
     options: [
       'La mise en place de plusieurs couches de contrôles de sécurité superposées',
@@ -19,6 +20,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q52',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce qu\'une DMZ (zone démilitarisée) dans un réseau ?',
     options: [
       'Un réseau entièrement isolé sans accès Internet',
@@ -33,6 +35,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q53',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel est l\'objectif principal de la microsegmentation réseau ?',
     options: [
       'Augmenter la bande passante disponible',
@@ -47,6 +50,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q54',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Qu\'est-ce que le SDN (Software-Defined Networking) ?',
     options: [
       'Un protocole de routage dynamique',
@@ -61,6 +65,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q55',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel est l\'avantage principal de scanner la sécurité du code Infrastructure as Code (IaC) ?',
     options: [
       'Accélérer le déploiement des serveurs',
@@ -75,6 +80,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q56',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quels sont les principaux défis de sécurité des systèmes SCADA/ICS ?',
     options: [
       'Trop de mises à jour disponibles et difficulté à les suivre',
@@ -89,6 +95,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q57',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quelles contraintes des systèmes embarqués compliquent la mise en œuvre de la sécurité ?',
     options: [
       'Leur prix élevé empêche l\'achat de logiciels de sécurité',
@@ -105,6 +112,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q58',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Qu\'est-ce que le SAST (Static Application Security Testing) ?',
     options: [
       'L\'analyse statique du code source pour détecter des vulnérabilités sans exécuter l\'application',
@@ -119,6 +127,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q59',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Qu\'est-ce qu\'un WAF (Web Application Firewall) ?',
     options: [
       'Un pare-feu réseau classique avec des règles IP',
@@ -133,6 +142,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q60',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Selon le classement OWASP Top 10 (2021), quelle est la vulnérabilité web la plus courante ?',
     options: [
       'Injection SQL',
@@ -147,6 +157,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q61',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Quelle est la différence principale entre DAST et SAST ?',
     options: [
       'DAST est gratuit tandis que SAST est payant',
@@ -161,6 +172,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q62',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Qu\'est-ce qu\'une attaque CSRF (Cross-Site Request Forgery) ?',
     options: [
       'L\'injection de scripts malveillants dans une page web',
@@ -175,6 +187,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q63',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Qu\'est-ce qu\'une attaque SSRF (Server-Side Request Forgery) ?',
     options: [
       'Une attaque qui cible les formulaires de connexion côté client',
@@ -189,6 +202,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q64',
     phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
     question: 'Quel est le risque principal associé à la désérialisation non sécurisée ?',
     options: [
       'La perte de données en base de données',
@@ -205,6 +219,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q65',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Que définit le modèle de responsabilité partagée dans le cloud ?',
     options: [
       'Le fournisseur cloud est responsable de toute la sécurité',
@@ -219,6 +234,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q66',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Qu\'est-ce qu\'un VPC (Virtual Private Cloud) ?',
     options: [
       'Un VPN spécialement conçu pour le cloud',
@@ -233,6 +249,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q67',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Qu\'est-ce qu\'un CASB (Cloud Access Security Broker) ?',
     options: [
       'Un pare-feu cloud nouvelle génération',
@@ -247,6 +264,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q68',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Quelle est une bonne pratique de sécurité pour les conteneurs ?',
     options: [
       'Exécuter tous les conteneurs avec les privilèges root pour simplifier la gestion',
@@ -261,6 +279,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q69',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Quel est le rôle d\'un outil CSPM (Cloud Security Posture Management) ?',
     options: [
       'Chiffrer les données stockées dans le cloud',
@@ -275,6 +294,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q70',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Quels sont les défis de sécurité spécifiques aux architectures serverless ?',
     options: [
       'Trop de serveurs à gérer et à patcher',
@@ -289,6 +309,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q71',
     phaseId: 'phase-01',
+    lessonId: 'p1-cloud-security',
     question: 'Quel est le principal défi de la forensique numérique dans le cloud ?',
     options: [
       'Les outils forensiques ne fonctionnent pas dans le cloud',
@@ -305,6 +326,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q72',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Qu\'est-ce qu\'un mantrap (sas de sécurité) ?',
     options: [
       'Un système de double porte empêchant le tailgating (passage en file)',
@@ -319,6 +341,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q73',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Qu\'est-ce que le MDM (Mobile Device Management) ?',
     options: [
       'Un protocole de communication mobile sécurisé',
@@ -333,6 +356,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q74',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Quel est l\'objectif d\'une cage de Faraday dans le contexte de la sécurité ?',
     options: [
       'Protéger les équipements contre les surtensions électriques',
@@ -347,6 +371,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q75',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Que représentent le FAR et le FRR dans les systèmes biométriques ?',
     options: [
       'FAR : taux de défaillance matérielle, FRR : taux de récupération rapide',
@@ -361,6 +386,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q76',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Qu\'est-ce que le protocole Zigbee dans le contexte de l\'IoT ?',
     options: [
       'Un protocole de chiffrement pour les communications IoT',
@@ -375,6 +401,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q77',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Qu\'est-ce que le CER (Crossover Error Rate) en biométrie ?',
     options: [
       'Le taux maximal d\'erreurs acceptables pour un système biométrique',
@@ -389,6 +416,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q78',
     phaseId: 'phase-01',
+    lessonId: 'p1-physical-iot-security',
     question: 'Comment une attaque ciblant le système HVAC peut-elle affecter un centre de données ?',
     options: [
       'En provoquant des coupures de courant électrique',
@@ -405,6 +433,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q79',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que l\'étirement de clé (key stretching) ?',
     options: [
       'L\'utilisation de clés de chiffrement plus longues',
@@ -419,6 +448,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q80',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce qu\'un HSM (Hardware Security Module) ?',
     options: [
       'Un logiciel de gestion des mots de passe d\'entreprise',
@@ -433,6 +463,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q81',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Quel est le rôle d\'un TPM (Trusted Platform Module) ?',
     options: [
       'Accélérer les calculs cryptographiques du processeur principal',
@@ -447,6 +478,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q82',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que la stéganographie ?',
     options: [
       'Un algorithme de chiffrement symétrique avancé',
@@ -461,6 +493,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q83',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que la cryptographie post-quantique ?',
     options: [
       'Le chiffrement utilisant des ordinateurs quantiques',
@@ -475,6 +508,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q84',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce que le chiffrement homomorphe ?',
     options: [
       'Un chiffrement qui utilise la même clé pour chiffrer et déchiffrer',
@@ -489,6 +523,7 @@ export const phase01ExtraA: QuizQuestion[] = [
   {
     id: 'p1-q85',
     phaseId: 'phase-01',
+    lessonId: 'p1-cryptographie',
     question: 'Qu\'est-ce qu\'une enclave sécurisée (comme Intel SGX ou ARM TrustZone) ?',
     options: [
       'Un serveur physiquement isolé dans une salle sécurisée',

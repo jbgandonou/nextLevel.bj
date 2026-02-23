@@ -5,6 +5,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q86',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est l\'amélioration principale de TLS 1.3 par rapport à TLS 1.2 ?',
     options: [
       'TLS 1.3 utilise uniquement des certificats auto-signés',
@@ -19,6 +20,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q87',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Qu\'est-ce que le protocole IPsec ?',
     options: [
       'Un protocole de routage dynamique pour les réseaux locaux',
@@ -33,6 +35,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q88',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quelle est la différence entre le mode transport et le mode tunnel d\'IPsec ?',
     options: [
       'Le mode transport est utilisé uniquement pour IPv6, le mode tunnel pour IPv4',
@@ -47,6 +50,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q89',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Quel est l\'objectif principal du standard 802.1X ?',
     options: [
       'Définir les fréquences des réseaux Wi-Fi 6',
@@ -61,6 +65,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q90',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'En quoi consiste une attaque par empoisonnement ARP (ARP poisoning) ?',
     options: [
       'Saturer la table ARP d\'un commutateur pour le forcer en mode hub',
@@ -75,6 +80,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q91',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Comment fonctionne une attaque par VLAN hopping ?',
     options: [
       'En exploitant une faille dans le protocole STP pour devenir le pont racine',
@@ -89,6 +95,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q92',
     phaseId: 'phase-01',
+    lessonId: 'p1-network-security',
     question: 'Qu\'est-ce qu\'une attaque de détournement BGP (BGP hijacking) ?',
     options: [
       'Une attaque qui exploite les faiblesses du protocole OSPF dans les réseaux internes',
@@ -105,6 +112,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q93',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce que le modèle Cyber Kill Chain ?',
     options: [
       'Un outil de chiffrement des communications militaires',
@@ -119,6 +127,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q94',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Qu\'est-ce qu\'un IoC (Indicator of Compromise) ?',
     options: [
       'Un outil automatisé de détection des intrusions en temps réel',
@@ -133,6 +142,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q95',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est l\'objectif des standards STIX et TAXII ?',
     options: [
       'Chiffrer les échanges entre les centres opérationnels de sécurité (SOC)',
@@ -147,6 +157,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q96',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quels sont les quatre composants du Diamond Model d\'analyse des intrusions ?',
     options: [
       'Menace, Vulnérabilité, Impact, Probabilité',
@@ -161,6 +172,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q97',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quelle est la différence entre un IoC (Indicator of Compromise) et un IoA (Indicator of Attack) ?',
     options: [
       'Un IoC est utilisé uniquement pour les attaques réseau, un IoA pour les attaques physiques',
@@ -175,6 +187,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q98',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quelle est la méthodologie principale du threat hunting (chasse aux menaces) ?',
     options: [
       'L\'analyse automatisée des alertes SIEM par des règles de corrélation prédéfinies',
@@ -189,6 +202,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q99',
     phaseId: 'phase-01',
+    lessonId: 'p1-threat-analysis',
     question: 'Quel est l\'objectif principal de l\'outil OSINT Shodan ?',
     options: [
       'Analyser les vulnérabilités du code source des applications web',
@@ -205,6 +219,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q100',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quelle est la première phase du processus de réponse aux incidents selon le NIST ?',
     options: [
       'Détection et analyse',
@@ -219,6 +234,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q101',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Qu\'est-ce qu\'un SIEM en cybersécurité ?',
     options: [
       'Un pare-feu de nouvelle génération avec inspection approfondie des paquets',
@@ -233,6 +249,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q102',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quel est l\'objectif de la chaîne de traçabilité (chain of custody) en investigation numérique ?',
     options: [
       'Chiffrer les preuves numériques pour empêcher leur lecture par des tiers',
@@ -247,6 +264,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q103',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quel est le rôle d\'un bloqueur d\'écriture (write blocker) en forensique numérique ?',
     options: [
       'Empêcher les logiciels malveillants d\'écrire sur le disque dur',
@@ -261,6 +279,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q104',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Que signifie l\'Event ID 4625 dans les journaux de sécurité Windows ?',
     options: [
       'Un compte utilisateur a été créé avec succès',
@@ -275,6 +294,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q105',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'Quel est l\'objectif principal du framework Volatility ?',
     options: [
       'Analyser les vulnérabilités des applications web en production',
@@ -289,6 +309,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q106',
     phaseId: 'phase-01',
+    lessonId: 'p1-incident-response',
     question: 'En quoi consiste l\'analyse chronologique (timeline analysis) en investigation numérique ?',
     options: [
       'Mesurer le temps de réponse des systèmes de détection d\'intrusion',
@@ -305,6 +326,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q107',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelles sont les cinq fonctions principales du NIST Cybersecurity Framework (CSF) ?',
     options: [
       'Prévenir, Détecter, Analyser, Contenir, Restaurer',
@@ -319,6 +341,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q108',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelles sont les quatre options de traitement des risques ?',
     options: [
       'Identifier, Évaluer, Prioriser, Documenter',
@@ -333,6 +356,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q109',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre un rapport SOC 2 Type I et un rapport SOC 2 Type II ?',
     options: [
       'Le Type I couvre la sécurité uniquement, le Type II couvre les cinq critères de confiance',
@@ -347,6 +371,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q110',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Que stipule l\'article 33 du RGPD (GDPR) concernant les violations de données ?',
     options: [
       'Les données personnelles doivent être chiffrées avec AES-256 minimum',
@@ -361,6 +386,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q111',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'À quelles organisations s\'applique la norme PCI DSS ?',
     options: [
       'Uniquement aux banques et institutions financières',
@@ -375,6 +401,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q112',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre les normes ISO 27001 et ISO 27002 ?',
     options: [
       'ISO 27001 concerne la sécurité physique, ISO 27002 la sécurité logique',
@@ -389,6 +416,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q113',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce que la disposition Safe Harbor de la loi HIPAA ?',
     options: [
       'Une exemption permettant aux hôpitaux de partager des données médicales sans consentement en cas d\'urgence',
@@ -405,6 +433,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q114',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quel est l\'objectif principal d\'OAuth 2.0 ?',
     options: [
       'Authentifier les utilisateurs via un annuaire LDAP centralisé',
@@ -419,6 +448,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q115',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que la fédération d\'identité ?',
     options: [
       'La synchronisation des mots de passe entre plusieurs applications internes',
@@ -433,6 +463,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q116',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quelle est la différence entre OpenID Connect (OIDC) et OAuth 2.0 ?',
     options: [
       'OIDC est utilisé pour les applications mobiles, OAuth 2.0 pour les applications web',
@@ -447,6 +478,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q117',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quel est l\'avantage principal de FIDO2/WebAuthn ?',
     options: [
       'Il permet le chiffrement de bout en bout des e-mails',
@@ -461,6 +493,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q118',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Quel est l\'objectif d\'une solution PAM (Privileged Access Management) ?',
     options: [
       'Gérer les accès des visiteurs dans les locaux de l\'entreprise',
@@ -475,6 +508,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q119',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce qu\'une attaque Golden Ticket dans l\'environnement Kerberos ?',
     options: [
       'L\'interception du ticket de service (TGS) pour accéder à une ressource spécifique',
@@ -489,6 +523,7 @@ export const phase01ExtraB: QuizQuestion[] = [
   {
     id: 'p1-q120',
     phaseId: 'phase-01',
+    lessonId: 'p1-iam',
     question: 'Qu\'est-ce que l\'accès JIT (Just-In-Time) en gestion des identités ?',
     options: [
       'Un mécanisme de mise en cache des identifiants pour accélérer l\'authentification',

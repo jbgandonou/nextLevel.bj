@@ -29,6 +29,7 @@ export interface Resource {
 export interface QuizQuestion {
   id: string;
   phaseId: string;
+  lessonId?: string;
   question: string;
   options: string[];
   correctIndex: number;
@@ -45,6 +46,7 @@ export interface UserProgress {
 export interface QuizAttempt {
   id?: number;
   phaseId: string;
+  lessonId?: string;
   score: number;
   totalQuestions: number;
   date: string;

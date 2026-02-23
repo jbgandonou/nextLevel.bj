@@ -1,16 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { LinearGradient } from 'expo-linear-gradient';
+import Animated from 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
+import Colors, { Spacing, Fonts } from '@/constants/Colors';
 import { phases } from '@/data/phases';
-import { getQuizByPhase } from '@/data/quizzes';
+import { getQuizByPhase, getQuizByLesson } from '@/data/quizzes';
+import { getLessonById } from '@/data/lessons';
+import { cardShadow } from '@/components/ui/shadows';
+import AnimatedPressable from '@/components/ui/AnimatedPressable';
+import AnimatedScoreCircle from '@/components/ui/AnimatedScoreCircle';
+import { useStaggeredEntry } from '@/components/ui/useStaggeredEntry';
+
+function StaggeredView({ index, children, style }: { index: number; children: React.ReactNode; style?: any }) {
+  const animStyle = useStaggeredEntry(index, 100);
+  return <Animated.View style={[animStyle, style]}>{children}</Animated.View>;
+}
 
 export default function ResultsScreen() {
-  const { phaseId, score, total, answersJson } = useLocalSearchParams<{
+  const { phaseId, lessonId, score, total, answersJson } = useLocalSearchParams<{
     phaseId: string;
+    lessonId?: string;
     score: string;
     total: string;
     answersJson: string;
@@ -23,7 +36,9 @@ export default function ResultsScreen() {
   const totalNum = parseInt(total || '0');
   const percent = totalNum > 0 ? Math.round((scoreNum / totalNum) * 100) : 0;
   const phase = phases.find((p) => p.id === phaseId);
-  const allQuestions = getQuizByPhase(phaseId);
+  const lesson = lessonId ? getLessonById(lessonId) : null;
+  const isLessonQuiz = !!lessonId;
+  const allQuestions = isLessonQuiz ? getQuizByLesson(lessonId!) : getQuizByPhase(phaseId);
 
   let answers: { questionId: string; selectedIndex: number; correct: boolean }[] = [];
   try {
@@ -42,34 +57,45 @@ export default function ResultsScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Score Circle */}
-        <View style={styles.scoreSection}>
-          <View style={[styles.scoreCircle, { borderColor: grade.color }]}>
-            <Text style={[styles.scorePercent, { color: grade.color }]}>{percent}%</Text>
-            <Text style={[styles.scoreLabel, { color: colors.textSecondary }]}>
-              {scoreNum}/{totalNum}
-            </Text>
-          </View>
-          <FontAwesome name={grade.icon} size={32} color={grade.color} style={{ marginTop: 16 }} />
+        {/* Animated Score Circle */}
+        <StaggeredView index={0} style={styles.scoreSection}>
+          <AnimatedScoreCircle
+            percent={percent}
+            size={150}
+            strokeWidth={7}
+            color={grade.color}
+            backgroundColor={colors.borderLight}
+            textColor={grade.color}
+            subtitleColor={colors.textSecondary}
+            score={scoreNum}
+            total={totalNum}
+          />
+        </StaggeredView>
+
+        {/* Grade (delayed after circle) */}
+        <StaggeredView index={2} style={styles.gradeSection}>
+          <FontAwesome name={grade.icon} size={32} color={grade.color} />
           <Text style={[styles.gradeLabel, { color: grade.color }]}>{grade.label}</Text>
-          {phase && (
-            <Text style={[styles.phaseLabel, { color: colors.textSecondary }]}>{phase.title}</Text>
+          {(lesson || phase) && (
+            <Text style={[styles.phaseLabel, { color: colors.textSecondary }]}>
+              {isLessonQuiz ? lesson?.title : phase?.title}
+            </Text>
           )}
-        </View>
+        </StaggeredView>
 
         {/* Stats */}
-        <View style={styles.statsRow}>
-          <View style={[styles.statBox, { backgroundColor: colors.success + '15' }]}>
+        <StaggeredView index={3} style={styles.statsRow}>
+          <View style={[styles.statBox, { backgroundColor: colors.successLight }, cardShadow(colorScheme)]}>
             <FontAwesome name="check" size={18} color={colors.success} />
             <Text style={[styles.statValue, { color: colors.success }]}>{scoreNum}</Text>
             <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Correctes</Text>
           </View>
-          <View style={[styles.statBox, { backgroundColor: colors.error + '15' }]}>
+          <View style={[styles.statBox, { backgroundColor: colors.errorLight }, cardShadow(colorScheme)]}>
             <FontAwesome name="times" size={18} color={colors.error} />
             <Text style={[styles.statValue, { color: colors.error }]}>{totalNum - scoreNum}</Text>
             <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Incorrectes</Text>
           </View>
-        </View>
+        </StaggeredView>
 
         {/* Answer Details */}
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Détail des réponses</Text>
@@ -77,55 +103,61 @@ export default function ResultsScreen() {
           const question = allQuestions.find((q) => q.id === answer.questionId);
           if (!question) return null;
           return (
-            <View
-              key={i}
-              style={[styles.answerCard, {
-                backgroundColor: colors.card,
-                borderColor: answer.correct ? colors.success : colors.error,
-              }]}>
-              <View style={styles.answerHeader}>
-                <FontAwesome
-                  name={answer.correct ? 'check-circle' : 'times-circle'}
-                  size={18}
-                  color={answer.correct ? colors.success : colors.error}
-                />
-                <Text style={[styles.answerQuestion, { color: colors.text }]} numberOfLines={2}>
-                  {question.question}
-                </Text>
-              </View>
-              {!answer.correct && (
-                <View style={styles.answerDetails}>
-                  {answer.selectedIndex >= 0 && (
-                    <Text style={[styles.wrongAnswer, { color: colors.error }]}>
-                      Votre réponse: {question.options[answer.selectedIndex]}
-                    </Text>
-                  )}
-                  {answer.selectedIndex < 0 && (
-                    <Text style={[styles.wrongAnswer, { color: colors.error }]}>Temps écoulé</Text>
-                  )}
-                  <Text style={[styles.correctAnswer, { color: colors.success }]}>
-                    Bonne réponse: {question.options[question.correctIndex]}
+            <StaggeredView key={i} index={i + 4}>
+              <View
+                style={[styles.answerCard, {
+                  backgroundColor: answer.correct ? colors.successLight : colors.errorLight,
+                }]}>
+                <View style={styles.answerHeader}>
+                  <FontAwesome
+                    name={answer.correct ? 'check-circle' : 'times-circle'}
+                    size={18}
+                    color={answer.correct ? colors.success : colors.error}
+                  />
+                  <Text style={[styles.answerQuestion, { color: colors.text }]} numberOfLines={2}>
+                    {question.question}
                   </Text>
                 </View>
-              )}
-            </View>
+                {!answer.correct && (
+                  <View style={styles.answerDetails}>
+                    {answer.selectedIndex >= 0 && (
+                      <Text style={[styles.wrongAnswer, { color: colors.error }]}>
+                        Votre réponse: {question.options[answer.selectedIndex]}
+                      </Text>
+                    )}
+                    {answer.selectedIndex < 0 && (
+                      <Text style={[styles.wrongAnswer, { color: colors.error }]}>Temps écoulé</Text>
+                    )}
+                    <Text style={[styles.correctAnswer, { color: colors.success }]}>
+                      Bonne réponse: {question.options[question.correctIndex]}
+                    </Text>
+                  </View>
+                )}
+              </View>
+            </StaggeredView>
           );
         })}
 
         {/* Actions */}
         <View style={styles.actions}>
-          <Pressable
-            style={[styles.retryBtn, { backgroundColor: phase?.color || colors.tint }]}
-            onPress={() => router.replace(`/quiz/${phaseId}`)}>
-            <FontAwesome name="refresh" size={16} color="#fff" />
-            <Text style={styles.retryBtnText}>Réessayer</Text>
-          </Pressable>
-          <Pressable
-            style={[styles.homeBtn, { backgroundColor: colors.card, borderColor: colors.border }]}
+          <AnimatedPressable
+            style={{ flex: 1 }}
+            onPress={() => router.replace(isLessonQuiz ? `/quiz/lesson/${lessonId}` : `/quiz/${phaseId}`)}>
+            <LinearGradient
+              colors={[phase?.color || colors.tint, (phase?.color || colors.tint) + 'CC'] as [string, string]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.retryBtn}>
+              <FontAwesome name="refresh" size={16} color="#fff" />
+              <Text style={styles.retryBtnText}>Réessayer</Text>
+            </LinearGradient>
+          </AnimatedPressable>
+          <AnimatedPressable
+            style={[styles.homeBtn, { backgroundColor: colors.card }, cardShadow(colorScheme)]}
             onPress={() => router.replace('/(tabs)')}>
             <FontAwesome name="home" size={16} color={colors.text} />
             <Text style={[styles.homeBtnText, { color: colors.text }]}>Accueil</Text>
-          </Pressable>
+          </AnimatedPressable>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -134,40 +166,35 @@ export default function ResultsScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  scrollContent: { padding: 20 },
-  scoreSection: { alignItems: 'center', paddingVertical: 24 },
-  scoreCircle: {
-    width: 140, height: 140, borderRadius: 70, borderWidth: 6,
-    alignItems: 'center', justifyContent: 'center',
-  },
-  scorePercent: { fontSize: 36, fontWeight: 'bold' },
-  scoreLabel: { fontSize: 16, marginTop: 2 },
-  gradeLabel: { fontSize: 22, fontWeight: '700', marginTop: 8 },
-  phaseLabel: { fontSize: 14, marginTop: 4 },
-  statsRow: { flexDirection: 'row', gap: 12, marginVertical: 16 },
+  scrollContent: { padding: Spacing.xl },
+  scoreSection: { alignItems: 'center', paddingTop: Spacing.xxl },
+  gradeSection: { alignItems: 'center', marginTop: Spacing.lg },
+  gradeLabel: { fontSize: 22, fontFamily: Fonts.bold, marginTop: Spacing.sm },
+  phaseLabel: { fontSize: 14, fontFamily: Fonts.medium, marginTop: 4 },
+  statsRow: { flexDirection: 'row', gap: 12, marginVertical: Spacing.lg },
   statBox: {
-    flex: 1, alignItems: 'center', padding: 16, borderRadius: 14, gap: 6,
+    flex: 1, alignItems: 'center', padding: Spacing.lg, borderRadius: 14, gap: 6,
   },
-  statValue: { fontSize: 24, fontWeight: 'bold' },
-  statLabel: { fontSize: 12 },
-  sectionTitle: { fontSize: 18, fontWeight: '600', marginTop: 10, marginBottom: 12 },
+  statValue: { fontSize: 24, fontFamily: Fonts.extraBold },
+  statLabel: { fontSize: 12, fontFamily: Fonts.medium },
+  sectionTitle: { fontSize: 18, fontFamily: Fonts.semiBold, marginTop: 10, marginBottom: Spacing.md },
   answerCard: {
-    padding: 14, borderRadius: 12, borderLeftWidth: 4, marginBottom: 8,
+    padding: 14, borderRadius: 12, marginBottom: Spacing.sm,
   },
   answerHeader: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
-  answerQuestion: { flex: 1, fontSize: 14, fontWeight: '500', lineHeight: 20 },
-  answerDetails: { marginTop: 8, marginLeft: 28 },
-  wrongAnswer: { fontSize: 13, lineHeight: 20 },
-  correctAnswer: { fontSize: 13, lineHeight: 20, marginTop: 2 },
-  actions: { flexDirection: 'row', gap: 12, marginTop: 24 },
+  answerQuestion: { flex: 1, fontSize: 14, fontFamily: Fonts.medium, lineHeight: 20 },
+  answerDetails: { marginTop: Spacing.sm, marginLeft: 28 },
+  wrongAnswer: { fontSize: 13, fontFamily: Fonts.regular, lineHeight: 20 },
+  correctAnswer: { fontSize: 13, fontFamily: Fonts.regular, lineHeight: 20, marginTop: 2 },
+  actions: { flexDirection: 'row', gap: 12, marginTop: Spacing.xxl },
   retryBtn: {
-    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 8, padding: 16, borderRadius: 14,
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 8, padding: Spacing.lg, borderRadius: 14,
   },
-  retryBtnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  retryBtnText: { color: '#fff', fontSize: 16, fontFamily: Fonts.semiBold },
   homeBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 8, padding: 16, borderRadius: 14, borderWidth: 1,
+    gap: 8, padding: Spacing.lg, borderRadius: 14,
   },
-  homeBtnText: { fontSize: 16, fontWeight: '600' },
+  homeBtnText: { fontSize: 16, fontFamily: Fonts.semiBold },
 });

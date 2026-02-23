@@ -593,6 +593,72 @@ COMMUNICATIONS :
   notification Article 33 requise mais documentation dans le registre
 - T+48h : Communication aux employes sur les mesures correctives
 \`\`\`
+
+---
+
+## Automatisation et SOAR (Security Orchestration, Automation and Response)
+
+L'automatisation de la reponse aux incidents est devenue incontournable face au volume croissant d'alertes. Le SOAR permet de passer d'une reponse manuelle et lente a une reponse orchestree, rapide et reproductible.
+
+### Les 3 piliers du SOAR
+
+- **Orchestration** : connecte les outils de securite entre eux (SIEM, EDR, pare-feu, ticketing, threat intelligence, sandbox) via des API. L'orchestration brise les silos entre les equipes et les technologies.
+- **Automatisation** : execute des taches repetitives sans intervention humaine. Exemples : enrichissement automatique des alertes (WHOIS, VirusTotal, reputation IP), blocage d'IP malveillantes, desactivation de comptes compromis.
+- **Reponse** : actions coordonnees declenchees par des playbooks. La reponse peut etre **entierement automatique** (auto-remediation) ou **semi-automatique** (l'analyste valide avant execution).
+
+### Playbooks et Runbooks
+
+Un **playbook** est un ensemble de procedures automatisees definissant les etapes a suivre pour un type d'incident specifique. Un **runbook** est plus operationnel et detaille les instructions techniques pas a pas. Les playbooks SOAR sont generalement visuels (workflow drag-and-drop) et declenchent des actions sur les outils connectes.
+
+**Exemples de playbooks courants :**
+- Phishing : extraction des IoC (URL, hash piece jointe) → analyse sandbox → si malveillant : bloquer expediteur, supprimer email, isoler endpoints ayant clique
+- Malware : isoler le poste → collecter artefacts → scanner → creer ticket → notifier l'equipe
+- Compte compromis : desactiver le compte → reinitialiser le MFA → analyser les logs d'activite recente → notifier l'utilisateur
+
+### Integration SOAR-SIEM
+
+Le SOAR et le SIEM sont complementaires. Le **SIEM detecte** les menaces via la correlation des logs et genere des alertes. Le **SOAR repond** a ces alertes en declenchant automatiquement les playbooks adaptes. Cette integration reduit le **MTTR** (Mean Time To Respond) de plusieurs heures a quelques minutes. Solutions courantes : Palo Alto XSOAR, Splunk SOAR, IBM Resilient, Swimlane, Microsoft Sentinel (SIEM + SOAR integre).
+
+### Risques de l'automatisation excessive
+
+L'automatisation n'est pas sans risques. Une reponse automatique a un **faux positif** peut bloquer un utilisateur legitime ou isoler un serveur de production critique. Les playbooks mal concus peuvent creer des **boucles infinies** ou des actions en cascade non maitrisees. Il est recommande de commencer par des actions semi-automatiques (validation humaine requise) avant de passer a l'automatisation complete, et de toujours prevoir un mecanisme de **rollback**.
+
+**Question type Security+ :** *Une organisation souhaite reduire le temps de reponse aux alertes de phishing. Quelle solution est la plus adaptee ?*
+→ Reponse : Deployer un SOAR avec un playbook de reponse au phishing integre au SIEM pour automatiser le triage, l'analyse et la remediation.
+
+## Metriques de securite et reporting (Security Metrics)
+
+Les metriques de securite permettent de **mesurer l'efficacite** du programme de securite, de **communiquer** avec la direction et de **prioriser** les investissements. Sans metriques, il est impossible de demontrer la valeur des controles de securite ou d'identifier les domaines necessitant une amelioration.
+
+### Metriques operationnelles cles
+
+- **MTTD (Mean Time To Detect)** : temps moyen entre le debut d'un incident et sa detection. Un MTTD eleve indique des lacunes dans le monitoring. Objectif typique : < 24 heures.
+- **MTTR (Mean Time To Respond/Recover)** : temps moyen entre la detection et la resolution. Mesure l'efficacite de l'equipe IR. Objectif typique : < 4 heures pour les incidents P1.
+- **MTTC (Mean Time To Contain)** : temps entre la detection et le confinement initial de l'incident.
+- **MTBF (Mean Time Between Failures)** : temps moyen entre deux incidents ou defaillances. Un MTBF croissant indique une amelioration de la posture de securite.
+
+### Metriques de gestion des vulnerabilites
+
+- **Taux de couverture de scan** : pourcentage des actifs scannes regulierement (objectif : 100%)
+- **Temps moyen de remediation** : delai entre la decouverte d'une vulnerabilite et son correctif, ventile par severite (critique < 48h, haute < 7j, moyenne < 30j)
+- **Nombre de vulnerabilites critiques ouvertes** : indicateur direct de l'exposition au risque
+- **Taux de patch compliance** : pourcentage de systemes a jour par rapport a la politique de patching
+- **Age moyen des vulnerabilites** : anciennete des vulnerabilites non corrigees
+
+### Metriques de sensibilisation
+
+- **Taux de clic sur les simulations de phishing** : objectif < 5%
+- **Taux de signalement** : pourcentage d'utilisateurs qui reportent les emails suspects (objectif > 60%)
+- **Taux de completion des formations** : objectif 100% pour les formations obligatoires
+
+### Dashboards et reporting
+
+Les **dashboards operationnels** (temps reel) sont destines au SOC et affichent les alertes actives, les incidents en cours et les metriques de performance. Les **dashboards executifs** (mensuels/trimestriels) presentent les tendances, le ROI des controles et la posture de risque globale a la direction.
+
+Les elements cles d'un bon dashboard de securite : **KPIs avec tendances** (amelioration/degradation), **comparaison avec les objectifs** definis, **heat maps de risque** par departement ou systeme, et **metriques de conformite** par rapport aux frameworks (CIS, NIST, ISO 27001).
+
+**Question type Security+ :** *Un CISO doit presenter la posture de securite de l'organisation au conseil d'administration. Quelles metriques sont les plus pertinentes ?*
+→ Reponse : Les tendances du MTTD et MTTR, le nombre de vulnerabilites critiques ouvertes et leur evolution, le taux de conformite par rapport aux frameworks, et le retour sur investissement des controles de securite.
 `,
   keyPoints: [
     'Le processus IR du NIST SP 800-61 comporte 4 phases : Preparation, Detection/Analyse, Confinement/Eradication/Recuperation, et Activite post-incident (Lessons Learned). La preparation est la phase la plus critique.',
@@ -603,6 +669,8 @@ COMMUNICATIONS :
     'Les incidents se classent de P1 (critique, reponse immediate) a P4 (faible, sous 24h). Le plan de communication couvre l\'interne (equipe IR, direction, employes) et l\'externe (regulateurs sous 72h RGPD, clients, forces de l\'ordre).',
     'RGPD Articles cles : Art. 33 (notification autorite sous 72h), Art. 34 (notification personnes si risque eleve), Art. 25 (Privacy by Design), Art. 32 (securite du traitement). HIPAA Safe Harbor protege si le chiffrement est conforme.',
     'Les politiques de securite essentielles : AUP, mot de passe, BYOD, acces distant, gestion des donnees, IR, sauvegarde, changement. Les tabletop exercises testent ces processus au moins 2 fois par an.',
+    'Automatisation et SOAR',
+    'Les metriques cles (MTTD, MTTR, MTBF, taux de patch, taux de clic phishing) mesurent l\'efficacite du programme de securite et guident les investissements',
   ],
   resources: [
     {

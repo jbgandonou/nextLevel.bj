@@ -5,6 +5,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q151',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce qu\'un NDA (Non-Disclosure Agreement) en sécurité informatique ?',
     options: [
       'Un accord de niveau de service entre un fournisseur et un client',
@@ -19,6 +20,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q152',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est le rôle principal d\'un SLA (Service Level Agreement) ?',
     options: [
       'Définir les obligations de confidentialité entre deux parties',
@@ -33,6 +35,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q153',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence fondamentale entre un MOU (Memorandum of Understanding) et un MOA (Memorandum of Agreement) ?',
     options: [
       'Le MOU est utilisé en interne et le MOA en externe',
@@ -47,6 +50,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q154',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce qu\'un MSA (Master Service Agreement) et dans quel contexte est-il utilisé ?',
     options: [
       'Un accord ponctuel pour un projet spécifique avec un fournisseur',
@@ -61,6 +65,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q155',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel type d\'accord est un BPA (Business Partners Agreement) ?',
     options: [
       'Un accord définissant les niveaux de service entre un fournisseur cloud et un client',
@@ -75,6 +80,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q156',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Dans quel cas un ISA (Interconnection Security Agreement) est-il obligatoire ?',
     options: [
       'Lors de l\'embauche d\'un nouvel administrateur système',
@@ -89,6 +95,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q157',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre un OLA (Operational Level Agreement) et un SLA (Service Level Agreement) ?',
     options: [
       'L\'OLA est plus coûteux à mettre en place que le SLA',
@@ -103,6 +110,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q158',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Deux agences gouvernementales souhaitent partager des renseignements sur les cybermenaces. Quel type d\'accord est le plus approprié ?',
     options: [
       'Un SLA (Service Level Agreement)',
@@ -119,6 +127,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q159',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce qu\'une analyse des écarts (gap analysis) en sécurité informatique ?',
     options: [
       'Une évaluation des vulnérabilités techniques d\'un système',
@@ -133,6 +142,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q160',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est l\'ordre correct des étapes d\'une analyse des écarts en sécurité ?',
     options: [
       'Remédier → Identifier les écarts → Définir la cible → Évaluer l\'état actuel → Prioriser',
@@ -147,6 +157,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q161',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est le rôle principal d\'un comité de gouvernance de la sécurité dans une organisation ?',
     options: [
       'Effectuer les tests de pénétration trimestriels',
@@ -161,6 +172,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q162',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quels sont les avantages et inconvénients respectifs de la gouvernance centralisée et décentralisée ?',
     options: [
       'Centralisée : plus agile mais incohérente ; Décentralisée : plus rigide mais uniforme',
@@ -175,6 +187,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q163',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Combien de niveaux de maturité comporte le modèle CMM (Capability Maturity Model) et quel est le niveau le plus élevé ?',
     options: [
       '3 niveaux, le plus élevé étant "Défini"',
@@ -189,6 +202,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q164',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'À qui le CISO (Chief Information Security Officer) devrait-il idéalement rendre compte dans la structure organisationnelle ?',
     options: [
       'Au directeur des systèmes d\'information (DSI/CIO)',
@@ -203,6 +217,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q165',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre une analyse des écarts et une évaluation des risques ?',
     options: [
       'L\'analyse des écarts est technique et l\'évaluation des risques est organisationnelle',
@@ -219,6 +234,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q166',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Que signifie la "due diligence" (diligence raisonnable) en sécurité informatique ?',
     options: [
       'L\'implémentation quotidienne des contrôles de sécurité',
@@ -233,6 +249,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q167',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Que signifie la "due care" (soin raisonnable) en sécurité informatique ?',
     options: [
       'L\'audit annuel des systèmes d\'information',
@@ -247,6 +264,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q168',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel exemple illustre le mieux la différence entre due diligence et due care ?',
     options: [
       'Due diligence : installer un antivirus ; Due care : mettre à jour l\'antivirus',
@@ -261,6 +279,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q169',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce que le standard de la "personne prudente" (prudent person rule) en matière de sécurité ?',
     options: [
       'Une norme technique définissant la longueur minimale des mots de passe',
@@ -277,6 +296,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q170',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce que le SCAP (Security Content Automation Protocol) ?',
     options: [
       'Un protocole de chiffrement pour les communications réseau',
@@ -291,6 +311,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q171',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quels sont les principaux composants du framework SCAP ?',
     options: [
       'HTTP, HTTPS, TLS, SSL, SSH, SFTP',
@@ -305,6 +326,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q172',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est l\'objectif principal des CIS Benchmarks ?',
     options: [
       'Former les professionnels de la cybersécurité aux bonnes pratiques',
@@ -319,6 +341,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q173',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre une attestation et un accusé de réception (acknowledgment) en matière de conformité ?',
     options: [
       'L\'attestation est gratuite tandis que l\'accusé de réception est payant',
@@ -333,6 +356,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q174',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est l\'objectif des DISA STIGs (Security Technical Implementation Guides) ?',
     options: [
       'Fournir des certifications professionnelles en cybersécurité',
@@ -347,6 +371,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q175',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre la surveillance continue de la conformité et un audit ponctuel (point-in-time) ?',
     options: [
       'La surveillance continue est moins fiable que l\'audit ponctuel',
@@ -363,6 +388,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q176',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Comment définit-on la technologie blockchain en termes de sécurité ?',
     options: [
       'Un système de chiffrement asymétrique pour les communications',
@@ -377,6 +403,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q177',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quelles sont les principales propriétés de sécurité offertes par la blockchain ?',
     options: [
       'Confidentialité, anonymat et rapidité de traitement',
@@ -391,6 +418,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q178',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quel est le principal avantage de la diversité des plateformes (platform diversity) en sécurité ?',
     options: [
       'Réduire les coûts de licence logicielle',
@@ -405,6 +433,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q179',
     phaseId: 'phase-01',
+    lessonId: 'p1-secure-architecture',
     question: 'Quelles sont les différences entre une blockchain publique, privée et de consortium ?',
     options: [
       'Publique : payante ; Privée : gratuite ; Consortium : subventionnée',
@@ -421,6 +450,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q180',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est le principal avantage de l\'automatisation en sécurité informatique ?',
     options: [
       'Éliminer complètement le besoin d\'analystes de sécurité',
@@ -435,6 +465,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q181',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel risque majeur est associé à une dépendance excessive à l\'automatisation de la sécurité ?',
     options: [
       'Augmentation des coûts de formation du personnel',
@@ -449,6 +480,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q182',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce que la planification de la capacité (capacity planning) en matière de sécurité ?',
     options: [
       'La définition du nombre maximum d\'utilisateurs autorisés dans le système',
@@ -463,6 +495,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q183',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Comment la sécurité doit-elle être intégrée dans le processus d\'approvisionnement (procurement) ?',
     options: [
       'En installant un antivirus sur tous les équipements après leur achat',
@@ -477,6 +510,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q184',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Qu\'est-ce que la dette technique liée à l\'automatisation de la sécurité ?',
     options: [
       'Le coût financier des licences des outils d\'automatisation',
@@ -491,6 +525,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q185',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est l\'objectif principal des listes de fournisseurs approuvés (approved vendor lists) ?',
     options: [
       'Obtenir des remises sur les achats en volume',
@@ -507,6 +542,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q186',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est l\'amende maximale prévue par le RGPD (GDPR) en cas de violation grave ?',
     options: [
       '1% du chiffre d\'affaires annuel mondial ou 5 millions d\'euros',
@@ -521,6 +557,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q187',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelles sont les conséquences possibles de la non-conformité aux réglementations de sécurité ?',
     options: [
       'Uniquement des amendes financières',
@@ -535,6 +572,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q188',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quel est le rôle des stratégies de groupe (Group Policy) Windows dans le durcissement de la sécurité ?',
     options: [
       'Chiffrer les communications réseau entre les postes de travail',
@@ -549,6 +587,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q189',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence fondamentale entre SELinux et AppArmor pour le durcissement Linux ?',
     options: [
       'SELinux est gratuit et AppArmor est payant',
@@ -563,6 +602,7 @@ export const phase01ExtraD: QuizQuestion[] = [
   {
     id: 'p1-q190',
     phaseId: 'phase-01',
+    lessonId: 'p1-governance-compliance',
     question: 'Quelle est la différence entre les CIS Benchmarks et les DISA STIGs en matière de durcissement des systèmes ?',
     options: [
       'Les CIS Benchmarks sont obsolètes et les DISA STIGs les ont remplacés',

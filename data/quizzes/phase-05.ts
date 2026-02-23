@@ -5,6 +5,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q01',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question: 'Quel est le principe fondamental du modèle Zero Trust ?',
     options: [
       'Faire confiance aux utilisateurs internes du réseau',
@@ -20,6 +21,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q02',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Quelle méthode d\'authentification est la plus adaptée pour sécuriser une API ML exposée publiquement ?',
     options: [
@@ -36,6 +38,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q03',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Dans une architecture Zero Trust pour une API de ML, que signifie le "least privilege" ?',
     options: [
@@ -52,6 +55,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q04',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Quel mécanisme permet de limiter l\'abus d\'une API ML par un utilisateur malveillant ?',
     options: [
@@ -68,6 +72,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q05',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Pourquoi est-il important de valider les entrées (input validation) d\'une API de ML ?',
     options: [
@@ -84,6 +89,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q06',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Dans un contexte Zero Trust, qu\'est-ce que la micro-segmentation appliquée aux services ML ?',
     options: [
@@ -100,6 +106,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q07',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Quel outil ou protocole est recommandé pour le mutual TLS (mTLS) entre microservices ML ?',
     options: [
@@ -116,6 +123,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q08',
     phaseId: 'phase-05',
+    lessonId: 'p5-zero-trust',
     question:
       'Quel est le risque principal si les logs d\'une API ML contiennent les données d\'entrée en clair ?',
     options: [
@@ -134,6 +142,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q09',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Selon l\'OWASP Top 10 pour les LLM, qu\'est-ce que l\'injection de prompt (Prompt Injection) ?',
     options: [
@@ -150,6 +159,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q10',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quelle est la différence entre une injection de prompt directe et indirecte ?',
     options: [
@@ -166,6 +176,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q11',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Qu\'est-ce que le "Training Data Poisoning" dans le contexte des LLM ?',
     options: [
@@ -182,6 +193,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q12',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quel risque OWASP LLM est lié à la divulgation d\'informations sensibles par le modèle ?',
     options: [
@@ -198,6 +210,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q13',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Qu\'est-ce que l\'"Insecure Output Handling" dans le Top 10 OWASP LLM ?',
     options: [
@@ -214,6 +227,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q14',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Comment se protéger contre le "Model Denial of Service" (DoS) sur un LLM ?',
     options: [
@@ -230,6 +244,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q15',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Qu\'est-ce que le "Supply Chain Vulnerability" dans le contexte des LLM ?',
     options: [
@@ -246,6 +261,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q16',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quel mécanisme permet de prévenir l\'"Excessive Agency" d\'un LLM connecté à des outils ?',
     options: [
@@ -262,6 +278,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q17',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quelle technique permet de détecter une tentative d\'extraction de modèle (Model Theft) via une API ?',
     options: [
@@ -278,6 +295,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q18',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quel est le rôle d\'un "guardrail" dans la sécurité d\'un LLM ?',
     options: [
@@ -294,6 +312,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q19',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quelle vulnérabilité OWASP LLM est exploitée quand un attaquant obtient les instructions système (system prompt) du LLM ?',
     options: [
@@ -310,6 +329,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q20',
     phaseId: 'phase-05',
+    lessonId: 'p5-llm-security',
     question:
       'Quelle approche est recommandée pour limiter les hallucinations d\'un LLM en production ?',
     options: [
@@ -328,6 +348,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q21',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Quel est l\'objectif principal du règlement européen sur l\'IA (EU AI Act) ?',
     options: [
@@ -344,6 +365,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q22',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Combien de niveaux de risque le EU AI Act définit-il pour classifier les systèmes d\'IA ?',
     options: [
@@ -360,6 +382,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q23',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Lequel de ces systèmes d\'IA est classé comme "risque inacceptable" et interdit par le EU AI Act ?',
     options: [
@@ -376,6 +399,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q24',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Quelle obligation s\'applique aux systèmes d\'IA à "risque élevé" selon le EU AI Act ?',
     options: [
@@ -392,6 +416,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q25',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Comment le EU AI Act traite-t-il les modèles de fondation (foundation models) comme GPT-4 ?',
     options: [
@@ -408,6 +433,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q26',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Quel montant maximal d\'amende le EU AI Act prévoit-il pour les infractions les plus graves ?',
     options: [
@@ -424,6 +450,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q27',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Quel domaine est considéré comme "risque élevé" par le EU AI Act ?',
     options: [
@@ -440,6 +467,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q28',
     phaseId: 'phase-05',
+    lessonId: 'p5-eu-ai-act',
     question:
       'Quelle obligation de transparence s\'applique aux systèmes d\'IA à risque limité selon le EU AI Act ?',
     options: [
@@ -458,6 +486,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q29',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Qu\'est-ce que le modèle STRIDE utilisé en threat modeling ?',
     options: [
@@ -474,6 +503,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q30',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Lors du threat modeling d\'un pipeline ML, quelle menace spécifique vise les données d\'entraînement ?',
     options: [
@@ -490,6 +520,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q31',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Quel outil ou diagramme est fondamental pour commencer un exercice de threat modeling ?',
     options: [
@@ -506,6 +537,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q32',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Qu\'est-ce qu\'une "attack tree" dans le contexte du threat modeling ?',
     options: [
@@ -522,6 +554,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q33',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Dans le threat modeling d\'une API d\'inférence ML, quel risque est lié aux attaques adversariales ?',
     options: [
@@ -538,6 +571,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q34',
     phaseId: 'phase-05',
+    lessonId: 'p5-threat-modeling',
     question:
       'Quelle méthodologie de threat modeling est spécifiquement adaptée aux systèmes ML ?',
     options: [
@@ -556,6 +590,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q35',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Qu\'est-ce que le pattern Circuit Breaker dans le contexte des services ML ?',
     options: [
@@ -572,6 +607,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q36',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Quel pattern de résilience consiste à réessayer automatiquement une requête échouée vers un service ML ?',
     options: [
@@ -588,6 +624,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q37',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Qu\'est-ce que le pattern Bulkhead appliqué aux microservices ML ?',
     options: [
@@ -604,6 +641,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q38',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Quel est le rôle d\'un modèle "fallback" ou "shadow" dans une architecture ML résiliente ?',
     options: [
@@ -620,6 +658,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q39',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Qu\'est-ce que le "graceful degradation" dans un système ML en production ?',
     options: [
@@ -636,6 +675,7 @@ export const phase05Questions: QuizQuestion[] = [
   {
     id: 'p5-q40',
     phaseId: 'phase-05',
+    lessonId: 'p5-resilience',
     question:
       'Quel outil est couramment utilisé pour implémenter le chaos engineering sur des services ML en Kubernetes ?',
     options: [
