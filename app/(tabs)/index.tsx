@@ -10,10 +10,14 @@ import Colors, { gradients, Spacing, Fonts } from '@/constants/Colors';
 import { useStore } from '@/store/useStore';
 import { phases } from '@/data/phases';
 import { getAllLessons } from '@/data/lessons';
-import { cardShadow } from '@/components/ui/shadows';
+import { badges } from '@/data/badges';
 import AnimatedPressable from '@/components/ui/AnimatedPressable';
 import GradientProgressBar from '@/components/ui/GradientProgressBar';
+import GlassCard from '@/components/ui/GlassCard';
+import AnimatedLevelCircle from '@/components/ui/AnimatedLevelCircle';
+import BadgeIcon from '@/components/ui/BadgeIcon';
 import { useStaggeredEntry } from '@/components/ui/useStaggeredEntry';
+import { getXPForLevel, getLevelTitle, getXPProgress } from '@/utils/gamification';
 
 function StaggeredView({ index, children, style }: { index: number; children: React.ReactNode; style?: any }) {
   const animStyle = useStaggeredEntry(index, 100);
@@ -24,12 +28,12 @@ export default function DashboardScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
   const router = useRouter();
-  const { completedLessons, quizAttempts, streak, isLoaded } = useStore();
+  const { completedLessons, quizAttempts, streak, isLoaded, totalXP, level, earnedBadgeIds } = useStore();
   const isDark = colorScheme === 'dark';
 
   if (!isLoaded) {
     return (
-      <View style={[styles.center, { backgroundColor: colors.background }]}>
+      <View style={[styles.center, { backgroundColor: 'transparent' }]}>
         <Text style={[styles.loadingText, { color: colors.text }]}>Chargement...</Text>
       </View>
     );
@@ -45,62 +49,111 @@ export default function DashboardScreen() {
   }) || phases[phases.length - 1];
 
   const lastAttempt = quizAttempts.length > 0 ? quizAttempts[0] : null;
-  const gradientColors = isDark ? gradients.primaryDark : gradients.primary;
+  const nextLevelXP = getXPForLevel(level + 1);
+  const xpProgress = getXPProgress(totalXP);
+
+  const recentBadges = badges.filter((b) => earnedBadgeIds.includes(b.id)).slice(-5);
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: colors.background }]} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ paddingBottom: Platform.OS === 'ios' ? 100 : 80 }}
+      showsVerticalScrollIndicator={false}
+    >
       {/* Hero Header */}
-      <LinearGradient
-        colors={isDark ? ['#0d1117', '#161b22'] : ['#f5f6fa', '#eef1f6']}
-        style={styles.heroSection}>
-        <StaggeredView index={0}>
-          <Text style={[styles.greeting, { color: colors.tint }]}>NextLevel.bj</Text>
-          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
-            AI Security Engineer Roadmap
-          </Text>
+      <View style={styles.heroSection}>
+        <StaggeredView index={0} style={styles.heroTop}>
+          <View>
+            <Text style={[styles.greeting, { color: isDark ? '#6BB5FF' : colors.tint }]}>NextLevel.bj</Text>
+            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
+              AI Security Engineer Roadmap
+            </Text>
+          </View>
+          <AnimatedLevelCircle level={level} totalXP={totalXP} size={60} strokeWidth={4} />
         </StaggeredView>
 
-        {/* Progress Card */}
-        <StaggeredView index={1} style={[styles.progressCard, { backgroundColor: colors.card }, cardShadow(colorScheme)]}>
-          <View style={styles.progressHeader}>
-            <View>
-              <Text style={[styles.progressTitle, { color: colors.text }]}>Progression globale</Text>
-              <Text style={[styles.progressDetail, { color: colors.textSecondary }]}>
-                {completedCount} sur {totalLessons} lecons
-              </Text>
+        {/* XP Card */}
+        <StaggeredView index={1}>
+          <GlassCard isDark={isDark} style={styles.xpCard}>
+            <View style={styles.xpHeader}>
+              <View>
+                <Text style={[styles.xpLabel, { color: colors.textSecondary }]}>Experience</Text>
+                <Text style={[styles.xpValue, { color: '#FFD700' }]}>{totalXP} XP</Text>
+              </View>
+              <View style={styles.levelBadge}>
+                <Text style={styles.levelBadgeText}>Niv. {level}</Text>
+                <Text style={styles.levelTitle}>{getLevelTitle(level)}</Text>
+              </View>
             </View>
-            <View style={[styles.percentBadge, { backgroundColor: colors.tint + '18' }]}>
-              <Text style={[styles.percentText, { color: colors.tint }]}>{progressPercent}%</Text>
-            </View>
-          </View>
-          <GradientProgressBar
-            progress={progressPercent / 100}
-            colors={gradientColors}
-            height={10}
-            trackColor={colors.borderLight}
-          />
+            <GradientProgressBar
+              progress={xpProgress}
+              colors={gradients.xp}
+              height={8}
+              trackColor={isDark ? 'rgba(255,255,255,0.1)' : '#e0e0e0'}
+            />
+            <Text style={[styles.xpNext, { color: colors.textTertiary }]}>
+              {nextLevelXP - totalXP} XP avant le niveau {level + 1}
+            </Text>
+          </GlassCard>
         </StaggeredView>
-      </LinearGradient>
+
+        {/* Global Progress Card */}
+        <StaggeredView index={2}>
+          <GlassCard isDark={isDark} style={styles.progressCard}>
+            <View style={styles.progressHeader}>
+              <View>
+                <Text style={[styles.progressTitle, { color: colors.text }]}>Progression globale</Text>
+                <Text style={[styles.progressDetail, { color: colors.textSecondary }]}>
+                  {completedCount} sur {totalLessons} lecons
+                </Text>
+              </View>
+              <View style={[styles.percentBadge, { backgroundColor: isDark ? 'rgba(107,181,255,0.15)' : colors.tint + '18' }]}>
+                <Text style={[styles.percentText, { color: isDark ? '#6BB5FF' : colors.tint }]}>{progressPercent}%</Text>
+              </View>
+            </View>
+            <GradientProgressBar
+              progress={progressPercent / 100}
+              colors={isDark ? gradients.primaryDark : gradients.primary}
+              height={10}
+              trackColor={isDark ? 'rgba(255,255,255,0.1)' : colors.borderLight}
+            />
+          </GlassCard>
+        </StaggeredView>
+      </View>
 
       {/* Stats Row */}
       <View style={styles.statsRow}>
         {[
-          { icon: 'fire' as const, color: '#FF6B35', bgColor: '#FF6B3515', value: `${streak}`, label: 'Streak' },
-          { icon: 'check-circle' as const, color: '#2ECC71', bgColor: '#2ECC7115', value: `${completedCount}`, label: 'Lecons' },
-          { icon: 'trophy' as const, color: '#F4C430', bgColor: '#F4C43015', value: lastAttempt ? `${Math.round((lastAttempt.score / lastAttempt.totalQuestions) * 100)}%` : '-', label: 'Dernier QCM' },
+          { icon: 'fire' as const, color: '#FF6B35', value: `${streak}`, label: 'Streak' },
+          { icon: 'check-circle' as const, color: '#2ECC71', value: `${completedCount}`, label: 'Lecons' },
+          { icon: 'trophy' as const, color: '#F4C430', value: lastAttempt ? `${Math.round((lastAttempt.score / lastAttempt.totalQuestions) * 100)}%` : '-', label: 'Dernier QCM' },
         ].map((stat, i) => (
-          <StaggeredView key={stat.label} index={i + 2} style={[styles.statCard, { backgroundColor: colors.card }, cardShadow(colorScheme)]}>
-            <View style={[styles.statIconCircle, { backgroundColor: stat.bgColor }]}>
-              <FontAwesome name={stat.icon} size={22} color={stat.color} />
-            </View>
-            <Text style={[styles.statNumber, { color: colors.text }]}>{stat.value}</Text>
-            <Text style={[styles.statLabel, { color: colors.textSecondary }]}>{stat.label}</Text>
+          <StaggeredView key={stat.label} index={i + 3}>
+            <GlassCard isDark={isDark} style={styles.statCard}>
+              <View style={[styles.statIconCircle, { backgroundColor: stat.color + '20' }]}>
+                <FontAwesome name={stat.icon} size={20} color={stat.color} />
+              </View>
+              <Text style={[styles.statNumber, { color: colors.text }]}>{stat.value}</Text>
+              <Text style={[styles.statLabel, { color: colors.textSecondary }]}>{stat.label}</Text>
+            </GlassCard>
           </StaggeredView>
         ))}
       </View>
 
+      {/* Recent Badges */}
+      {recentBadges.length > 0 && (
+        <StaggeredView index={6}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Badges recents</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.badgesScroll}>
+            {recentBadges.map((badge) => (
+              <BadgeIcon key={badge.id} icon={badge.icon} rarity={badge.rarity} name={badge.name} size={56} earned />
+            ))}
+          </ScrollView>
+        </StaggeredView>
+      )}
+
       {/* Current Phase — Hero Card */}
-      <StaggeredView index={5} style={{ paddingHorizontal: 20 }}>
+      <StaggeredView index={7} style={{ paddingHorizontal: 20 }}>
         <AnimatedPressable onPress={() => router.push(`/phase/${currentPhase.id}`)}>
           <LinearGradient
             colors={[currentPhase.color, currentPhase.color + 'BB']}
@@ -131,37 +184,35 @@ export default function DashboardScreen() {
       </StaggeredView>
 
       {/* Quick Actions */}
-      <StaggeredView index={6}>
+      <StaggeredView index={8}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Acces rapide</Text>
         <View style={styles.quickActions}>
-          <AnimatedPressable
-            style={[styles.actionBtn, { backgroundColor: colors.card }, cardShadow(colorScheme)]}
-            onPress={() => router.push('/(tabs)/phases')}>
-            <View style={[styles.actionIconCircle, { backgroundColor: colors.tint + '15' }]}>
-              <FontAwesome name="list-ol" size={18} color={colors.tint} />
-            </View>
-            <View>
-              <Text style={[styles.actionTitle, { color: colors.text }]}>Toutes les phases</Text>
-              <Text style={[styles.actionSubtitle, { color: colors.textSecondary }]}>6 phases disponibles</Text>
-            </View>
-            <FontAwesome name="chevron-right" size={12} color={colors.textTertiary} style={{ marginLeft: 'auto' }} />
+          <AnimatedPressable onPress={() => router.push('/(tabs)/phases')}>
+            <GlassCard isDark={isDark} style={styles.actionBtn}>
+              <View style={[styles.actionIconCircle, { backgroundColor: isDark ? 'rgba(107,181,255,0.15)' : colors.tint + '15' }]}>
+                <FontAwesome name="list-ol" size={18} color={isDark ? '#6BB5FF' : colors.tint} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.actionTitle, { color: colors.text }]}>Toutes les phases</Text>
+                <Text style={[styles.actionSubtitle, { color: colors.textSecondary }]}>6 phases disponibles</Text>
+              </View>
+              <FontAwesome name="chevron-right" size={12} color={colors.textTertiary} />
+            </GlassCard>
           </AnimatedPressable>
-          <AnimatedPressable
-            style={[styles.actionBtn, { backgroundColor: colors.card }, cardShadow(colorScheme)]}
-            onPress={() => router.push(`/quiz/${currentPhase.id}`)}>
-            <View style={[styles.actionIconCircle, { backgroundColor: '#9B59B615' }]}>
-              <FontAwesome name="question-circle" size={18} color="#9B59B6" />
-            </View>
-            <View>
-              <Text style={[styles.actionTitle, { color: colors.text }]}>Lancer un QCM</Text>
-              <Text style={[styles.actionSubtitle, { color: colors.textSecondary }]}>10 questions aleatoires</Text>
-            </View>
-            <FontAwesome name="chevron-right" size={12} color={colors.textTertiary} style={{ marginLeft: 'auto' }} />
+          <AnimatedPressable onPress={() => router.push(`/quiz/${currentPhase.id}`)}>
+            <GlassCard isDark={isDark} style={styles.actionBtn}>
+              <View style={[styles.actionIconCircle, { backgroundColor: '#9B59B620' }]}>
+                <FontAwesome name="question-circle" size={18} color="#9B59B6" />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.actionTitle, { color: colors.text }]}>Lancer un QCM</Text>
+                <Text style={[styles.actionSubtitle, { color: colors.textSecondary }]}>10 questions aleatoires</Text>
+              </View>
+              <FontAwesome name="chevron-right" size={12} color={colors.textTertiary} />
+            </GlassCard>
           </AnimatedPressable>
         </View>
       </StaggeredView>
-
-      <View style={{ height: 40 }} />
     </ScrollView>
   );
 }
@@ -171,24 +222,36 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   loadingText: { fontFamily: Fonts.medium, fontSize: 15 },
   // Hero
-  heroSection: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 24 },
+  heroSection: { paddingHorizontal: 20, paddingTop: 60, gap: 14 },
+  heroTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   greeting: { fontSize: 32, fontFamily: Fonts.extraBold, letterSpacing: 0.5 },
   subtitle: { fontSize: 15, fontFamily: Fonts.medium, marginTop: 4, letterSpacing: 0.2 },
+  // XP Card
+  xpCard: { padding: 18 },
+  xpHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 },
+  xpLabel: { fontSize: 13, fontFamily: Fonts.medium },
+  xpValue: { fontSize: 26, fontFamily: Fonts.extraBold, marginTop: 2 },
+  levelBadge: { alignItems: 'flex-end' },
+  levelBadgeText: { fontSize: 14, fontFamily: Fonts.bold, color: '#9B59B6' },
+  levelTitle: { fontSize: 11, fontFamily: Fonts.medium, color: 'rgba(155,89,182,0.7)', marginTop: 2 },
+  xpNext: { fontSize: 11, fontFamily: Fonts.medium, marginTop: 8 },
   // Progress
-  progressCard: { marginTop: 20, padding: 22, borderRadius: 20 },
-  progressHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  progressTitle: { fontSize: 17, fontFamily: Fonts.bold },
+  progressCard: { padding: 18 },
+  progressHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 },
+  progressTitle: { fontSize: 16, fontFamily: Fonts.bold },
   progressDetail: { fontSize: 13, fontFamily: Fonts.regular, marginTop: 3 },
   percentBadge: { paddingHorizontal: 14, paddingVertical: 6, borderRadius: 12 },
   percentText: { fontSize: 20, fontFamily: Fonts.extraBold },
   // Stats
   statsRow: { flexDirection: 'row', paddingHorizontal: 20, gap: 10, marginTop: 16 },
-  statCard: { flex: 1, alignItems: 'center', paddingVertical: 20, paddingHorizontal: 12, borderRadius: 20, gap: 8 },
-  statIconCircle: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  statNumber: { fontSize: 24, fontFamily: Fonts.extraBold },
+  statCard: { flex: 1, alignItems: 'center', paddingVertical: 16, paddingHorizontal: 8, gap: 6 },
+  statIconCircle: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  statNumber: { fontSize: 22, fontFamily: Fonts.extraBold },
   statLabel: { fontSize: 11, fontFamily: Fonts.medium, letterSpacing: 0.3 },
+  // Badges
+  badgesScroll: { paddingHorizontal: 20, gap: 14 },
   // Hero Card
-  heroCard: { marginTop: 20, padding: 24, borderRadius: 24, overflow: 'hidden' },
+  heroCard: { marginTop: 4, padding: 24, borderRadius: 24, overflow: 'hidden' },
   heroCardInner: { gap: 8 },
   heroCardBadge: {
     alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.2)',
@@ -204,12 +267,11 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
   },
   // Section
-  sectionTitle: { fontSize: 20, fontFamily: Fonts.bold, paddingHorizontal: 20, marginTop: 24, marginBottom: 4 },
+  sectionTitle: { fontSize: 20, fontFamily: Fonts.bold, paddingHorizontal: 20, marginTop: 24, marginBottom: 12 },
   // Quick actions
-  quickActions: { paddingHorizontal: 20, gap: 10, marginTop: 12 },
+  quickActions: { paddingHorizontal: 20, gap: 10 },
   actionBtn: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
-    padding: 18, borderRadius: 18,
+    flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16,
   },
   actionIconCircle: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
   actionTitle: { fontSize: 15, fontFamily: Fonts.semiBold },

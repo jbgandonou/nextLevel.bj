@@ -58,3 +58,35 @@ export interface QuizAnswer {
   selectedIndex: number;
   correct: boolean;
 }
+
+export type BadgeRarity = 'common' | 'rare' | 'epic' | 'legendary';
+
+export interface Badge {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  rarity: BadgeRarity;
+  condition: (ctx: BadgeContext) => boolean;
+}
+
+export interface BadgeContext {
+  completedLessons: string[];
+  quizAttempts: { phaseId: string; lessonId?: string; score: number; totalQuestions: number }[];
+  totalXP: number;
+  level: number;
+}
+
+export interface XPTransaction {
+  id?: number;
+  amount: number;
+  source: 'lesson' | 'quiz' | 'bonus';
+  sourceId: string;
+  date: string;
+}
+
+export interface UserProfile {
+  totalXP: number;
+  level: number;
+  displayName: string;
+}

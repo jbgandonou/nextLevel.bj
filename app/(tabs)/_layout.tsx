@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, StyleSheet } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Colors, { Fonts } from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -31,27 +32,30 @@ function TabBarIcon(props: {
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? 'light'];
+  const isDark = colorScheme === 'dark';
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.tint,
-        tabBarInactiveTintColor: colors.tabIconDefault,
+        tabBarActiveTintColor: isDark ? '#6BB5FF' : colors.tint,
+        tabBarInactiveTintColor: isDark ? 'rgba(255,255,255,0.35)' : colors.tabIconDefault,
         tabBarStyle: {
-          backgroundColor: colors.card,
-          borderTopWidth: 0,
+          backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : colors.card,
+          borderTopWidth: isDark ? 1 : 0,
+          borderTopColor: isDark ? 'rgba(255,255,255,0.08)' : 'transparent',
           height: Platform.OS === 'ios' ? 88 : 64,
           paddingBottom: Platform.OS === 'ios' ? 28 : 8,
           paddingTop: 8,
-          ...Platform.select({
+          position: isDark ? 'absolute' : 'relative',
+          ...(isDark ? {} : Platform.select({
             ios: {
               shadowColor: '#000',
               shadowOffset: { width: 0, height: -2 },
-              shadowOpacity: colorScheme === 'dark' ? 0.3 : 0.06,
+              shadowOpacity: 0.06,
               shadowRadius: 8,
             },
             android: { elevation: 8 },
-          }),
+          })),
         },
         tabBarLabelStyle: {
           fontSize: 11,
@@ -59,24 +63,22 @@ export default function TabLayout() {
           letterSpacing: 0.3,
         },
         headerStyle: {
-          backgroundColor: colors.card,
-          ...Platform.select({
-            ios: {
-              shadowColor: 'transparent',
-              shadowOpacity: 0,
-            },
-          }),
+          backgroundColor: 'transparent',
         },
         headerTitleStyle: {
           fontFamily: Fonts.bold,
+          color: colors.text,
         },
         headerShadowVisible: false,
         headerTintColor: colors.text,
+        headerTransparent: isDark,
+        sceneStyle: { backgroundColor: 'transparent' },
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Dashboard',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => <TabBarIcon name="dashboard" color={color} focused={focused} />,
         }}
       />
@@ -98,6 +100,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Profil',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => <TabBarIcon name="user" color={color} focused={focused} />,
         }}
       />

@@ -28,15 +28,15 @@ const Colors = {
     text: '#e0e0e0',
     textSecondary: '#999',
     textTertiary: '#666',
-    background: '#0d1117',
-    card: '#161b22',
-    cardElevated: '#1c2128',
+    background: '#0a0e1a',
+    card: 'rgba(255,255,255,0.08)',
+    cardElevated: 'rgba(255,255,255,0.12)',
     tint: tintColorDark,
     tintLight: '#6BB5FF20',
     tabIconDefault: '#666',
     tabIconSelected: tintColorDark,
-    border: '#30363d',
-    borderLight: '#21262d',
+    border: 'rgba(255,255,255,0.15)',
+    borderLight: 'rgba(255,255,255,0.08)',
     success: '#2ECC71',
     successLight: '#2ECC7120',
     error: '#E74C3C',
@@ -48,6 +48,16 @@ const Colors = {
   },
 };
 
+export const glass = {
+  card: 'rgba(255,255,255,0.08)',
+  cardLight: 'rgba(255,255,255,0.05)',
+  cardBorder: 'rgba(255,255,255,0.15)',
+  cardBorderLight: 'rgba(255,255,255,0.08)',
+  /** For light mode glass */
+  cardLightMode: 'rgba(255,255,255,0.7)',
+  cardBorderLightMode: 'rgba(255,255,255,0.9)',
+} as const;
+
 export const gradients = {
   primary: ['#4A90D9', '#357ABD'] as const,
   primaryDark: ['#6BB5FF', '#4A90D9'] as const,
@@ -56,7 +66,22 @@ export const gradients = {
   warning: ['#F39C12', '#E67E22'] as const,
   purple: ['#9B59B6', '#8E44AD'] as const,
   orange: ['#F39C12', '#E67E22'] as const,
+  /** App background gradient (dark) */
+  backgroundDark: ['#0a0e1a', '#1a1040'] as const,
+  backgroundLight: ['#f5f6fa', '#eef1f6'] as const,
+  /** XP bar */
+  xp: ['#FFD700', '#FF8C00'] as const,
+  /** Level circle */
+  level: ['#9B59B6', '#6C3483'] as const,
 };
+
+/** Badge gradient by rarity */
+export const badgeGradients = {
+  common: ['#8E9AAF', '#6B7B8D'] as const,
+  rare: ['#4A90D9', '#357ABD'] as const,
+  epic: ['#9B59B6', '#6C3483'] as const,
+  legendary: ['#FFD700', '#FF8C00'] as const,
+} as const;
 
 export const Spacing = {
   xs: 4,
