@@ -417,7 +417,7 @@ export default function LessonScreen() {
     <View style={styles.container}>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={{ flex: 1 }}>
-        {/* Sticky top progress bar */}
+        {/* Sticky top progress bar  */}
         <View style={styles.topBar}>
           <View style={styles.topBarInner}>
             <AnimatedPressable onPress={() => router.back()} style={styles.topBackBtn}>
@@ -683,15 +683,15 @@ export default function LessonScreen() {
             </View>
           )}
 
-          <View style={{ height: isLastPage ? 140 : 50 }} />
+          <View style={{ height: 50 }} />
         </Animated.ScrollView>
       </View>
 
-      {/* Fixed bottom bar — outside ScrollView for reliable touch handling, inside container for absolute positioning */}
+      {/* Bottom bar — normal flex layout, outside ScrollView for reliable touch */}
       {isLastPage && (
-        <View style={[styles.fixedBottomBar, { backgroundColor: isDark ? 'rgba(10,14,26,0.95)' : 'rgba(255,255,255,0.95)', borderTopColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }]}>
-          {/* Complete button — uses TouchableOpacity for reliable press */}
-          <TouchableOpacity activeOpacity={0.8} onPress={handleComplete}>
+        <View style={[styles.fixedBottomBar, { backgroundColor: isDark ? 'rgba(10,14,26,1)' : 'rgba(255,255,255,1)', borderTopColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }]}>
+          {/* Complete button */}
+          <TouchableOpacity activeOpacity={0.7} onPress={handleComplete} style={styles.completeBtnTouchable}>
             <LinearGradient
               colors={isCompleted ? successGradient : [phaseColor, phaseColor + 'DD'] as [string, string]}
               start={{ x: 0, y: 0 }}
@@ -864,12 +864,14 @@ const styles = StyleSheet.create({
   resourceTitle: { fontSize: 14, fontFamily: Fonts.medium },
   resourceType: { fontSize: 11, fontFamily: Fonts.medium, marginTop: 2 },
 
-  // Fixed bottom bar
+  // Fixed bottom bar (normal flex, not absolute)
   fixedBottomBar: {
-    position: 'absolute', bottom: 0, left: 0, right: 0,
     paddingHorizontal: Spacing.xl, paddingTop: 12,
     paddingBottom: Platform.OS === 'ios' ? 34 : 16,
     gap: 10, borderTopWidth: 1,
+  },
+  completeBtnTouchable: {
+    borderRadius: 18, overflow: 'hidden',
   },
 
   // Bottom actions (inside scroll)
