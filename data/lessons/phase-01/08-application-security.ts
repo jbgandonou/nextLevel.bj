@@ -370,6 +370,28 @@ mvn org.owasp:dependency-check-maven:check
 - Configurer Dependabot ou Renovate pour les mises à jour automatiques
 - Maintenir un inventaire SBOM de tous les composants
 - Définir une politique de mise à jour (critique : 24h, haute : 7 jours, moyenne : 30 jours)
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 7 du livre :**
+
+- L'injection SQL insere du code SQL malveillant dans les champs de saisie. La MEILLEURE prevention est l'utilisation de requetes parametrees (prepared statements)
+- Le XSS (Cross-Site Scripting) injecte du code JavaScript malveillant dans les pages web. La validation des entrees et l'encodage des sorties sont essentiels
+- Le buffer overflow se produit quand un programme ecrit au-dela des limites d'un buffer en memoire. La validation de la taille des entrees et les langages memory-safe le previennent
+- Le CSRF (Cross-Site Request Forgery) force un utilisateur authentifie a executer des actions non souhaitees. Les tokens anti-CSRF le previennent
+- L'attaque par injection de commande (command injection) execute des commandes systeme via des entrees non validees
+- L'attaque de traversee de repertoire (directory traversal) utilise ../ pour acceder a des fichiers en dehors du repertoire web
+- Le hardening d'un serveur web inclut : desactiver les services inutiles, supprimer les pages par defaut, mettre a jour les patches
+- La validation des entrees est le controle de securite le PLUS important pour prevenir les injections
+- Le fuzzing envoie des donnees aleatoires/malformees a une application pour trouver des vulnerabilites
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Un attaquant soumet "' OR 1=1 --" dans un formulaire de login → C'est une injection SQL. Implementer des requetes parametrees
+
+*Scenario :* Un site web affiche du contenu soumis par les utilisateurs sans filtrage → Vulnerable au XSS. Encoder toutes les sorties HTML et valider les entrees
 `,
   keyPoints: [
     'Le SDLC sécurisé intègre la sécurité à chaque phase du développement : de la modélisation des menaces en conception aux tests de pénétration avant le déploiement.',

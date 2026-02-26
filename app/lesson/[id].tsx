@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Linking, Platform, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Linking, Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -652,88 +652,90 @@ export default function LessonScreen() {
             )}
           </View>
 
-          {/* Bottom actions — last page */}
-          {isLastPage && (
+          {/* Quiz CTA — last page */}
+          {isLastPage && quizCount > 0 && (
             <View style={styles.bottomActions}>
-              {/* Quiz CTA */}
-              {quizCount > 0 && (
-                <AnimatedPressable
-                  style={styles.quizCTA}
-                  onPress={() => router.push(`/quiz/lesson/${lesson.id}`)}>
-                  <GlassCard
-                    isDark={isDark}
-                    style={styles.quizCTAInner}
-                    glassColors={isDark
-                      ? [`${phaseColor}20`, `${phaseColor}10`] as const
-                      : [`${phaseColor}15`, `${phaseColor}08`] as const
-                    }
-                    borderColor={phaseColor + '40'}
+              <AnimatedPressable
+                style={styles.quizCTA}
+                onPress={() => router.push(`/quiz/lesson/${lesson.id}`)}>
+                <GlassCard
+                  isDark={isDark}
+                  style={styles.quizCTAInner}
+                  glassColors={isDark
+                    ? [`${phaseColor}20`, `${phaseColor}10`] as const
+                    : [`${phaseColor}15`, `${phaseColor}08`] as const
+                  }
+                  borderColor={phaseColor + '40'}
+                >
+                  <LinearGradient
+                    colors={[phaseColor, phaseColor + 'BB']}
+                    style={styles.quizCTAIcon}
                   >
-                    <LinearGradient
-                      colors={[phaseColor, phaseColor + 'BB']}
-                      style={styles.quizCTAIcon}
-                    >
-                      <FontAwesome name="question" size={18} color="#fff" />
-                    </LinearGradient>
-                    <View style={{ flex: 1 }}>
-                      <Text style={[styles.quizCTATitle, { color: colors.text }]}>Tester mes connaissances</Text>
-                      <Text style={[styles.quizCTASub, { color: colors.textSecondary }]}>{quizCount} questions sur cette lecon</Text>
-                    </View>
-                    <FontAwesome name="play" size={14} color={phaseColor} />
-                  </GlassCard>
-                </AnimatedPressable>
-              )}
-
-              {/* Complete button */}
-              <AnimatedPressable onPress={handleComplete}>
-                <LinearGradient
-                  colors={isCompleted ? successGradient : [phaseColor, phaseColor + 'DD'] as [string, string]}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  style={styles.completeBtn}>
-                  <FontAwesome name={isCompleted ? 'check-circle' : 'circle-o'} size={22} color="#fff" />
+                    <FontAwesome name="question" size={18} color="#fff" />
+                  </LinearGradient>
                   <View style={{ flex: 1 }}>
-                    <Text style={styles.completeBtnText}>
-                      {isCompleted ? 'Lecon terminee !' : 'Marquer comme terminee'}
-                    </Text>
-                    {!isCompleted && (
-                      <Text style={styles.completeBtnSub}>Gagnez {LESSON_XP} XP</Text>
-                    )}
+                    <Text style={[styles.quizCTATitle, { color: colors.text }]}>Tester mes connaissances</Text>
+                    <Text style={[styles.quizCTASub, { color: colors.textSecondary }]}>{quizCount} questions sur cette lecon</Text>
                   </View>
-                  {!isCompleted && (
-                    <View style={styles.completeBtnXP}>
-                      <FontAwesome name="bolt" size={12} color="#FFD700" />
-                      <Text style={styles.completeBtnXPText}>+{LESSON_XP}</Text>
-                    </View>
-                  )}
-                </LinearGradient>
+                  <FontAwesome name="play" size={14} color={phaseColor} />
+                </GlassCard>
               </AnimatedPressable>
-
-              {/* Lesson navigation */}
-              <View style={styles.navRow}>
-                {prevLesson ? (
-                  <AnimatedPressable style={{ flex: 1 }} onPress={() => router.replace(`/lesson/${prevLesson.id}`)}>
-                    <GlassCard isDark={isDark} style={styles.navBtn}>
-                      <FontAwesome name="chevron-left" size={12} color={colors.textSecondary} />
-                      <Text style={[styles.navBtnText, { color: colors.text }]} numberOfLines={1}>Precedente</Text>
-                    </GlassCard>
-                  </AnimatedPressable>
-                ) : <View style={{ flex: 1 }} />}
-                {nextLesson ? (
-                  <AnimatedPressable style={{ flex: 1 }} onPress={() => router.replace(`/lesson/${nextLesson.id}`)}>
-                    <GlassCard isDark={isDark} style={styles.navBtn}>
-                      <Text style={[styles.navBtnText, { color: colors.text }]} numberOfLines={1}>Suivante</Text>
-                      <FontAwesome name="chevron-right" size={12} color={colors.textSecondary} />
-                    </GlassCard>
-                  </AnimatedPressable>
-                ) : <View style={{ flex: 1 }} />}
-              </View>
             </View>
           )}
 
-          <View style={{ height: 50 }} />
+          <View style={{ height: isLastPage ? 140 : 50 }} />
         </Animated.ScrollView>
       </View>
+
+      {/* Fixed bottom bar — outside ScrollView for reliable touch handling */}
+      {isLastPage && (
+        <View style={[styles.fixedBottomBar, { backgroundColor: isDark ? 'rgba(10,14,26,0.95)' : 'rgba(255,255,255,0.95)', borderTopColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }]}>
+          {/* Complete button — uses TouchableOpacity for reliable press */}
+          <TouchableOpacity activeOpacity={0.8} onPress={handleComplete}>
+            <LinearGradient
+              colors={isCompleted ? successGradient : [phaseColor, phaseColor + 'DD'] as [string, string]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.completeBtn}>
+              <FontAwesome name={isCompleted ? 'check-circle' : 'circle-o'} size={22} color="#fff" />
+              <View style={{ flex: 1 }}>
+                <Text style={styles.completeBtnText}>
+                  {isCompleted ? 'Lecon terminee !' : 'Marquer comme terminee'}
+                </Text>
+                {!isCompleted && (
+                  <Text style={styles.completeBtnSub}>Gagnez {LESSON_XP} XP</Text>
+                )}
+              </View>
+              {!isCompleted && (
+                <View style={styles.completeBtnXP}>
+                  <FontAwesome name="bolt" size={12} color="#FFD700" />
+                  <Text style={styles.completeBtnXPText}>+{LESSON_XP}</Text>
+                </View>
+              )}
+            </LinearGradient>
+          </TouchableOpacity>
+
+          {/* Lesson navigation */}
+          <View style={styles.navRow}>
+            {prevLesson ? (
+              <TouchableOpacity activeOpacity={0.7} style={{ flex: 1 }} onPress={() => router.replace(`/lesson/${prevLesson.id}`)}>
+                <GlassCard isDark={isDark} style={styles.navBtn}>
+                  <FontAwesome name="chevron-left" size={12} color={colors.textSecondary} />
+                  <Text style={[styles.navBtnText, { color: colors.text }]} numberOfLines={1}>Precedente</Text>
+                </GlassCard>
+              </TouchableOpacity>
+            ) : <View style={{ flex: 1 }} />}
+            {nextLesson ? (
+              <TouchableOpacity activeOpacity={0.7} style={{ flex: 1 }} onPress={() => router.replace(`/lesson/${nextLesson.id}`)}>
+                <GlassCard isDark={isDark} style={styles.navBtn}>
+                  <Text style={[styles.navBtnText, { color: colors.text }]} numberOfLines={1}>Suivante</Text>
+                  <FontAwesome name="chevron-right" size={12} color={colors.textSecondary} />
+                </GlassCard>
+              </TouchableOpacity>
+            ) : <View style={{ flex: 1 }} />}
+          </View>
+        </View>
+      )}
 
       <XPToast
         xp={LESSON_XP}
@@ -862,7 +864,15 @@ const styles = StyleSheet.create({
   resourceTitle: { fontSize: 14, fontFamily: Fonts.medium },
   resourceType: { fontSize: 11, fontFamily: Fonts.medium, marginTop: 2 },
 
-  // Bottom actions
+  // Fixed bottom bar
+  fixedBottomBar: {
+    position: 'absolute', bottom: 0, left: 0, right: 0,
+    paddingHorizontal: Spacing.xl, paddingTop: 12,
+    paddingBottom: Platform.OS === 'ios' ? 34 : 16,
+    gap: 10, borderTopWidth: 1,
+  },
+
+  // Bottom actions (inside scroll)
   bottomActions: { paddingHorizontal: Spacing.xl, gap: 12, marginTop: 8 },
   quizCTA: {},
   quizCTAInner: {

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Pressable, PressableProps, ViewStyle, StyleProp } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, ViewStyle, StyleProp } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 
-const AnimatedPressableBase = Animated.createAnimatedComponent(Pressable);
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-interface AnimatedPressableProps extends PressableProps {
+interface AnimatedPressableProps extends TouchableOpacityProps {
   style?: StyleProp<ViewStyle>;
   scaleValue?: number;
 }
@@ -22,7 +22,8 @@ export default function AnimatedPressable({
   }));
 
   return (
-    <AnimatedPressableBase
+    <AnimatedTouchable
+      activeOpacity={0.85}
       {...props}
       style={[animatedStyle, style]}
       onPressIn={(e) => {
@@ -34,6 +35,6 @@ export default function AnimatedPressable({
         props.onPressOut?.(e);
       }}>
       {children}
-    </AnimatedPressableBase>
+    </AnimatedTouchable>
   );
 }

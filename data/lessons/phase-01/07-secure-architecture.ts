@@ -490,6 +490,29 @@ Chaque actif doit avoir un **propriétaire désigné** (asset owner) responsable
 
 **Question type Security+ :** *Un administrateur découvre des serveurs non répertoriés sur le réseau. Quel processus devrait être amélioré ?*
 → Réponse : La gestion des actifs et l'inventaire, en particulier les scans de découverte automatiques et la mise à jour de la CMDB.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles des chapitres 1 et 9 du livre :**
+
+- La defense en profondeur superpose plusieurs couches de controles independantes : physique, technique, administratif
+- Le RAID augmente la disponibilite des disques : RAID 1 (mirroring), RAID 5 (striping avec parite), RAID 10 (mirroring + striping)
+- RAID n'est PAS une sauvegarde ! Si un ransomware chiffre les donnees, le RAID ne protege pas
+- Les sauvegardes : complete (tout), differentielle (changements depuis la derniere complete), incrementale (changements depuis la derniere sauvegarde quelconque)
+- Un site chaud (hot site) est operationnel immediatement. Un site tiede (warm site) necessite quelques heures. Un site froid (cold site) necessite des jours
+- Le RPO (Recovery Point Objective) definit la perte de donnees acceptable. Le RTO (Recovery Time Objective) definit le temps d'arret acceptable
+- Les clusters de failover augmentent la disponibilite. Si un serveur tombe, l'autre prend le relais automatiquement
+- Les bollards sont des barrieres physiques qui bloquent les vehicules
+- Un UPS (onduleur) protege contre les coupures de courant courtes. Un generateur protege contre les coupures prolongees
+- Les snapshots VM permettent de revenir a un etat anterieur en cas de probleme apres un deploiement
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Deux serveurs sont configures en failover l'un pour l'autre → L'organisation poursuit l'objectif de disponibilite (Availability)
+
+*Scenario :* Vous deployez une nouvelle application sur un serveur virtuel qui heberge deja une autre application → Prenez un snapshot AVANT le deploiement pour pouvoir revenir en arriere
 `,
   keyPoints: [
     'La défense en profondeur superpose plusieurs couches de sécurité indépendantes pour éviter tout point unique de défaillance.',

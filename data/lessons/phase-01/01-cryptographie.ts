@@ -589,6 +589,29 @@ La **blockchain** est une technologie de registre distribue (DLT - Distributed L
 - **Consommation energetique** : le Proof of Work est tres couteux (Proof of Stake comme alternative)
 
 > **Point Security+ :** La blockchain est un concept cryptographique de registre public distribue (open public ledger). Retenez ses proprietes de securite (immutabilite, transparence, decentralisation) et ses applications en cybersecurite (supply chain, identite, certificate transparency).
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 10 du livre :**
+
+- Le chiffrement est la MEILLEURE methode pour garantir la confidentialite des PII (donnees personnelles identifiables), que ce soit au repos ou en transit
+- Le hachage (SHA-256) est utilise pour verifier l'integrite des fichiers. Un administrateur qui compare les hashes de fichiers de configuration chaque semaine verifie l'integrite
+- Les signatures numeriques supportent la non-repudiation : l'expediteur ne peut pas nier avoir signe un document
+- La steganographie est une technique d'obfuscation : cacher l'existence meme d'un message dans un fichier image ou audio
+- NEVER use WEP : il est casse et vulnerable aux attaques IV (Initialization Vector)
+- WPA2 avec CCMP/AES fournit le niveau de securite sans fil le plus eleve
+- Le chiffrement symetrique (AES) est plus rapide mais necessite un echange de cle securise. Le chiffrement asymetrique (RSA) resout le probleme de distribution des cles
+- S/MIME et PGP chiffrent les emails. S/MIME utilise des certificats X.509
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Vous devez transmettre des PII par email en maintenant la confidentialite → Chiffrez les donnees avant envoi (S/MIME ou chiffrement du fichier avec AES)
+
+*Scenario :* Un auditeur decouvre que votre VPN utilise 3DES → Migrer immediatement vers AES-256. 3DES est deprecie et vulnerable a l'attaque Sweet32
+
+*Scenario :* Vous voulez verifier que les fichiers de configuration de vos routeurs n'ont pas ete modifies → Comparer les hashes SHA-256 des fichiers de maniere periodique
 `,
   keyPoints: [
     'AES-256-GCM est le standard de chiffrement symetrique recommande : il fournit confidentialite et integrite (AEAD). ECB ne doit jamais etre utilise car il revele des motifs dans les donnees.',
@@ -599,6 +622,8 @@ La **blockchain** est une technologie de registre distribue (DLT - Distributed L
     'TLS 1.3 impose le Perfect Forward Secrecy (ECDHE obligatoire), supprime les algorithmes faibles et reduit le handshake a 1 RTT. TLS 1.0/1.1 sont officiellement deprecies.',
     'L\'attaque par anniversaire (birthday attack) est la raison pour laquelle les hashes courts (MD5 128 bits) sont vulnerables. SHA-256 (2^128 essais pour une collision) est securise.',
     'La cryptographie post-quantique (ML-KEM, ML-DSA) est en cours de standardisation par le NIST pour resister aux futurs ordinateurs quantiques. Le concept "harvest now, decrypt later" rend la migration urgente.',
+    'SY0-501 : Le chiffrement est la meilleure methode pour proteger les PII au repos et en transit. S/MIME et PGP chiffrent les emails. La steganographie cache l\'existence meme du message (obfuscation).',
+    'SY0-501 : WEP est casse (attaques IV), WPA2 avec CCMP/AES est le standard minimum. 3DES est deprecie (Sweet32) et doit etre remplace par AES-256.',
   ],
   resources: [
     {

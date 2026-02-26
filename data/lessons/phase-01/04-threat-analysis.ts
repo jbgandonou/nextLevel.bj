@@ -406,6 +406,30 @@ Analyse :
    - Verifier les logs d'acces reussis depuis ces IP sur d'autres services
    - Verifier les logs VPN pour des connexions suspectes du compte CFO
 \`\`\`
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 6 du livre :**
+
+- Les virus necessite un hote (fichier executable) pour se propager. Les vers se propagent de maniere autonome sur le reseau
+- Les chevaux de Troie (Trojans) se deguisent en logiciels legitimites. Un RAT (Remote Access Trojan) donne un acces a distance a l'attaquant
+- Le ransomware chiffre les donnees et demande une rancon. La MEILLEURE defense est un plan de sauvegarde solide
+- Un rootkit s'installe au niveau le plus profond du systeme (noyau, firmware). Il est extremement difficile a detecter
+- Les attaques de type watering hole ciblent des sites web frequentes par le groupe vise
+- Le spear phishing est une attaque de phishing ciblee visant une personne ou un groupe specifique
+- Le vishing utilise le telephone (Voice phishing), le smishing utilise les SMS
+- L'ingenierie sociale exploite la confiance humaine. Le pretexting cree un scenario fictif pour manipuler la victime
+- Le tailgating (ou piggybacking) consiste a suivre une personne autorisee pour entrer dans une zone securisee
+- Le shoulder surfing consiste a observer par-dessus l'epaule pour voir des informations confidentielles
+- Le dumpster diving est la recherche d'informations sensibles dans les poubelles
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Un employe recoit un email pretendant venir de son PDG demandant un virement urgent → C'est du spear phishing (whaling si cible un cadre superieur). Verifier l'identite de l'expediteur par un autre canal
+
+*Scenario :* Un malware se connecte a des serveurs distants et votre antivirus ne le detecte pas → C'est probablement un RAT. Utiliser netstat pour identifier les connexions actives suspectes
 `,
   keyPoints: [
     'Les acteurs de la menace se distinguent par leur sophistication, leurs ressources et leur motivation. Les APT/Etats-nations sont les plus avances, mais les insiders sont parmi les plus dangereux grace a leur acces privilegie.',
@@ -416,6 +440,8 @@ Analyse :
     'MITRE ATT&CK organise les attaques en 14 tactiques. L\'ATT&CK Navigator permet de visualiser la couverture defensive et d\'identifier les gaps de detection.',
     'Le threat hunting est proactif : il recherche activement les menaces via des hypotheses, des IoC, ou du machine learning (UEBA) plutot que d\'attendre les alertes.',
     'La gestion de la surface d\'attaque (ASM) cartographie tous les points d\'entree (externe, interne, humain, logiciel, physique) pour les reduire et les surveiller.',
+    'SY0-501 : Les virus necessitent un hote pour se propager, les vers sont autonomes. Le ransomware se combat avec des sauvegardes solides. Les rootkits s\'installent au niveau noyau/firmware.',
+    'SY0-501 : Le spear phishing cible une personne specifique, le whaling cible les dirigeants. Le pretexting, tailgating, shoulder surfing et dumpster diving sont des techniques d\'ingenierie sociale physique.',
   ],
   resources: [
     {

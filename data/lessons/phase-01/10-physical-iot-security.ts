@@ -366,6 +366,31 @@ Les drones présentent des risques de sécurité spécifiques :
 
 **Question type Security+ :** *Une entreprise souhaite protéger son datacenter contre la surveillance par drone. Quelle mesure est la plus appropriée ?*
 → Réponse : Déployer un système de détection de drones combiné à des mesures physiques (filets, occultation des installations) et signaler la zone comme espace aérien restreint.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 5 (mobile/hardening) et chapitre 9 (physique) du livre :**
+
+- Les cable locks sont des dissuasifs efficaces contre le vol d'equipement pour les ordinateurs portables
+- Les bollards sont des barrieres physiques qui empechent les vehicules d'acceder a une zone
+- Le hardening des systemes inclut : desactiver les services inutiles, supprimer les applications non necessaires, appliquer les patches, changer les mots de passe par defaut
+- Le TPM (Trusted Platform Module) est une puce hardware qui stocke les cles de chiffrement de maniere securisee (utilisee par BitLocker)
+- Le FDE (Full Disk Encryption) chiffre l'integralite du disque dur. BitLocker (Windows) et FileVault (macOS) sont des exemples courants
+- Le MDM (Mobile Device Management) permet la gestion centralisee des appareils mobiles : effacement a distance, application de politiques, inventaire
+- Le BYOD (Bring Your Own Device) presente des risques de securite : donnees d'entreprise sur des appareils personnels, perte/vol, applications non securisees
+- La politique COPE (Corporate-Owned, Personally Enabled) offre un meilleur controle que le BYOD
+- Les systemes SCADA/ICS sont souvent anciens et difficiles a mettre a jour. Un NIPS a la frontiere du reseau SCADA peut attenuer les risques
+- Un agent NAC dissolvable est utilise pour les appareils BYOD temporaires — il verifie la conformite puis se supprime
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* L'organisation veut reduire les vols d'equipement → Les cable locks sont la meilleure solution pour les portables
+
+*Scenario :* Un malware est decouvert sur un systeme qui controle des SCADA. Il n'est pas possible de mettre a jour les systemes SCADA → Installer un NIPS a la frontiere du reseau SCADA
+
+*Scenario :* L'organisation implemente le BYOD. Le management veut que les appareils respectent les standards minimaux de securite → Utiliser un agent NAC dissolvable qui verifie la conformite
 `,
   keyPoints: [
     'Un vestibule de sécurité (mantrap) empêche le tailgating en n\'autorisant l\'ouverture que d\'une seule porte à la fois. Les bollards protègent contre les attaques véhiculaires.',

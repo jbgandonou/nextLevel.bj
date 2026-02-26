@@ -7,768 +7,921 @@ import { phase01ExtraE } from './phase-01-extra-e';
 
 const phase01Base: QuizQuestion[] = [
   // ==================== EASY (15 questions: p1-q01 to p1-q15) ====================
+
+  // p1-cryptographie (easy: 2)
   {
     id: 'p1-q01',
     phaseId: 'phase-01',
     lessonId: 'p1-cryptographie',
-    question: 'Quel type de chiffrement utilise la même clé pour chiffrer et déchiffrer les données ?',
+    question:
+      'Votre organisation souhaite transmettre des fichiers volumineux de manière chiffrée entre deux succursales. Le responsable IT demande un algorithme rapide utilisant une seule clé partagée. Quel algorithme est le MEILLEUR choix ?',
     options: [
-      'Chiffrement asymétrique',
-      'Chiffrement symétrique',
-      'Hachage',
-      'Signature numérique',
+      'RSA 2048 bits',
+      'AES-256',
+      'SHA-256',
+      'Diffie-Hellman',
     ],
     correctIndex: 1,
     explanation:
-      'Le chiffrement symétrique utilise une seule et même clé pour le chiffrement et le déchiffrement. Des algorithmes comme AES et DES en sont des exemples. Le chiffrement asymétrique, en revanche, utilise une paire de clés (publique et privée).',
+      'AES-256 est un algorithme de chiffrement symétrique rapide et sécurisé, idéal pour chiffrer de gros volumes de données. RSA est asymétrique et trop lent pour des fichiers volumineux. SHA-256 est une fonction de hachage, pas de chiffrement. Diffie-Hellman sert à l\'échange de clés, pas au chiffrement direct des données.',
     difficulty: 'easy',
   },
   {
     id: 'p1-q02',
     phaseId: 'phase-01',
     lessonId: 'p1-cryptographie',
-    question: 'Quel protocole est utilisé pour sécuriser les communications web via HTTPS ?',
-    options: ['FTP', 'TLS/SSL', 'SNMP', 'Telnet'],
-    correctIndex: 1,
-    explanation:
-      'TLS (Transport Layer Security), successeur de SSL, est le protocole utilisé pour sécuriser les communications HTTPS. Il assure le chiffrement, l\'intégrité et l\'authentification des échanges entre le navigateur et le serveur.',
-    difficulty: 'easy',
-  },
-  {
-    id: 'p1-q03',
-    phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Qu\'est-ce qu\'un pare-feu (firewall) ?',
+    question:
+      'Un développeur doit vérifier que des fichiers téléchargés depuis un serveur n\'ont pas été altérés pendant le transfert. Quelle technique doit-il utiliser ?',
     options: [
-      'Un logiciel antivirus',
-      'Un dispositif qui filtre le trafic réseau selon des règles définies',
-      'Un serveur de messagerie',
-      'Un outil de sauvegarde de données',
+      'Chiffrer les fichiers avec AES',
+      'Comparer les empreintes de hachage (hash) des fichiers',
+      'Signer les fichiers avec une clé symétrique',
+      'Utiliser un VPN pour le téléchargement',
     ],
     correctIndex: 1,
     explanation:
-      'Un pare-feu est un dispositif (matériel ou logiciel) qui surveille et filtre le trafic réseau entrant et sortant selon des règles de sécurité prédéfinies. Il constitue la première ligne de défense dans la sécurité réseau.',
+      'Le hachage produit une empreinte unique de taille fixe pour chaque fichier. En comparant le hash du fichier téléchargé avec celui publié par le serveur, on vérifie son intégrité. Le chiffrement AES protège la confidentialité, pas l\'intégrité. Le VPN sécurise le canal mais ne garantit pas l\'intégrité du fichier source.',
+    difficulty: 'easy',
+  },
+
+  // p1-iam (easy: 2)
+  {
+    id: 'p1-q03',
+    phaseId: 'phase-01',
+    lessonId: 'p1-iam',
+    question:
+      'Un employé de votre entreprise peut accéder à la messagerie, au CRM et au portail intranet avec une seule authentification le matin. Quelle technologie est mise en place ?',
+    options: [
+      'Authentification multi-facteurs (MFA)',
+      'Single Sign-On (SSO)',
+      'Contrôle d\'accès basé sur les rôles (RBAC)',
+      'Protocole RADIUS',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Le Single Sign-On (SSO) permet à un utilisateur de s\'authentifier une seule fois pour accéder à plusieurs applications sans ressaisir ses identifiants. Le MFA renforce l\'authentification avec plusieurs facteurs mais ne supprime pas les connexions multiples. RBAC gère les permissions par rôle, pas l\'authentification unique.',
     difficulty: 'easy',
   },
   {
     id: 'p1-q04',
     phaseId: 'phase-01',
-    lessonId: 'p1-risk-management',
-    question: 'Que signifie l\'acronyme CIA en sécurité informatique ?',
+    lessonId: 'p1-iam',
+    question:
+      'Votre banque vous demande votre mot de passe puis un code envoyé par SMS sur votre téléphone pour vous connecter. Quel mécanisme de sécurité est utilisé ?',
     options: [
-      'Computer Intelligence Agency',
-      'Confidentialité, Intégrité, Disponibilité',
-      'Cryptage, Identification, Authentification',
-      'Control, Inspect, Audit',
+      'Single Sign-On (SSO)',
+      'Authentification multi-facteurs (MFA)',
+      'Contrôle d\'accès discrétionnaire (DAC)',
+      'Certificat numérique X.509',
     ],
     correctIndex: 1,
     explanation:
-      'La triade CIA (Confidentiality, Integrity, Availability) représente les trois piliers fondamentaux de la sécurité de l\'information : la Confidentialité protège contre les accès non autorisés, l\'Intégrité garantit que les données ne sont pas altérées, et la Disponibilité assure l\'accès aux ressources quand nécessaire.',
+      'L\'authentification multi-facteurs (MFA) combine au moins deux facteurs distincts : ici, quelque chose que vous savez (mot de passe) et quelque chose que vous possédez (téléphone recevant le SMS). Le SSO concerne l\'authentification unique sur plusieurs services. Le DAC est un modèle de contrôle d\'accès, pas d\'authentification.',
     difficulty: 'easy',
   },
+
+  // p1-network-security (easy: 2)
   {
     id: 'p1-q05',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Quel type d\'attaque consiste à envoyer des emails frauduleux pour voler des informations ?',
-    options: ['DDoS', 'Phishing', 'Brute force', 'SQL injection'],
+    lessonId: 'p1-network-security',
+    question:
+      'Un administrateur réseau configure un équipement pour filtrer le trafic entrant et sortant selon des règles basées sur les adresses IP et les ports. Quel dispositif configure-t-il ?',
+    options: [
+      'Un commutateur (switch)',
+      'Un pare-feu (firewall)',
+      'Un serveur DHCP',
+      'Un contrôleur de domaine',
+    ],
     correctIndex: 1,
     explanation:
-      'Le phishing est une technique d\'ingénierie sociale où l\'attaquant envoie des emails ou messages frauduleux se faisant passer pour une entité légitime afin de tromper la victime et lui soutirer des informations sensibles (mots de passe, données bancaires, etc.).',
+      'Un pare-feu filtre le trafic réseau en fonction de règles prédéfinies portant sur les adresses IP, les ports et les protocoles. Un commutateur opère au niveau 2 (MAC). Un serveur DHCP attribue des adresses IP. Un contrôleur de domaine gère l\'authentification des utilisateurs dans un domaine Active Directory.',
     difficulty: 'easy',
   },
   {
     id: 'p1-q06',
     phaseId: 'phase-01',
     lessonId: 'p1-network-security',
-    question: 'Quelle est la fonction principale d\'un système IDS (Intrusion Detection System) ?',
+    question:
+      'Un technicien doit se connecter à distance à un serveur Linux pour effectuer de la maintenance. Il veut éviter que ses identifiants transitent en clair sur le réseau. Quel protocole doit-il utiliser ?',
     options: [
-      'Bloquer automatiquement les attaques',
-      'Détecter et alerter sur les activités suspectes',
-      'Chiffrer les communications réseau',
-      'Gérer les identités des utilisateurs',
+      'Telnet (port 23)',
+      'SSH (port 22)',
+      'FTP (port 21)',
+      'HTTP (port 80)',
     ],
     correctIndex: 1,
     explanation:
-      'Un IDS surveille le trafic réseau ou les activités système pour détecter des comportements suspects ou des violations de politique de sécurité, puis génère des alertes. Contrairement à un IPS (Intrusion Prevention System), un IDS ne bloque pas automatiquement les menaces.',
+      'SSH (Secure Shell) chiffre l\'ensemble de la communication, y compris les identifiants. Telnet transmet tout en clair, y compris le mot de passe, et ne doit jamais être utilisé sur un réseau non sécurisé. FTP transmet aussi les identifiants en clair. HTTP est un protocole web, non conçu pour l\'administration distante.',
     difficulty: 'easy',
   },
+
+  // p1-threat-analysis (easy: 2)
   {
     id: 'p1-q07',
     phaseId: 'phase-01',
-    lessonId: 'p1-iam',
-    question: 'Qu\'est-ce que l\'authentification multi-facteurs (MFA) ?',
+    lessonId: 'p1-threat-analysis',
+    question:
+      'Plusieurs employés de votre entreprise reçoivent un email semblant provenir du service informatique, leur demandant de cliquer sur un lien pour "réinitialiser leur mot de passe". De quel type d\'attaque s\'agit-il ?',
     options: [
-      'Utiliser plusieurs mots de passe différents',
-      'Combiner au moins deux facteurs d\'authentification distincts',
-      'Se connecter depuis plusieurs appareils',
-      'Chiffrer les données avec plusieurs algorithmes',
+      'Attaque par force brute',
+      'Phishing',
+      'Attaque par déni de service (DoS)',
+      'Injection SQL',
     ],
     correctIndex: 1,
     explanation:
-      'L\'authentification multi-facteurs combine au moins deux facteurs parmi : quelque chose que vous savez (mot de passe), quelque chose que vous possédez (token, téléphone) et quelque chose que vous êtes (biométrie). Cela renforce considérablement la sécurité par rapport à un simple mot de passe.',
+      'Il s\'agit de phishing : l\'attaquant usurpe l\'identité du service informatique pour inciter les victimes à révéler leurs identifiants via un faux lien. L\'attaque par force brute tente de deviner les mots de passe. Le DoS vise à rendre un service indisponible. L\'injection SQL cible les bases de données des applications web.',
     difficulty: 'easy',
   },
   {
     id: 'p1-q08',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quel port est utilisé par défaut par le protocole HTTPS ?',
-    options: ['80', '22', '443', '8080'],
-    correctIndex: 2,
+    lessonId: 'p1-threat-analysis',
+    question:
+      'Un utilisateur télécharge un jeu gratuit sur Internet. Après l\'installation, il constate que son ordinateur envoie des données à un serveur inconnu. Quel type de malware a probablement été installé ?',
+    options: [
+      'Un ver (worm)',
+      'Un cheval de Troie (trojan)',
+      'Un ransomware',
+      'Un rootkit',
+    ],
+    correctIndex: 1,
     explanation:
-      'Le port 443 est le port standard pour HTTPS. Le port 80 est utilisé pour HTTP non chiffré, le port 22 pour SSH, et le port 8080 est souvent utilisé comme port HTTP alternatif pour les serveurs proxy ou de développement.',
+      'Un cheval de Troie se présente comme un programme légitime (ici un jeu) mais exécute des actions malveillantes en arrière-plan. Un ver se propage seul sans intervention de l\'utilisateur. Un ransomware chiffre les fichiers et demande une rançon. Un rootkit masque sa présence dans le système à un niveau profond.',
     difficulty: 'easy',
   },
+
+  // p1-risk-management (easy: 2)
   {
     id: 'p1-q09',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Quel type de malware se réplique automatiquement sans intervention de l\'utilisateur ?',
-    options: ['Virus', 'Ver (Worm)', 'Cheval de Troie', 'Spyware'],
-    correctIndex: 1,
+    lessonId: 'p1-risk-management',
+    question:
+      'Un hôpital subit une panne de ses serveurs et ne peut plus accéder aux dossiers médicaux des patients pendant plusieurs heures. Quel pilier de la triade CIA est principalement affecté ?',
+    options: [
+      'Confidentialité',
+      'Intégrité',
+      'Disponibilité',
+      'Authentification',
+    ],
+    correctIndex: 2,
     explanation:
-      'Un ver (worm) est un type de malware capable de se propager automatiquement à travers les réseaux sans nécessiter d\'action de l\'utilisateur ni de programme hôte. Contrairement au virus, il n\'a pas besoin de s\'attacher à un fichier existant pour se répliquer.',
+      'La disponibilité (Availability) garantit que les systèmes et données sont accessibles quand nécessaire. Ici, l\'impossibilité d\'accéder aux dossiers médicaux est un problème de disponibilité. La confidentialité protège contre les accès non autorisés. L\'intégrité assure que les données ne sont pas altérées. L\'authentification n\'est pas un pilier de la triade CIA.',
     difficulty: 'easy',
   },
   {
     id: 'p1-q10',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quelle est la différence principale entre le hachage et le chiffrement ?',
+    lessonId: 'p1-risk-management',
+    question:
+      'Votre responsable vous demande d\'identifier les faiblesses de sécurité sur les serveurs de l\'entreprise sans les exploiter. Quel type d\'évaluation devez-vous effectuer ?',
     options: [
-      'Le hachage est plus rapide que le chiffrement',
-      'Le hachage est une fonction à sens unique, le chiffrement est réversible',
-      'Le chiffrement produit une sortie de taille fixe',
-      'Il n\'y a aucune différence',
+      'Un test de pénétration (pentest)',
+      'Un scan de vulnérabilités',
+      'Un audit de conformité',
+      'Une analyse d\'impact sur l\'activité (BIA)',
     ],
     correctIndex: 1,
     explanation:
-      'Le hachage est une fonction à sens unique : on ne peut pas retrouver les données originales à partir du hash. Le chiffrement est réversible : avec la bonne clé, on peut déchiffrer les données. Le hachage produit une empreinte de taille fixe et est utilisé pour vérifier l\'intégrité des données.',
+      'Un scan de vulnérabilités identifie les faiblesses connues (logiciels non à jour, configurations incorrectes) sans les exploiter. Un pentest va plus loin en exploitant activement les failles trouvées. Un audit de conformité vérifie le respect des normes. Le BIA évalue l\'impact d\'une interruption sur les activités métier.',
     difficulty: 'easy',
   },
+
+  // p1-secure-architecture (easy: 1)
   {
     id: 'p1-q11',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quel est le rôle d\'un VPN (Virtual Private Network) ?',
+    lessonId: 'p1-secure-architecture',
+    question:
+      'Votre entreprise utilise à la fois un pare-feu, un antivirus, un IDS et un chiffrement des disques. Quel principe de sécurité cette approche illustre-t-elle ?',
     options: [
-      'Accélérer la connexion Internet',
-      'Créer un tunnel chiffré pour sécuriser les communications sur un réseau public',
-      'Bloquer les publicités en ligne',
-      'Remplacer un antivirus',
+      'Le principe du moindre privilège',
+      'La défense en profondeur',
+      'La sécurité par l\'obscurité',
+      'Le modèle Zero Trust',
     ],
     correctIndex: 1,
     explanation:
-      'Un VPN crée un tunnel chiffré entre l\'appareil de l\'utilisateur et un serveur distant, protégeant ainsi les données transmises sur des réseaux publics ou non sécurisés. Il permet aussi de masquer l\'adresse IP de l\'utilisateur et d\'accéder à des ressources réseau distantes de manière sécurisée.',
+      'La défense en profondeur (Defense in Depth) consiste à superposer plusieurs couches de sécurité pour qu\'en cas de défaillance d\'une couche, les autres continuent de protéger le système. Le moindre privilège concerne les droits d\'accès. La sécurité par l\'obscurité repose sur le secret, ce qui n\'est pas fiable seul.',
     difficulty: 'easy',
   },
+
+  // p1-cloud-security (easy: 1)
   {
     id: 'p1-q12',
     phaseId: 'phase-01',
-    lessonId: 'p1-iam',
-    question: 'Qu\'est-ce que le principe du moindre privilège ?',
+    lessonId: 'p1-cloud-security',
+    question:
+      'Votre entreprise utilise Microsoft 365 pour sa messagerie. Les serveurs, le système d\'exploitation et l\'application sont gérés par Microsoft. Quel modèle de cloud computing est utilisé ?',
     options: [
-      'Donner à tous les utilisateurs les mêmes droits',
-      'Accorder uniquement les permissions minimales nécessaires pour accomplir une tâche',
-      'Supprimer tous les comptes administrateurs',
-      'Utiliser uniquement des logiciels open source',
+      'Infrastructure as a Service (IaaS)',
+      'Platform as a Service (PaaS)',
+      'Software as a Service (SaaS)',
+      'Desktop as a Service (DaaS)',
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      'Le principe du moindre privilège (Least Privilege) stipule qu\'un utilisateur ou un processus ne doit disposer que des droits strictement nécessaires à l\'exécution de ses tâches. Cela limite la surface d\'attaque et réduit les dommages potentiels en cas de compromission d\'un compte.',
+      'Microsoft 365 est un exemple de SaaS : le fournisseur gère toute l\'infrastructure, la plateforme et l\'application. L\'utilisateur n\'a qu\'à utiliser le logiciel. En IaaS, le client gère l\'OS et les applications. En PaaS, le client gère les applications mais pas l\'infrastructure sous-jacente.',
     difficulty: 'easy',
   },
+
+  // p1-application-security (easy: 1)
   {
     id: 'p1-q13',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quel algorithme de hachage est considéré comme obsolète et non sécurisé ?',
-    options: ['SHA-256', 'SHA-3', 'MD5', 'bcrypt'],
-    correctIndex: 2,
+    lessonId: 'p1-application-security',
+    question:
+      'Un développeur web constate qu\'un champ de formulaire de recherche permet d\'afficher du code JavaScript non souhaité aux autres utilisateurs. Quelle vulnérabilité est exploitée ?',
+    options: [
+      'Injection SQL',
+      'Cross-Site Scripting (XSS)',
+      'Buffer Overflow',
+      'Cross-Site Request Forgery (CSRF)',
+    ],
+    correctIndex: 1,
     explanation:
-      'MD5 est considéré comme obsolète car il est vulnérable aux collisions (deux entrées différentes produisant le même hash). Il ne doit plus être utilisé pour des applications de sécurité. SHA-256, SHA-3 et bcrypt sont des alternatives plus sûres.',
+      'Le Cross-Site Scripting (XSS) permet d\'injecter du code JavaScript malveillant dans des pages web vues par d\'autres utilisateurs. L\'injection SQL cible les bases de données, pas le navigateur. Le buffer overflow exploite la mémoire d\'un programme. Le CSRF force l\'utilisateur à exécuter des actions non voulues sur un site authentifié.',
     difficulty: 'easy',
   },
+
+  // p1-physical-iot-security (easy: 1)
   {
     id: 'p1-q14',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Qu\'est-ce qu\'une attaque par déni de service (DoS) ?',
+    lessonId: 'p1-physical-iot-security',
+    question:
+      'Un responsable de la sécurité physique veut empêcher les véhicules non autorisés d\'accéder au parking de l\'entreprise. Quelle mesure de sécurité physique est la PLUS adaptée ?',
     options: [
-      'Voler des données confidentielles',
-      'Rendre un service indisponible en le surchargeant de requêtes',
-      'Intercepter des communications chiffrées',
-      'Installer un logiciel espion',
+      'Des caméras de surveillance',
+      'Des bollards (bornes anti-bélier)',
+      'Un système de badge d\'accès pour les portes',
+      'Un câble antivol Kensington',
     ],
     correctIndex: 1,
     explanation:
-      'Une attaque DoS (Denial of Service) vise à rendre un service, un serveur ou un réseau indisponible en le submergeant de trafic ou de requêtes. Sa variante DDoS (Distributed DoS) utilise plusieurs machines sources, rendant l\'attaque plus difficile à contrer.',
+      'Les bollards sont des bornes physiques conçues pour empêcher les véhicules de pénétrer dans des zones protégées. Les caméras surveillent mais ne bloquent pas physiquement. Les badges contrôlent l\'accès des personnes, pas des véhicules. Les câbles Kensington sécurisent les ordinateurs portables.',
     difficulty: 'easy',
   },
+
+  // p1-incident-response (easy: 1)
   {
     id: 'p1-q15',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quel est le rôle principal d\'une PKI (Infrastructure à Clés Publiques) ?',
+    lessonId: 'p1-incident-response',
+    question:
+      'Après la détection d\'un malware sur un poste de travail, l\'équipe de sécurité déconnecte immédiatement la machine du réseau. Quelle phase de la réponse aux incidents est en cours ?',
     options: [
-      'Filtrer le trafic réseau',
-      'Gérer les certificats numériques et les clés de chiffrement',
-      'Détecter les intrusions',
-      'Sauvegarder les données',
+      'Identification',
+      'Confinement (Containment)',
+      'Éradication',
+      'Récupération',
     ],
     correctIndex: 1,
     explanation:
-      'Une PKI (Public Key Infrastructure) est un ensemble de rôles, politiques, matériels, logiciels et procédures nécessaires pour créer, gérer, distribuer, utiliser, stocker et révoquer des certificats numériques. Elle permet de vérifier l\'identité des parties dans les communications électroniques.',
+      'Le confinement vise à limiter la propagation de l\'incident en isolant les systèmes compromis. Déconnecter la machine du réseau empêche le malware de se propager. L\'identification est la détection initiale de l\'incident. L\'éradication consiste à supprimer la menace. La récupération restaure les systèmes à leur état normal.',
     difficulty: 'easy',
   },
 
   // ==================== MEDIUM (20 questions: p1-q16 to p1-q35) ====================
+
+  // p1-cryptographie (medium: 3)
   {
     id: 'p1-q16',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quelle est la différence entre un IDS et un IPS ?',
+    lessonId: 'p1-cryptographie',
+    question:
+      'Votre organisation souhaite transmettre des données PII (informations personnelles) par email à un partenaire. Votre équipe propose d\'utiliser le chiffrement asymétrique. Quelle clé devez-vous utiliser pour chiffrer le message ?',
     options: [
-      'L\'IDS est matériel, l\'IPS est logiciel',
-      'L\'IDS détecte les menaces et alerte, l\'IPS détecte et bloque automatiquement',
-      'L\'IPS est plus ancien que l\'IDS',
-      'Il n\'y a aucune différence fonctionnelle',
+      'Votre clé privée',
+      'La clé publique du destinataire',
+      'La clé privée du destinataire',
+      'Votre clé publique',
     ],
     correctIndex: 1,
     explanation:
-      'Un IDS (Intrusion Detection System) surveille passivement le réseau et génère des alertes lorsqu\'il détecte une activité suspecte. Un IPS (Intrusion Prevention System) va plus loin en bloquant automatiquement le trafic malveillant identifié, agissant en ligne avec le flux de données.',
+      'En chiffrement asymétrique, on chiffre avec la clé publique du destinataire pour que seul celui-ci puisse déchiffrer avec sa clé privée. Si vous utilisiez votre clé privée, ce serait une signature numérique (preuve d\'origine), pas du chiffrement. La clé privée du destinataire ne doit jamais être partagée.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q17',
     phaseId: 'phase-01',
     lessonId: 'p1-cryptographie',
-    question: 'Dans le protocole TLS, quel est le rôle du "handshake" initial ?',
+    question:
+      'Un administrateur découvre que le certificat TLS du site web de l\'entreprise a été compromis. Quelle action doit-il effectuer en PRIORITÉ auprès de l\'autorité de certification (CA) ?',
     options: [
-      'Transférer les données utilisateur',
-      'Négocier les algorithmes de chiffrement et échanger les clés de session',
-      'Vérifier l\'intégrité des données transmises',
-      'Compresser les données avant envoi',
+      'Renouveler le certificat',
+      'Révoquer le certificat et le publier dans la CRL',
+      'Générer une nouvelle paire de clés Diffie-Hellman',
+      'Augmenter la taille de la clé RSA à 4096 bits',
     ],
     correctIndex: 1,
     explanation:
-      'Le handshake TLS est la phase initiale où le client et le serveur négocient la version du protocole, choisissent les suites cryptographiques, s\'authentifient mutuellement (optionnel pour le client) et établissent une clé de session symétrique pour chiffrer la communication qui suivra.',
+      'Lorsqu\'un certificat est compromis, il faut immédiatement le révoquer et l\'ajouter à la CRL (Certificate Revocation List) ou utiliser OCSP pour informer les clients que ce certificat n\'est plus de confiance. Renouveler sans révoquer laisse l\'ancien certificat compromis valide. Changer la taille de clé ne résout pas le problème immédiat.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q18',
     phaseId: 'phase-01',
-    lessonId: 'p1-application-security',
-    question: 'Quel type d\'attaque exploite les vulnérabilités des entrées utilisateur dans les applications web pour exécuter du code SQL malveillant ?',
+    lessonId: 'p1-cryptographie',
+    question:
+      'Lors d\'une connexion TLS, le serveur et le client doivent convenir d\'une clé de session sans la transmettre sur le réseau. Quel mécanisme permet cet échange sécurisé ?',
     options: [
-      'Cross-Site Scripting (XSS)',
-      'Injection SQL',
-      'Buffer Overflow',
-      'Man-in-the-Middle',
+      'Le chiffrement AES-256-CBC',
+      'L\'échange de clés Diffie-Hellman',
+      'Le hachage HMAC-SHA256',
+      'La signature RSA-OAEP',
     ],
     correctIndex: 1,
     explanation:
-      'L\'injection SQL exploite les entrées utilisateur non validées pour injecter du code SQL malveillant dans les requêtes de base de données. L\'attaquant peut ainsi lire, modifier ou supprimer des données. La prévention passe par l\'utilisation de requêtes paramétrées et la validation des entrées.',
+      'L\'échange Diffie-Hellman permet à deux parties de générer un secret partagé (clé de session) via un canal non sécurisé, sans jamais transmettre la clé elle-même. AES est utilisé après pour chiffrer la session. HMAC assure l\'intégrité des messages. La signature RSA authentifie les parties mais n\'échange pas de clé de session.',
     difficulty: 'medium',
   },
+
+  // p1-iam (medium: 2)
   {
     id: 'p1-q19',
     phaseId: 'phase-01',
     lessonId: 'p1-iam',
-    question: 'Qu\'est-ce que le protocole RADIUS est principalement utilisé pour ?',
+    question:
+      'Votre réseau utilise un service d\'authentification basé sur un annuaire compatible X.500 pour centraliser la gestion des comptes utilisateurs. Quel service est probablement utilisé ?',
     options: [
-      'Le chiffrement des emails',
-      'L\'authentification, l\'autorisation et la comptabilité (AAA) des accès réseau',
-      'La résolution de noms de domaine',
-      'Le transfert de fichiers sécurisé',
+      'Kerberos',
+      'LDAP',
+      'RADIUS',
+      'TACACS+',
     ],
     correctIndex: 1,
     explanation:
-      'RADIUS (Remote Authentication Dial-In User Service) est un protocole réseau qui fournit des services AAA (Authentication, Authorization, Accounting) centralisés. Il est largement utilisé pour contrôler l\'accès aux réseaux Wi-Fi d\'entreprise, aux VPN et aux équipements réseau.',
+      'LDAP (Lightweight Directory Access Protocol) est le protocole standard pour interroger et modifier les annuaires basés sur X.500 comme Active Directory. Kerberos gère l\'authentification par tickets. RADIUS et TACACS+ sont des protocoles AAA pour l\'accès réseau, ils ne sont pas des services d\'annuaire.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q20',
     phaseId: 'phase-01',
     lessonId: 'p1-iam',
-    question: 'Quelle méthode de contrôle d\'accès se base sur des étiquettes de sécurité attribuées aux sujets et aux objets ?',
+    question:
+      'Un administrateur configure l\'accès aux fichiers d\'un serveur pour que seuls les membres du groupe "Comptabilité" puissent accéder au dossier financier. Quel modèle de contrôle d\'accès utilise-t-il ?',
     options: [
       'Contrôle d\'accès discrétionnaire (DAC)',
-      'Contrôle d\'accès obligatoire (MAC)',
       'Contrôle d\'accès basé sur les rôles (RBAC)',
+      'Contrôle d\'accès obligatoire (MAC)',
       'Contrôle d\'accès basé sur les attributs (ABAC)',
     ],
     correctIndex: 1,
     explanation:
-      'Le contrôle d\'accès obligatoire (MAC - Mandatory Access Control) utilise des étiquettes de sécurité (niveaux de classification) attribuées aux sujets (utilisateurs) et aux objets (fichiers). L\'accès est déterminé par une politique centralisée que les utilisateurs ne peuvent pas modifier, contrairement au DAC.',
+      'Le RBAC (Role-Based Access Control) attribue les permissions en fonction des rôles (groupes) dans l\'organisation. Ici, le rôle "Comptabilité" détermine l\'accès au dossier. En DAC, le propriétaire du fichier décide des accès. En MAC, des étiquettes de sécurité sont utilisées. L\'ABAC se base sur des attributs multiples (heure, lieu, etc.).',
     difficulty: 'medium',
   },
+
+  // p1-network-security (medium: 3)
   {
     id: 'p1-q21',
     phaseId: 'phase-01',
     lessonId: 'p1-network-security',
-    question: 'Qu\'est-ce qu\'une attaque de type "Man-in-the-Middle" (MITM) ?',
+    question:
+      'Votre entreprise possède un serveur web accessible depuis Internet et un serveur de base de données interne. L\'architecte réseau propose de placer le serveur web dans une zone spécifique. Comment appelle-t-on cette zone ?',
     options: [
-      'Une attaque qui surcharge un serveur de requêtes',
-      'Une attaque où l\'attaquant intercepte et potentiellement modifie les communications entre deux parties',
-      'Une attaque qui exploite les failles des mots de passe',
-      'Une attaque qui cible les réseaux sans fil exclusivement',
+      'VLAN de gestion',
+      'Zone démilitarisée (DMZ)',
+      'Réseau intranet',
+      'Réseau VPN',
     ],
     correctIndex: 1,
     explanation:
-      'Dans une attaque MITM, l\'attaquant se positionne secrètement entre deux parties communicantes, interceptant et pouvant modifier les messages échangés. Les victimes croient communiquer directement entre elles. L\'utilisation de TLS et de certificats valides aide à prévenir ce type d\'attaque.',
+      'Une DMZ (Zone Démilitarisée) est un segment réseau situé entre le réseau interne et Internet, protégé par des pare-feu des deux côtés. Les serveurs exposés publiquement (web, mail) y sont placés pour limiter l\'impact en cas de compromission. Le serveur de base de données reste sur le réseau interne protégé.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q22',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Quel est le but principal d\'un test de pénétration (pentest) ?',
+    lessonId: 'p1-network-security',
+    question:
+      'Un administrateur réseau souhaite segmenter le trafic des départements RH, Finance et IT sans ajouter de matériel physique supplémentaire. Quelle technologie doit-il implémenter ?',
     options: [
-      'Installer des mises à jour de sécurité',
-      'Identifier les vulnérabilités en simulant des attaques réelles',
-      'Former les utilisateurs à la sécurité',
-      'Surveiller le trafic réseau en temps réel',
+      'NAT (Network Address Translation)',
+      'VLAN (Virtual Local Area Network)',
+      'VPN (Virtual Private Network)',
+      'Proxy inverse',
     ],
     correctIndex: 1,
     explanation:
-      'Un test de pénétration est une évaluation de sécurité autorisée qui simule des attaques réelles pour identifier les vulnérabilités exploitables dans les systèmes, réseaux ou applications. Il fournit des preuves concrètes des failles et des recommandations pour y remédier.',
+      'Les VLANs permettent de segmenter logiquement un réseau physique en plusieurs sous-réseaux isolés sans matériel supplémentaire. Chaque département aura son VLAN, limitant le trafic broadcast et améliorant la sécurité. Le NAT traduit les adresses IP. Le VPN crée un tunnel sécurisé. Le proxy inverse relaie les requêtes web.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q23',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quelle technique permet de stocker les mots de passe de manière sécurisée dans une base de données ?',
+    lessonId: 'p1-network-security',
+    question:
+      'Un employé en télétravail doit accéder de manière sécurisée aux ressources internes de l\'entreprise depuis son domicile. Quelle solution l\'administrateur doit-il mettre en place ?',
     options: [
-      'Chiffrement réversible avec AES',
-      'Hachage avec sel (salt) en utilisant bcrypt ou Argon2',
-      'Encodage en Base64',
-      'Stockage en texte clair dans un fichier protégé',
+      'Ouvrir le port RDP sur le pare-feu',
+      'Configurer un VPN (Virtual Private Network)',
+      'Activer le partage de fichiers SMB sur Internet',
+      'Créer un compte FTP sur le serveur',
     ],
     correctIndex: 1,
     explanation:
-      'Le hachage avec sel (salt) utilisant des algorithmes comme bcrypt ou Argon2 est la meilleure pratique. Le sel est une valeur aléatoire ajoutée au mot de passe avant le hachage, empêchant les attaques par tables arc-en-ciel. Ces algorithmes sont aussi volontairement lents, rendant les attaques par force brute très coûteuses.',
+      'Un VPN crée un tunnel chiffré entre le poste de l\'employé et le réseau de l\'entreprise, permettant un accès sécurisé aux ressources internes. Ouvrir le port RDP directement expose le réseau aux attaques. SMB et FTP sur Internet transmettent des données de manière non sécurisée et sont des cibles connues.',
     difficulty: 'medium',
   },
+
+  // p1-threat-analysis (medium: 2)
   {
     id: 'p1-q24',
     phaseId: 'phase-01',
-    lessonId: 'p1-iam',
-    question: 'Qu\'est-ce que le protocole SAML est utilisé pour ?',
+    lessonId: 'p1-threat-analysis',
+    question:
+      'Un analyste SOC observe qu\'un serveur interne communique régulièrement avec une adresse IP connue pour héberger un serveur C2 (Command & Control). Quel terme décrit MIEUX cette observation ?',
     options: [
-      'Le chiffrement de fichiers',
-      'L\'échange de données d\'authentification et d\'autorisation entre domaines (SSO)',
-      'La détection d\'intrusions réseau',
-      'La gestion des certificats SSL',
+      'Une vulnérabilité zero-day',
+      'Un indicateur de compromission (IoC)',
+      'Un faux positif',
+      'Une menace persistante',
     ],
     correctIndex: 1,
     explanation:
-      'SAML (Security Assertion Markup Language) est un standard XML permettant l\'échange de données d\'authentification et d\'autorisation entre un fournisseur d\'identité et un fournisseur de services. Il est principalement utilisé pour implémenter le Single Sign-On (SSO) entre différentes applications.',
+      'Un indicateur de compromission (IoC) est un artefact observable (adresse IP, hash de fichier, nom de domaine) qui indique qu\'un système a été compromis. La communication avec un serveur C2 connu est un IoC classique. Un zero-day est une faille non corrigée. Un faux positif est une fausse alerte. Une menace persistante (APT) est un type d\'attaquant.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q25',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quel type de scan réseau identifie les ports ouverts sur une machine cible ?',
+    lessonId: 'p1-threat-analysis',
+    question:
+      'Le directeur financier de votre entreprise reçoit un email personnalisé semblant provenir du PDG, lui demandant d\'effectuer un virement urgent. De quel type d\'attaque s\'agit-il ?',
     options: [
-      'Scan de vulnérabilités',
-      'Scan de ports',
-      'Scan antivirus',
-      'Scan de conformité',
+      'Phishing classique',
+      'Spear phishing (hameçonnage ciblé)',
+      'Vishing (phishing vocal)',
+      'Spam',
     ],
     correctIndex: 1,
     explanation:
-      'Un scan de ports (par exemple avec Nmap) envoie des paquets vers différents ports d\'une machine cible pour déterminer lesquels sont ouverts, fermés ou filtrés. C\'est une étape fondamentale de la reconnaissance dans un test de sécurité, permettant d\'identifier les services exposés.',
+      'Le spear phishing est une forme ciblée de phishing visant une personne spécifique avec un message personnalisé. L\'attaquant a recherché les noms du PDG et du directeur financier pour rendre l\'attaque crédible. Le phishing classique est envoyé en masse. Le vishing utilise le téléphone. Le spam est du courrier indésirable non ciblé.',
     difficulty: 'medium',
   },
+
+  // p1-risk-management (medium: 2)
   {
     id: 'p1-q26',
     phaseId: 'phase-01',
-    lessonId: 'p1-secure-architecture',
-    question: 'Quel concept de sécurité stipule qu\'aucun utilisateur ou système ne doit être automatiquement considéré comme fiable ?',
+    lessonId: 'p1-risk-management',
+    question:
+      'Votre RSSI vous demande de calculer l\'ALE (Annualized Loss Expectancy) pour un serveur dont la valeur est de 50 000 EUR, avec un facteur d\'exposition de 40% et un taux annuel d\'occurrence de 2. Quel est l\'ALE ?',
     options: [
-      'Défense en profondeur',
-      'Zero Trust',
-      'Sécurité par l\'obscurité',
-      'Principe de séparation des devoirs',
+      '20 000 EUR',
+      '40 000 EUR',
+      '50 000 EUR',
+      '100 000 EUR',
     ],
     correctIndex: 1,
     explanation:
-      'Le modèle Zero Trust repose sur le principe "ne jamais faire confiance, toujours vérifier". Chaque demande d\'accès est authentifiée et autorisée, qu\'elle provienne de l\'intérieur ou de l\'extérieur du réseau. Ce modèle élimine la notion de périmètre de confiance traditionnel.',
+      'L\'ALE se calcule : SLE x ARO. La SLE (Single Loss Expectancy) = valeur de l\'actif x facteur d\'exposition = 50 000 x 0,40 = 20 000 EUR. L\'ALE = SLE x ARO = 20 000 x 2 = 40 000 EUR par an. Ce calcul est fondamental en analyse quantitative des risques pour justifier les investissements en sécurité.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q27',
     phaseId: 'phase-01',
-    lessonId: 'p1-incident-response',
-    question: 'Quelle est la première étape d\'un plan de réponse aux incidents ?',
+    lessonId: 'p1-risk-management',
+    question:
+      'Après un audit, votre entreprise décide de souscrire une cyber-assurance pour couvrir les pertes liées aux ransomwares. Quelle stratégie de gestion des risques est appliquée ?',
     options: [
-      'Éradication de la menace',
-      'Préparation',
-      'Confinement',
-      'Récupération',
+      'Évitement du risque',
+      'Transfert du risque',
+      'Atténuation du risque',
+      'Acceptation du risque',
     ],
     correctIndex: 1,
     explanation:
-      'La préparation est la première et la plus importante étape d\'un plan de réponse aux incidents. Elle inclut la création de politiques, la formation de l\'équipe de réponse, la mise en place d\'outils de détection et la documentation des procédures. Les étapes suivantes sont : identification, confinement, éradication, récupération, et leçons apprises.',
+      'Le transfert du risque consiste à transférer la charge financière d\'un risque à un tiers, typiquement via une assurance. L\'évitement élimine l\'activité à risque. L\'atténuation réduit la probabilité ou l\'impact. L\'acceptation consiste à tolérer le risque après évaluation en conscience.',
     difficulty: 'medium',
   },
+
+  // p1-incident-response (medium: 1)
   {
     id: 'p1-q28',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Qu\'est-ce qu\'un certificat numérique X.509 contient principalement ?',
+    lessonId: 'p1-incident-response',
+    question:
+      'Lors d\'une investigation numérique, un enquêteur saisit un disque dur comme preuve. Il documente chaque personne ayant eu le disque en sa possession, avec les dates et heures. Comment appelle-t-on cette procédure ?',
     options: [
-      'La clé privée du propriétaire et son mot de passe',
-      'La clé publique du propriétaire, son identité et la signature de l\'autorité de certification',
-      'Uniquement l\'adresse IP du serveur',
-      'Les logs de connexion de l\'utilisateur',
+      'Analyse de malware',
+      'Chaîne de traçabilité (chain of custody)',
+      'Plan de continuité d\'activité',
+      'Rapport d\'incident',
     ],
     correctIndex: 1,
     explanation:
-      'Un certificat X.509 contient la clé publique du propriétaire, les informations d\'identité (sujet), le nom de l\'autorité de certification (CA), la période de validité, le numéro de série, et la signature numérique de la CA. La clé privée n\'est jamais incluse dans le certificat.',
+      'La chaîne de traçabilité (chain of custody) documente la chronologie complète de la possession d\'une preuve : qui l\'a manipulée, quand, où et pourquoi. Elle est essentielle pour garantir l\'admissibilité de la preuve devant un tribunal. Sans cette documentation, la preuve peut être contestée et jugée irrecevable.',
     difficulty: 'medium',
   },
+
+  // p1-secure-architecture (medium: 2)
   {
     id: 'p1-q29',
     phaseId: 'phase-01',
-    lessonId: 'p1-risk-management',
-    question: 'Quel type d\'analyse de risque attribue des valeurs monétaires aux actifs et aux pertes potentielles ?',
+    lessonId: 'p1-secure-architecture',
+    question:
+      'Votre serveur de base de données critique utilise deux disques configurés en RAID 1. L\'un des disques tombe en panne. Quel est l\'impact sur les données ?',
     options: [
-      'Analyse qualitative',
-      'Analyse quantitative',
-      'Analyse heuristique',
-      'Analyse comportementale',
+      'Toutes les données sont perdues',
+      'Aucune perte de données car RAID 1 utilise la mise en miroir',
+      'La moitié des données est perdue',
+      'Les données sont corrompues mais récupérables',
     ],
     correctIndex: 1,
     explanation:
-      'L\'analyse quantitative des risques utilise des valeurs numériques et monétaires pour évaluer les risques. Elle calcule des métriques comme la SLE (Single Loss Expectancy), l\'ARO (Annualized Rate of Occurrence) et l\'ALE (Annualized Loss Expectancy). L\'analyse qualitative, en revanche, utilise des catégories descriptives (faible, moyen, élevé).',
+      'RAID 1 (mirroring) duplique les données sur deux disques identiques. Si l\'un tombe en panne, l\'autre contient une copie complète des données. Le système continue de fonctionner avec un seul disque le temps de remplacer le disque défaillant. RAID 0 en revanche n\'offre aucune redondance et toute panne entraîne une perte de données.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q30',
     phaseId: 'phase-01',
-    lessonId: 'p1-iam',
-    question: 'Quel protocole est utilisé pour l\'authentification sécurisée dans les environnements Windows Active Directory ?',
-    options: ['NTLM v1', 'Kerberos', 'PAP', 'CHAP'],
-    correctIndex: 1,
-    explanation:
-      'Kerberos est le protocole d\'authentification par défaut dans les environnements Active Directory depuis Windows 2000. Il utilise un système de tickets délivrés par un KDC (Key Distribution Center) pour authentifier les utilisateurs et les services, évitant ainsi la transmission de mots de passe sur le réseau.',
-    difficulty: 'medium',
-  },
-  {
-    id: 'p1-q31',
-    phaseId: 'phase-01',
     lessonId: 'p1-secure-architecture',
-    question: 'Qu\'est-ce que le "sandboxing" en sécurité informatique ?',
+    question:
+      'Votre entreprise met en place un site de reprise d\'activité avec des serveurs préconfigurés et des données répliquées en quasi temps réel. Comment qualifie-t-on ce type de site ?',
     options: [
-      'Chiffrer les données au repos',
-      'Exécuter un programme dans un environnement isolé pour observer son comportement',
-      'Scanner un réseau à la recherche de vulnérabilités',
-      'Créer des copies de sauvegarde chiffrées',
+      'Cold site (site froid)',
+      'Hot site (site chaud)',
+      'Warm site (site tiède)',
+      'Mobile site (site mobile)',
     ],
     correctIndex: 1,
     explanation:
-      'Le sandboxing consiste à exécuter un programme ou un fichier suspect dans un environnement isolé et contrôlé (la sandbox) pour observer son comportement sans risquer de compromettre le système réel. C\'est une technique essentielle pour l\'analyse de malwares et la détection de menaces inconnues.',
+      'Un hot site est un site de reprise entièrement opérationnel avec du matériel à jour et des données répliquées en temps réel, permettant un basculement rapide (quelques minutes à heures). Un cold site ne dispose que des locaux et de l\'alimentation. Un warm site a du matériel mais des données partiellement à jour, nécessitant plus de temps pour la reprise.',
+    difficulty: 'medium',
+  },
+
+  // p1-application-security (medium: 2)
+  {
+    id: 'p1-q31',
+    phaseId: 'phase-01',
+    lessonId: 'p1-application-security',
+    question:
+      'Un testeur de sécurité saisit la chaîne « OR 1=1 -- » dans le champ de connexion d\'une application web et obtient un accès non autorisé. Quelle vulnérabilité a-t-il exploitée ?',
+    options: [
+      'Cross-Site Scripting (XSS)',
+      'Injection SQL',
+      'Directory Traversal',
+      'Buffer Overflow',
+    ],
+    correctIndex: 1,
+    explanation:
+      'L\'injection SQL exploite le fait que l\'application intègre directement l\'entrée utilisateur dans une requête SQL. « OR 1=1 » rend la condition toujours vraie, contournant l\'authentification. La parade principale est l\'utilisation de requêtes paramétrées (prepared statements) et la validation stricte des entrées.',
     difficulty: 'medium',
   },
   {
     id: 'p1-q32',
     phaseId: 'phase-01',
-    lessonId: 'p1-governance-compliance',
-    question: 'Quelle norme ISO est spécifiquement dédiée au management de la sécurité de l\'information ?',
-    options: ['ISO 9001', 'ISO 27001', 'ISO 14001', 'ISO 22301'],
+    lessonId: 'p1-application-security',
+    question:
+      'Un programme C plante régulièrement quand un utilisateur saisit une chaîne de plus de 256 caractères dans un champ prévu pour 128. Quelle vulnérabilité est probablement présente ?',
+    options: [
+      'Injection SQL',
+      'Buffer Overflow (dépassement de tampon)',
+      'Cross-Site Request Forgery',
+      'Race Condition',
+    ],
     correctIndex: 1,
     explanation:
-      'ISO 27001 est la norme internationale de référence pour les systèmes de management de la sécurité de l\'information (SMSI). Elle définit les exigences pour établir, mettre en œuvre, maintenir et améliorer continuellement un SMSI. ISO 9001 concerne la qualité, ISO 14001 l\'environnement, et ISO 22301 la continuité d\'activité.',
+      'Un buffer overflow se produit quand un programme écrit des données au-delà de la taille allouée pour un tampon mémoire. Cela peut provoquer des plantages ou permettre l\'exécution de code arbitraire. La prévention passe par la validation de la longueur des entrées et l\'utilisation de fonctions sécurisées (strncpy au lieu de strcpy).',
     difficulty: 'medium',
   },
+
+  // p1-cloud-security (medium: 1)
   {
     id: 'p1-q33',
     phaseId: 'phase-01',
-    lessonId: 'p1-risk-management',
-    question: 'Qu\'est-ce que l\'ALE (Annualized Loss Expectancy) en gestion des risques ?',
+    lessonId: 'p1-cloud-security',
+    question:
+      'Votre entreprise déploie ses applications sur des machines virtuelles chez AWS, tout en gérant elle-même le système d\'exploitation et les logiciels installés. Quel modèle de cloud est utilisé ?',
     options: [
-      'Le coût total de remplacement d\'un actif',
-      'La perte annuelle attendue, calculée par SLE × ARO',
-      'Le nombre d\'incidents de sécurité par an',
-      'Le budget annuel alloué à la sécurité',
+      'Software as a Service (SaaS)',
+      'Infrastructure as a Service (IaaS)',
+      'Platform as a Service (PaaS)',
+      'Function as a Service (FaaS)',
     ],
     correctIndex: 1,
     explanation:
-      'L\'ALE (Annualized Loss Expectancy) représente la perte financière annuelle attendue pour un actif face à une menace spécifique. Elle se calcule en multipliant la SLE (Single Loss Expectancy - perte par incident) par l\'ARO (Annualized Rate of Occurrence - fréquence annuelle estimée de l\'incident).',
+      'En IaaS, le fournisseur cloud fournit l\'infrastructure (serveurs, stockage, réseau) et le client gère le système d\'exploitation, les logiciels et les données. AWS EC2 est un exemple classique d\'IaaS. En SaaS, tout est géré par le fournisseur. En PaaS, le client ne gère que ses applications et données.',
     difficulty: 'medium',
   },
+
+  // p1-physical-iot-security (medium: 1)
   {
     id: 'p1-q34',
     phaseId: 'phase-01',
-    lessonId: 'p1-risk-management',
-    question: 'Quel type de contrôle de sécurité vise à décourager les attaquants potentiels ?',
+    lessonId: 'p1-physical-iot-security',
+    question:
+      'Votre entreprise distribue des smartphones professionnels à ses employés. Le RSSI souhaite pouvoir effacer les données à distance en cas de perte ou de vol. Quelle solution doit être déployée ?',
     options: [
-      'Contrôle préventif',
-      'Contrôle dissuasif',
-      'Contrôle détectif',
-      'Contrôle correctif',
+      'Un antivirus mobile',
+      'Une solution MDM (Mobile Device Management)',
+      'Un VPN mobile',
+      'Un chiffrement de la carte SD',
     ],
     correctIndex: 1,
     explanation:
-      'Un contrôle dissuasif (deterrent) vise à décourager les attaquants potentiels avant qu\'ils n\'agissent, par exemple via des caméras de surveillance visibles, des avertissements légaux ou des bannières d\'avertissement. Le contrôle préventif empêche l\'attaque, le détectif la découvre, et le correctif répare les dommages.',
+      'Une solution MDM (Mobile Device Management) permet la gestion centralisée des appareils mobiles : effacement à distance (remote wipe), verrouillage, application de politiques de sécurité, chiffrement obligatoire. L\'antivirus protège contre les malwares mais ne permet pas l\'effacement à distance. Le VPN sécurise les connexions mais ne gère pas l\'appareil.',
     difficulty: 'medium',
   },
+
+  // p1-governance-compliance (medium: 1)
   {
     id: 'p1-q35',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quel protocole est utilisé pour la gestion sécurisée des équipements réseau à distance, en remplacement de Telnet ?',
-    options: ['FTP', 'SSH', 'HTTP', 'SMTP'],
+    lessonId: 'p1-governance-compliance',
+    question:
+      'Un nouveau prestataire doit accéder à des informations confidentielles de votre entreprise. Avant de lui donner accès, quel document doit-il obligatoirement signer ?',
+    options: [
+      'Un contrat de licence logicielle',
+      'Un accord de non-divulgation (NDA)',
+      'Un plan de continuité d\'activité (BCP)',
+      'Un rapport d\'audit de sécurité',
+    ],
     correctIndex: 1,
     explanation:
-      'SSH (Secure Shell) est le protocole standard pour l\'administration distante sécurisée des équipements réseau et serveurs. Contrairement à Telnet qui transmet les données (y compris les mots de passe) en clair, SSH chiffre toute la communication, assurant confidentialité et intégrité.',
+      'Un NDA (Non-Disclosure Agreement) est un accord juridique qui oblige le signataire à ne pas divulguer les informations confidentielles auxquelles il aura accès. C\'est une mesure standard avant de partager des données sensibles avec un tiers. Le BCP planifie la continuité des opérations. Le contrat de licence concerne les logiciels.',
     difficulty: 'medium',
   },
 
   // ==================== HARD (15 questions: p1-q36 to p1-q50) ====================
+
+  // p1-cryptographie (hard: 2)
   {
     id: 'p1-q36',
     phaseId: 'phase-01',
     lessonId: 'p1-cryptographie',
-    question: 'Dans le cadre d\'un échange Diffie-Hellman, quel problème mathématique garantit la sécurité du protocole ?',
+    question:
+      'Votre équipe de sécurité implémente TLS 1.3 sur les serveurs web de l\'entreprise. Le RSSI demande que les sessions passées restent protégées même si la clé privée du serveur est compromise dans le futur. Quelle propriété cryptographique devez-vous garantir ?',
     options: [
-      'La factorisation de grands nombres premiers',
-      'Le problème du logarithme discret',
-      'Le problème du sac à dos',
-      'La factorisation de polynômes',
+      'Non-répudiation',
+      'Perfect Forward Secrecy (PFS)',
+      'Intégrité par HMAC',
+      'Chiffrement double (double encryption)',
     ],
     correctIndex: 1,
     explanation:
-      'La sécurité de l\'échange de clés Diffie-Hellman repose sur la difficulté du problème du logarithme discret. Bien qu\'il soit facile de calculer g^a mod p, il est computationnellement très difficile de retrouver a connaissant g, p et g^a mod p, surtout avec de grands nombres.',
+      'Le Perfect Forward Secrecy (PFS) utilise des clés de session éphémères générées via un échange Diffie-Hellman éphémère (DHE ou ECDHE). Chaque session a une clé unique non dérivée de la clé privée du serveur. Ainsi, compromettre la clé privée ne permet pas de déchiffrer les sessions passées. TLS 1.3 impose le PFS par défaut.',
     difficulty: 'hard',
   },
   {
     id: 'p1-q37',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quelle attaque cible spécifiquement le processus de résolution DNS pour rediriger le trafic vers un serveur malveillant ?',
+    lessonId: 'p1-cryptographie',
+    question:
+      'Un auditeur constate que votre application mobile accepte n\'importe quel certificat TLS sans vérifier s\'il correspond à celui attendu pour le serveur. Quelle technique de sécurité manque à l\'application ?',
     options: [
-      'ARP Spoofing',
-      'DNS Cache Poisoning',
-      'SYN Flooding',
-      'Session Hijacking',
+      'Chiffrement de bout en bout',
+      'Certificate Pinning',
+      'HSTS (HTTP Strict Transport Security)',
+      'Double authentification TLS',
     ],
     correctIndex: 1,
     explanation:
-      'Le DNS Cache Poisoning (empoisonnement du cache DNS) consiste à injecter de fausses entrées dans le cache d\'un serveur DNS résolveur. Cela redirige les utilisateurs vers des serveurs malveillants même s\'ils saisissent la bonne URL. DNSSEC a été développé pour contrer cette attaque en signant cryptographiquement les enregistrements DNS.',
+      'Le Certificate Pinning associe (épingle) un certificat ou une clé publique spécifique à un serveur dans l\'application. Sans cette technique, un attaquant peut utiliser un certificat frauduleux émis par une CA compromise pour réaliser une attaque Man-in-the-Middle. HSTS force HTTPS mais ne vérifie pas le certificat spécifique.',
     difficulty: 'hard',
   },
+
+  // p1-iam (hard: 2)
   {
     id: 'p1-q38',
     phaseId: 'phase-01',
-    lessonId: 'p1-secure-architecture',
-    question: 'Quel mécanisme de sécurité empêche l\'exécution de code dans les zones mémoire réservées aux données ?',
+    lessonId: 'p1-iam',
+    question:
+      'Un administrateur découvre que des comptes d\'anciens employés licenciés il y a six mois sont toujours actifs dans Active Directory avec des droits d\'accès complets. Quelle est la MEILLEURE action à mettre en place pour éviter ce problème à l\'avenir ?',
     options: [
-      'ASLR (Address Space Layout Randomization)',
-      'DEP/NX bit (Data Execution Prevention)',
-      'Stack Canaries',
-      'Sandboxing',
+      'Renforcer la politique de mots de passe',
+      'Implémenter un processus de déprovisionnement automatique lié aux RH (offboarding)',
+      'Activer l\'authentification multi-facteurs',
+      'Chiffrer les données sensibles sur les serveurs',
     ],
     correctIndex: 1,
     explanation:
-      'DEP (Data Execution Prevention), implémenté via le NX bit (No-Execute) au niveau matériel, marque certaines zones mémoire comme non exécutables. Cela empêche l\'exécution de code injecté dans la pile ou le tas, contrant ainsi les attaques par dépassement de tampon classiques. ASLR randomise les adresses, et les stack canaries détectent les corruptions de pile.',
+      'Un processus de déprovisionnement (offboarding) automatique désactive immédiatement les comptes quand les RH signalent un départ. C\'est la solution au problème racine : l\'absence de processus de révocation des accès. Le MFA renforce l\'authentification mais n\'élimine pas les comptes fantômes. La politique de mots de passe ne traite pas la désactivation des comptes.',
     difficulty: 'hard',
   },
   {
     id: 'p1-q39',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quelle est la principale vulnérabilité du protocole WEP pour les réseaux Wi-Fi ?',
+    lessonId: 'p1-iam',
+    question:
+      'Dans un environnement Active Directory utilisant Kerberos, un utilisateur s\'authentifie et reçoit un TGT (Ticket Granting Ticket). Il souhaite ensuite accéder à un serveur de fichiers. Que doit-il obtenir du KDC ?',
     options: [
-      'Utilisation de mots de passe trop courts',
-      'Réutilisation des vecteurs d\'initialisation (IV) dans le chiffrement RC4',
-      'Absence de chiffrement',
-      'Incompatibilité avec les appareils modernes',
+      'Un nouveau TGT pour le serveur de fichiers',
+      'Un ticket de service (Service Ticket) pour ce serveur spécifique',
+      'Un certificat X.509 émis par la CA interne',
+      'Un jeton SAML contenant ses attributs',
     ],
     correctIndex: 1,
     explanation:
-      'WEP utilise le chiffrement RC4 avec des vecteurs d\'initialisation (IV) de seulement 24 bits, ce qui entraîne inévitablement leur réutilisation sur un réseau actif. Cette réutilisation permet aux attaquants de déduire la clé de chiffrement en analysant suffisamment de paquets. C\'est pourquoi WEP a été remplacé par WPA puis WPA2/WPA3.',
+      'Dans Kerberos, après avoir obtenu le TGT auprès du KDC (Key Distribution Center), l\'utilisateur le présente au TGS (Ticket Granting Service) pour obtenir un ticket de service spécifique au serveur de fichiers. Ce ticket de service prouve son identité auprès du serveur cible sans retransmettre son mot de passe. Le TGT ne sert qu\'à demander d\'autres tickets.',
     difficulty: 'hard',
   },
+
+  // p1-network-security (hard: 2)
   {
     id: 'p1-q40',
     phaseId: 'phase-01',
-    lessonId: 'p1-secure-architecture',
-    question: 'Dans le modèle Bell-LaPadula, que signifie la propriété "No Write Down" (propriété étoile) ?',
+    lessonId: 'p1-network-security',
+    question:
+      'Votre entreprise utilise WPA2-Enterprise pour son réseau Wi-Fi. Un consultant sécurité recommande de vérifier la configuration du serveur RADIUS car il a constaté que les utilisateurs n\'utilisent pas de certificats côté client. Quel protocole EAP serait le PLUS approprié si le serveur doit authentifier les utilisateurs avec des identifiants sans certificat client ?',
     options: [
-      'Un sujet ne peut pas lire des données d\'un niveau supérieur',
-      'Un sujet ne peut pas écrire des données dans un niveau de sécurité inférieur au sien',
-      'Un administrateur ne peut pas modifier les étiquettes de sécurité',
-      'Les données chiffrées ne peuvent pas être déchiffrées',
+      'EAP-TLS',
+      'PEAP (Protected EAP)',
+      'EAP-MD5',
+      'LEAP',
     ],
     correctIndex: 1,
     explanation:
-      'La propriété étoile (*-property) du modèle Bell-LaPadula, dite "No Write Down", interdit à un sujet d\'écrire des informations dans un niveau de classification inférieur au sien. Cela empêche la fuite d\'informations classifiées vers des niveaux moins protégés. Combinée à "No Read Up", elle assure la confidentialité des données.',
+      'PEAP encapsule l\'authentification dans un tunnel TLS, protégeant les identifiants. Il ne nécessite qu\'un certificat côté serveur. EAP-TLS exige des certificats des deux côtés (client et serveur), ce qui n\'est pas souhaité ici. EAP-MD5 est vulnérable aux attaques par dictionnaire et ne chiffre pas. LEAP est propriétaire Cisco et obsolète.',
     difficulty: 'hard',
   },
   {
     id: 'p1-q41',
     phaseId: 'phase-01',
-    lessonId: 'p1-application-security',
-    question: 'Quel type d\'attaque exploite les conditions de concurrence (race conditions) dans un système ?',
+    lessonId: 'p1-network-security',
+    question:
+      'Un analyste réseau remarque qu\'un poste interne envoie des requêtes DNS inhabituellement longues et fréquentes vers un serveur externe. Les réponses contiennent des données encodées. Quelle technique d\'exfiltration est probablement utilisée ?',
     options: [
-      'Attaque par rejeu (Replay)',
-      'Attaque TOCTOU (Time-of-Check to Time-of-Use)',
-      'Attaque par canal auxiliaire (Side-Channel)',
-      'Attaque par dictionnaire',
+      'DNS Amplification',
+      'DNS Tunneling',
+      'DNS Cache Poisoning',
+      'DNS Zone Transfer',
     ],
     correctIndex: 1,
     explanation:
-      'L\'attaque TOCTOU exploite le délai entre la vérification d\'une condition (Time-of-Check) et l\'utilisation du résultat (Time-of-Use). L\'attaquant modifie la ressource entre ces deux moments, contournant ainsi le contrôle de sécurité. C\'est une forme classique de race condition en sécurité informatique.',
+      'Le DNS Tunneling utilise le protocole DNS pour transférer clandestinement des données en les encodant dans les requêtes et réponses DNS. C\'est une technique d\'exfiltration difficile à détecter car le DNS est rarement bloqué par les pare-feu. L\'amplification DNS est une attaque DDoS. Le cache poisoning redirige le trafic. Le zone transfer copie les enregistrements DNS.',
     difficulty: 'hard',
   },
+
+  // p1-threat-analysis (hard: 1)
   {
     id: 'p1-q42',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quelle technique cryptographique permet de prouver la connaissance d\'un secret sans le révéler ?',
+    lessonId: 'p1-threat-analysis',
+    question:
+      'Votre équipe SOC détecte un malware qui a modifié le MBR (Master Boot Record) du disque dur d\'un serveur pour se charger avant le système d\'exploitation. Quel type de malware est le PLUS probable ?',
     options: [
-      'Chiffrement homomorphe',
-      'Preuve à divulgation nulle de connaissance (Zero-Knowledge Proof)',
-      'Secret partagé de Shamir',
-      'Échange de clés Diffie-Hellman',
+      'Un ransomware classique',
+      'Un rootkit de type bootkit',
+      'Un ver réseau (worm)',
+      'Un cheval de Troie (trojan)',
     ],
     correctIndex: 1,
     explanation:
-      'Une preuve à divulgation nulle de connaissance (ZKP) permet à une partie (le prouveur) de démontrer à une autre (le vérificateur) qu\'elle connaît un secret sans révéler aucune information sur ce secret. Cette technique est utilisée dans les protocoles d\'authentification et les blockchains préservant la confidentialité.',
+      'Un bootkit est un type de rootkit qui infecte le MBR ou le VBR pour se charger avant le système d\'exploitation, le rendant invisible pour les antivirus classiques. Un ransomware chiffre les fichiers mais ne modifie généralement pas le MBR. Un ver se propage via le réseau. Un trojan se déguise en logiciel légitime.',
     difficulty: 'hard',
   },
+
+  // p1-risk-management (hard: 1)
   {
     id: 'p1-q43',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Qu\'est-ce que le "Perfect Forward Secrecy" (PFS) garantit dans une communication TLS ?',
+    lessonId: 'p1-risk-management',
+    question:
+      'Votre SIEM génère une alerte indiquant que 500 tentatives de connexion échouées ont été détectées sur le serveur VPN en 10 minutes depuis une seule adresse IP. L\'analyste doit prioriser cette alerte. Quel type de corrélation le SIEM a-t-il effectué ?',
     options: [
-      'Que le certificat du serveur ne peut pas être falsifié',
-      'Que la compromission de la clé privée du serveur ne permet pas de déchiffrer les sessions passées',
-      'Que toutes les communications sont chiffrées en AES-256',
-      'Que le client et le serveur s\'authentifient mutuellement',
+      'Corrélation basée sur les signatures',
+      'Corrélation basée sur les seuils (threshold-based)',
+      'Corrélation séquentielle',
+      'Corrélation statistique bayésienne',
     ],
     correctIndex: 1,
     explanation:
-      'Le Perfect Forward Secrecy garantit que les clés de session sont éphémères et indépendantes de la clé privée à long terme du serveur. Ainsi, même si la clé privée du serveur est compromise ultérieurement, les communications passées restent protégées car chaque session utilisait une clé unique générée par un échange Diffie-Hellman éphémère.',
+      'La corrélation basée sur les seuils déclenche une alerte quand un événement dépasse un nombre prédéfini (ici, un nombre anormal de tentatives échouées dans une fenêtre de temps). La corrélation par signatures compare à des schémas d\'attaques connus. La corrélation séquentielle analyse l\'ordre des événements.',
     difficulty: 'hard',
   },
+
+  // p1-secure-architecture (hard: 2)
   {
     id: 'p1-q44',
     phaseId: 'phase-01',
-    lessonId: 'p1-network-security',
-    question: 'Quelle attaque utilise des requêtes DNS pour amplifier le volume de trafic dirigé vers une victime ?',
+    lessonId: 'p1-secure-architecture',
+    question:
+      'Votre entreprise souhaite protéger ses serveurs contre la perte de données en cas de double panne disque. Le DBA recommande une configuration RAID spécifique utilisant la parité distribuée avec deux disques de parité. Quelle configuration RAID propose-t-il ?',
     options: [
-      'DNS Tunneling',
-      'DNS Amplification Attack',
-      'DNS Zone Transfer',
-      'DNS Rebinding',
+      'RAID 1',
+      'RAID 6',
+      'RAID 5',
+      'RAID 10',
     ],
     correctIndex: 1,
     explanation:
-      'L\'attaque DNS Amplification exploite des serveurs DNS ouverts en envoyant des requêtes avec l\'adresse IP source usurpée (spoofée) de la victime. Les réponses DNS, bien plus volumineuses que les requêtes, sont envoyées à la victime, amplifiant le trafic d\'un facteur pouvant atteindre 50x ou plus, créant un puissant DDoS.',
+      'RAID 6 utilise une double parité distribuée, permettant de survivre à la défaillance simultanée de deux disques. RAID 5 n\'a qu\'une simple parité et ne tolère qu\'une seule panne disque. RAID 1 est du mirroring (un seul disque de secours). RAID 10 combine mirroring et striping mais ne protège pas si deux disques du même miroir tombent.',
     difficulty: 'hard',
   },
   {
     id: 'p1-q45',
     phaseId: 'phase-01',
-    lessonId: 'p1-governance-compliance',
-    question: 'Dans le cadre du NIST Cybersecurity Framework, quelles sont les cinq fonctions principales ?',
+    lessonId: 'p1-secure-architecture',
+    question:
+      'Votre politique de sauvegarde prévoit une sauvegarde complète le dimanche, et des sauvegardes différentielles du lundi au samedi. Le serveur tombe en panne le jeudi soir. Combien de sauvegardes devez-vous restaurer au minimum pour récupérer les données ?',
     options: [
-      'Prévenir, Détecter, Analyser, Contenir, Récupérer',
-      'Identifier, Protéger, Détecter, Répondre, Récupérer',
-      'Planifier, Implémenter, Vérifier, Agir, Améliorer',
-      'Évaluer, Concevoir, Déployer, Surveiller, Optimiser',
+      'Une seule : la dernière sauvegarde différentielle de jeudi',
+      'Deux : la complète de dimanche et la différentielle de jeudi',
+      'Quatre : la complète de dimanche et les différentielles de lundi, mardi, mercredi et jeudi',
+      'Sept : une pour chaque jour de la semaine',
     ],
     correctIndex: 1,
     explanation:
-      'Le NIST Cybersecurity Framework définit cinq fonctions principales : Identify (identifier les actifs et risques), Protect (mettre en place des protections), Detect (détecter les événements de sécurité), Respond (répondre aux incidents), et Recover (restaurer les services). Ce cadre est largement adopté pour structurer la gestion de la cybersécurité.',
+      'Une sauvegarde différentielle contient toutes les modifications depuis la dernière sauvegarde complète. Il suffit donc de restaurer la complète de dimanche puis la différentielle de jeudi (la plus récente). Avec des sauvegardes incrémentales (et non différentielles), il faudrait restaurer la complète plus chaque incrémental intermédiaire.',
     difficulty: 'hard',
   },
+
+  // p1-application-security (hard: 1)
   {
     id: 'p1-q46',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Qu\'est-ce que l\'attaque "Pass-the-Hash" permet à un attaquant de faire ?',
+    lessonId: 'p1-application-security',
+    question:
+      'Un développeur souhaite protéger son application web contre les injections SQL, les XSS et les buffer overflows. Quelle approche de développement sécurisé est la PLUS efficace pour couvrir ces trois menaces ?',
     options: [
-      'Déchiffrer un mot de passe haché',
-      'S\'authentifier en utilisant directement le hash du mot de passe sans le connaître en clair',
-      'Modifier le hash stocké dans la base de données',
-      'Contourner l\'authentification multi-facteurs',
+      'Utiliser un pare-feu applicatif web (WAF) uniquement',
+      'Implémenter une validation stricte de toutes les entrées utilisateur (input validation)',
+      'Effectuer des tests de pénétration après chaque déploiement',
+      'Chiffrer toutes les données en base de données',
     ],
     correctIndex: 1,
     explanation:
-      'L\'attaque Pass-the-Hash exploite le fait que certains protocoles d\'authentification (comme NTLM) utilisent le hash du mot de passe pour l\'authentification. L\'attaquant qui obtient le hash peut l\'utiliser directement pour s\'authentifier sans avoir besoin de connaître le mot de passe en clair. C\'est pourquoi Kerberos et les mécanismes modernes sont préférés.',
+      'La validation des entrées est le dénominateur commun de défense contre ces trois attaques : elle empêche les caractères SQL malveillants, neutralise les scripts XSS et vérifie la longueur des données pour éviter les débordements. Un WAF est une couche complémentaire mais ne remplace pas le code sécurisé. Les pentests détectent les failles après coup.',
     difficulty: 'hard',
   },
+
+  // p1-cloud-security (hard: 1)
   {
     id: 'p1-q47',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Quel est le principal avantage de la cryptographie sur courbes elliptiques (ECC) par rapport à RSA ?',
+    lessonId: 'p1-cloud-security',
+    question:
+      'Votre entreprise héberge plusieurs machines virtuelles sur un serveur physique dans le cloud. Un consultant découvre une vulnérabilité permettant à une VM malveillante d\'accéder à la mémoire d\'une autre VM sur le même hôte. Quel composant est défaillant ?',
     options: [
-      'ECC est plus ancien et mieux testé',
-      'ECC offre un niveau de sécurité équivalent avec des clés beaucoup plus courtes',
-      'ECC ne nécessite pas de nombres premiers',
-      'ECC est plus facile à implémenter en logiciel',
+      'Le pare-feu de la VM',
+      'L\'hyperviseur',
+      'Le système de fichiers partagé',
+      'Le module TPM du serveur',
     ],
     correctIndex: 1,
     explanation:
-      'La cryptographie sur courbes elliptiques (ECC) offre un niveau de sécurité équivalent à RSA avec des clés significativement plus courtes. Par exemple, une clé ECC de 256 bits offre une sécurité comparable à une clé RSA de 3072 bits. Cela se traduit par des calculs plus rapides, moins de bande passante et de stockage nécessaires.',
+      'L\'hyperviseur est responsable de l\'isolation entre les machines virtuelles. Une faille dans l\'hyperviseur (attaque VM escape) permet à une VM d\'accéder aux ressources d\'autres VM ou du système hôte. C\'est l\'une des vulnérabilités les plus critiques en virtualisation. Le TPM est un module matériel de chiffrement. Le pare-feu filtre le trafic réseau.',
     difficulty: 'hard',
   },
+  // p1-physical-iot-security (hard: 1)
   {
     id: 'p1-q48',
     phaseId: 'phase-01',
-    lessonId: 'p1-threat-analysis',
-    question: 'Quel cadre d\'attaque est couramment utilisé par les équipes de sécurité pour modéliser les tactiques et techniques des attaquants ?',
+    lessonId: 'p1-physical-iot-security',
+    question:
+      'Un ordinateur portable de l\'entreprise est volé. Le disque dur est chiffré avec BitLocker, dont les clés sont stockées dans un composant matériel de la carte mère. Quel composant protège ces clés de chiffrement ?',
     options: [
-      'OWASP Top 10',
-      'MITRE ATT&CK',
-      'ISO 27001',
-      'COBIT',
+      'Le BIOS UEFI',
+      'Le TPM (Trusted Platform Module)',
+      'Le contrôleur RAID',
+      'La puce NFC intégrée',
     ],
     correctIndex: 1,
     explanation:
-      'MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) est une base de connaissances qui répertorie les tactiques et techniques utilisées par les attaquants dans le monde réel. Elle est utilisée pour la modélisation des menaces, le red teaming, l\'évaluation des défenses et l\'amélioration de la détection des incidents.',
+      'Le TPM (Trusted Platform Module) est une puce cryptographique soudée à la carte mère qui stocke les clés de chiffrement, les certificats et les mesures d\'intégrité du système. BitLocker l\'utilise pour sceller les clés de chiffrement du disque. Sans le TPM du portable volé, le voleur ne peut pas déchiffrer le disque, même en le déplaçant vers un autre ordinateur.',
     difficulty: 'hard',
   },
+
+  // p1-incident-response (hard: 1)
   {
     id: 'p1-q49',
     phaseId: 'phase-01',
-    lessonId: 'p1-cryptographie',
-    question: 'Qu\'est-ce que le "Certificate Pinning" et quel problème résout-il ?',
+    lessonId: 'p1-incident-response',
+    question:
+      'Après un incident de sécurité majeur, votre équipe forensique doit analyser la mémoire vive (RAM) d\'un serveur compromis avant de l\'éteindre. Pourquoi cette capture est-elle considérée comme critique dans l\'investigation ?',
     options: [
-      'Renouveler automatiquement les certificats expirés',
-      'Associer un serveur à un certificat ou une clé publique spécifique pour empêcher les attaques avec de faux certificats',
-      'Chiffrer les certificats stockés sur le disque',
-      'Distribuer les certificats via un réseau CDN',
+      'La RAM contient les fichiers de log du système',
+      'La RAM contient des preuves volatiles (processus actifs, connexions réseau, clés de chiffrement) qui disparaissent à l\'extinction',
+      'La RAM est le seul endroit où le malware peut résider',
+      'La RAM est plus facile à analyser que le disque dur',
     ],
     correctIndex: 1,
     explanation:
-      'Le Certificate Pinning consiste à associer (épingler) un hôte à son certificat ou sa clé publique attendue. L\'application vérifie que le certificat présenté correspond à celui qui est épinglé, empêchant les attaques MITM utilisant des certificats frauduleux émis par des CA compromises ou malveillantes.',
+      'La mémoire vive contient des données volatiles irremplaçables : processus en cours d\'exécution, connexions réseau actives, clés de chiffrement en mémoire, fragments de malwares fileless. Ces éléments disparaissent définitivement à l\'extinction de la machine. L\'ordre de volatilité (RFC 3227) recommande de capturer la RAM en priorité avant toute autre preuve.',
     difficulty: 'hard',
   },
+
+  // p1-governance-compliance (hard: 1)
   {
     id: 'p1-q50',
     phaseId: 'phase-01',
-    lessonId: 'p1-secure-architecture',
-    question: 'Quelle technique permet de détecter les modifications non autorisées des fichiers système en comparant leurs empreintes cryptographiques ?',
+    lessonId: 'p1-governance-compliance',
+    question:
+      'Votre entreprise prépare un plan de continuité d\'activité (BCP). Le comité de direction demande de déterminer le temps maximum pendant lequel un système critique peut rester hors service. Quel indicateur devez-vous définir ?',
     options: [
-      'Analyse heuristique',
-      'Contrôle d\'intégrité des fichiers (File Integrity Monitoring)',
-      'Analyse de sandbox',
-      'Détection par signature antivirus',
+      'RPO (Recovery Point Objective)',
+      'RTO (Recovery Time Objective)',
+      'MTBF (Mean Time Between Failures)',
+      'MTTR (Mean Time To Repair)',
     ],
     correctIndex: 1,
     explanation:
-      'Le File Integrity Monitoring (FIM) calcule et stocke les empreintes cryptographiques (hashes) des fichiers système critiques, puis les compare régulièrement pour détecter toute modification non autorisée. Des outils comme OSSEC ou Tripwire utilisent cette technique pour identifier les compromissions et les changements suspects sur les systèmes.',
+      'Le RTO (Recovery Time Objective) définit la durée maximale d\'interruption acceptable pour un système. Le RPO définit la quantité maximale de données pouvant être perdue (point de restauration). Le MTBF mesure la fiabilité d\'un composant (temps moyen entre pannes). Le MTTR mesure le temps moyen de réparation.',
     difficulty: 'hard',
   },
 ];

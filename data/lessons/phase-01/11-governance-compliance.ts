@@ -739,6 +739,30 @@ La dette technique est un **multiplicateur de risque**. Elle augmente la **surfa
 
 **Question type Security+ :** *Une organisation utilise un serveur web sous Windows Server 2012 R2 qui héberge une application métier critique. Le système ne reçoit plus de correctifs de sécurité. Quelle est la meilleure approche ?*
 → Réponse : Planifier la migration de l'application vers un OS supporté, et en attendant, isoler le serveur dans un segment réseau dédié avec des contrôles compensatoires (pare-feu, IPS, monitoring renforcé).
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 11 du livre (partie politiques) :**
+
+- Les politiques de securite definissent les regles de haut niveau. Les procedures detaillent comment mettre en oeuvre ces regles
+- La politique d'utilisation acceptable (AUP) definit ce que les utilisateurs peuvent et ne peuvent pas faire avec les ressources IT
+- La sensibilisation a la securite (security awareness training) est un controle ADMINISTRATIF preventif essentiel
+- La rotation des postes (job rotation) et les vacances obligatoires aident a detecter les fraudes
+- La separation des taches (separation of duties) empeche une seule personne de controler un processus critique de bout en bout
+- Le BCP (Business Continuity Plan) assure la continuite des operations critiques pendant un sinistre
+- Le DRP (Disaster Recovery Plan) detaille les etapes pour restaurer les systemes apres un sinistre
+- Un NDA (Non-Disclosure Agreement) protege les informations confidentielles
+- Un SLA (Service Level Agreement) definit les niveaux de service attendus (uptime, temps de reponse)
+- Un MOU (Memorandum of Understanding) est un accord non contraignant d'intention de cooperer
+- Un BPA (Business Partnership Agreement) formalise une relation commerciale
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Un employe du service comptable detourne des fonds depuis 2 ans sans etre detecte → Implementer la rotation des postes et les vacances obligatoires pour exposer les fraudes
+
+*Scenario :* L'organisation veut s'assurer que les employes comprennent les risques de phishing → Mettre en place un programme de sensibilisation a la securite (security awareness training)
 `,
   keyPoints: [
     'Les MOU sont non contraignants (intent to cooperate), les MOA ont des obligations spécifiques, les SLA incluent des métriques mesurables et des pénalités, et les ISA sont requis pour connecter deux systèmes IT',

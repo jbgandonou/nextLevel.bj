@@ -675,6 +675,35 @@ Outils de capture et analyse :
 
 **Scenario 4 :** *Vous devez mettre en place un VPN pour 200 teleworkers. Split tunnel ou full tunnel ?*
 → **Full tunnel** pour une securite maximale : tout le trafic est inspecte par les controles de securite de l'entreprise (proxy, IPS, DLP). Inconvenient : plus de bande passante necessaire et latence accrue. Si la bande passante est limitee, un **split tunnel** avec un proxy cloud (CASB/SASE) est un compromis acceptable.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles des chapitres 3 et 4 du livre :**
+
+- SSH est le MEILLEUR protocole pour chiffrer les PII en transit. SFTP utilise SSH pour securiser les transferts de fichiers
+- SNMPv3 est la version securisee pour la surveillance des equipements reseau (authentification forte). Utilise les ports UDP 161/162
+- NTP fournit la synchronisation horaire, essentielle pour Kerberos et la correlation des logs
+- SRTP securise les communications VoIP et videoconference
+- RSTP (Rapid Spanning Tree Protocol) previent les boucles de commutation (switching loops)
+- Un firewall stateful filtre le trafic base sur l'etat de la connexion TCP (detecte les paquets sans handshake 3 voies)
+- Une DMZ est une zone tampon entre le reseau interne et Internet pour heberger les serveurs accessibles publiquement
+- Un proxy non-transparent peut filtrer le trafic par URL. Un filtre URL dans un UTM restreint l'acces aux sites de medias sociaux
+- Un WAF (Web Application Firewall) protege les serveurs web ET peut fournir l'equilibrage de charge
+- Un VPN full tunnel chiffre TOUT le trafic du client. Un split tunnel ne chiffre que le trafic destine au reseau prive
+- Un IPS in-band (inline) est la MEILLEURE solution pour PREVENIR les attaques (vs IDS qui detecte seulement)
+- WPA2 avec CCMP est le plus securise pour le Wi-Fi. WPA2 Enterprise necessite un serveur d'authentification 802.1x
+- Un evil twin est un point d'acces malveillant avec le meme SSID qu'un AP legitime
+- Le jamming Wi-Fi est une attaque DoS qui provoque des deconnexions intermittentes
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Un nouveau service sur un serveur DMZ fonctionne en interne mais pas depuis Internet → Le probleme est probablement une ACL mal configuree sur le pare-feu frontalier
+
+*Scenario :* Vous voulez empecher les employes d'acceder aux reseaux sociaux → Implementer un proxy non-transparent avec filtrage URL
+
+*Scenario :* Votre SSID est cache mais un reseau avec le meme nom apparait → C'est une attaque evil twin. L'attaquant a decouvert le SSID et cree un AP malveillant
 `,
   keyPoints: [
     'Les NGFW combinent filtrage stateful, DPI, IPS et analyse applicative (couches 3-7). Le principe deny by default est fondamental : tout refuser sauf ce qui est explicitement autorise.',
@@ -685,6 +714,8 @@ Outils de capture et analyse :
     'SPF verifie le serveur d\'envoi, DKIM signe cryptographiquement le message, DMARC definit la politique (none/quarantine/reject). Les trois doivent etre deployes ensemble pour une protection email efficace.',
     'La segmentation reseau (VLAN, sous-reseaux, microsegmentation) et le modele Zero Trust limitent le mouvement lateral. La DMZ a double pare-feu isole les services publics du reseau interne.',
     'Les honeypots attirent les attaquants pour observer leurs techniques. Toute activite sur un honeypot est suspecte par definition. NetFlow, PCAP et SIEM sont essentiels pour la surveillance reseau.',
+    'SY0-501 : SSH/SFTP est le meilleur protocole pour chiffrer les PII en transit. SNMPv3 securise la surveillance reseau. NTP est essentiel pour Kerberos et la correlation des logs.',
+    'SY0-501 : Un IPS inline (in-band) previent les attaques, un IDS detecte seulement. Un proxy non-transparent avec filtrage URL restreint l\'acces aux sites non autorises.',
   ],
   resources: [
     {

@@ -335,6 +335,29 @@ En cloud public, plusieurs clients partagent la même infrastructure physique. L
 
 **Question type Security+ :** *Lors d'une migration vers le cloud, quel est le risque principal d'une stratégie lift-and-shift ?*
 → Réponse : Les vulnérabilités et les mauvaises configurations existantes sont transférées dans le cloud sans être corrigées.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 5 du livre (partie cloud) :**
+
+- Les hyperviseurs Type I (bare-metal) s'executent directement sur le hardware. Les Type II s'executent dans un OS hote
+- La virtualisation par conteneurs utilise le noyau de l'hote — les conteneurs n'ont pas leur propre OS complet
+- Les snapshots capturent l'etat d'une VM a un instant donne. Prenez un snapshot AVANT toute operation risquee
+- Le VM sprawl se produit quand des VMs sont creees pour des tests puis oubliees sans maintenance ni mise a jour — risque de securite
+- Le VM escape est une attaque ou l'attaquant accede au systeme hote depuis une VM. La protection principale est de maintenir les patches a jour
+- La non-persistence dans un VDI (Virtual Desktop Infrastructure) reinitialise le bureau a chaque deconnexion
+- La virtualisation offre le meilleur ROI quand les serveurs physiques sont sous-utilises
+- Un VDE (Virtual Desktop Environment) permet aux utilisateurs d'acceder a des bureaux virtuels heberges sur des serveurs distants
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Les administrateurs creent frequemment des VMs pour les tests et les laissent tourner sans les utiliser → C'est du VM sprawl. Implementer des politiques de gestion du cycle de vie des VMs
+
+*Scenario :* Un utilisateur se deconnecte de son bureau virtuel et toutes ses modifications sont perdues → C'est le comportement de non-persistence dans un VDI
+
+*Scenario :* La plupart des serveurs physiques sont sous-utilises → La virtualisation fournira le meilleur retour sur investissement (ROI)
 `,
   keyPoints: [
     'Les trois modèles de service cloud (IaaS, PaaS, SaaS) définissent des niveaux croissants de responsabilité pour le fournisseur, mais le client reste toujours responsable de ses données et de la gestion des identités.',

@@ -659,6 +659,27 @@ Les elements cles d'un bon dashboard de securite : **KPIs avec tendances** (amel
 
 **Question type Security+ :** *Un CISO doit presenter la posture de securite de l'organisation au conseil d'administration. Quelles metriques sont les plus pertinentes ?*
 → Reponse : Les tendances du MTTD et MTTR, le nombre de vulnerabilites critiques ouvertes et leur evolution, le taux de conformite par rapport aux frameworks, et le retour sur investissement des controles de securite.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 11 du livre (partie IR) :**
+
+- L'ordre de volatilite determine l'ordre de collecte des preuves : memoire vive (la plus volatile) → cache → fichiers temporaires → disque dur → journaux → archives
+- La chaine de custodie (chain of custody) documente chaque personne ayant eu possession d'une preuve. Si elle est brisee, les preuves peuvent etre invalidees en justice
+- L'image forensique est une copie bit-a-bit du disque. Toujours travailler sur la COPIE, jamais sur l'original
+- Les hashes (SHA-256) des preuves doivent etre calcules AVANT toute analyse pour prouver que les preuves n'ont pas ete alterees
+- Les phases de reponse aux incidents : Preparation → Identification → Confinement → Eradication → Recuperation → Lecons apprises
+- Le confinement vise a limiter l'impact sans detruire les preuves. Isoler le systeme du reseau mais ne pas l'eteindre
+- La phase de lecons apprises (lessons learned) est critique pour ameliorer le processus IR
+- La confiscation d'un actif physique necessite de maintenir la chaine de custodie : garder un registre de chaque personne ayant eu possession de l'actif
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Un poste de travail est confisque apres un incident. Le disque dur est retire pour analyse mais laisse sans surveillance → La chaine de custodie n'a pas ete maintenue, ce qui peut invalider les preuves en justice
+
+*Scenario :* Vous creez une politique de reponse aux incidents. Un incident necessite la confiscation d'un actif physique → Inclure la chaine de custodie : garder un registre de chaque personne ayant pris possession de l'actif
 `,
   keyPoints: [
     'Le processus IR du NIST SP 800-61 comporte 4 phases : Preparation, Detection/Analyse, Confinement/Eradication/Recuperation, et Activite post-incident (Lessons Learned). La preparation est la phase la plus critique.',

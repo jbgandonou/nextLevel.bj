@@ -555,6 +555,31 @@ ANALYSE DU RISQUE :
 
 4. PRIORITE : Elevee - Non-conformite avec le BIA valide par la direction
 \`\`\`
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles des chapitres 1 et 8 du livre :**
+
+- La triade CIA : Confidentialite (chiffrement, controle d'acces), Integrite (hachage, signatures), Disponibilite (redondance, failover)
+- Les controles se classent en trois categories : techniques (technologie), administratifs (procedures), physiques (barrieres tangibles)
+- Les controles par fonction : preventifs (hardening, formation), detectifs (logs, IDS, cameras), correctifs (IPS, sauvegardes), dissuasifs et compensatoires
+- Desactiver les services inutiles est un controle PREVENTIF pour renforcer un serveur (hardening)
+- La virtualisation augmente la disponibilite a moindre cout : snapshots, restauration rapide
+- tracert identifie les routeurs entre deux systemes — utile si un routeur non autorise est ajoute au reseau
+- L'analyse des risques quantitative utilise SLE, ARO et ALE (ALE = SLE x ARO)
+- Les tests de penetration doivent suivre des regles d'engagement definies avant le test
+- Les scans de vulnerabilites identifient les faiblesses mais ne les exploitent pas (contrairement au pentest)
+- Le SIEM correle les evenements de securite de multiples sources pour identifier les patterns d'attaque
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Le budget hardware est reduit mais la disponibilite doit etre maintenue → La virtualisation permet de consolider les serveurs et maintenir la disponibilite a moindre cout
+
+*Scenario :* Vous voulez tester de nouveaux controles de securite avant deploiement → La virtualisation offre la plus grande flexibilite (snapshots, revert)
+
+*Scenario :* Un auditeur decouvre des mots de passe de 4 caracteres sur le reseau → Modifier la politique pour augmenter la longueur minimale des mots de passe
 `,
   keyPoints: [
     'Le risque se calcule avec ALE = ARO x SLE, ou SLE = AV x EF. Cette formule permet de justifier financierement les investissements en securite en comparant le cout des controles a l\'ALE.',

@@ -540,6 +540,29 @@ L'IGA couvre la gouvernance du cycle de vie des identites :
 
 **Scenario 4 :** *Un employe a ete licencie ce matin. Quelles actions immediates ?*
 → Desactivation immediate du compte AD (pas suppression pour conserver les logs). Revocation de tous les tokens d'acces et sessions actives. Revocation des acces VPN, cloud, applications SaaS. Recuperation du materiel (laptop, cles, badges). Changement des mots de passe des comptes partages auxquels il avait acces.
+
+---
+
+## Rappels cles SY0-501 (Darril Gibson)
+
+**Points cles du chapitre 2 du livre :**
+
+- Kerberos utilise un serveur TGT (Ticket Granting Ticket) pour l'authentification. Si une question mentionne des tickets ou un KDC, la reponse est Kerberos
+- LDAP utilise des phrases basees sur X.500 (CN, OU, DC). LDAPS chiffre avec TLS sur le port 636
+- Les comptes partages empechent l'identification individuelle dans les logs. Si un auditeur ne peut pas identifier qui a accede a un fichier, les comptes partages sont probablement la cause
+- Le principe de moindre privilege signifie que chaque utilisateur n'a QUE les droits necessaires a son travail, pas plus
+- Les privileges bases sur les groupes simplifient l'administration : creer des groupes, ajouter les utilisateurs aux groupes, attribuer les permissions aux groupes
+- Un TOTP (Time-based One-Time Password) expire apres 30 secondes. Un HOTP (HMAC-based) n'expire pas tant qu'il n'est pas utilise
+- Le CER (Crossover Error Rate) le plus BAS indique le systeme biometrique le plus precis
+- L'ABAC (Attribute-Based Access Control) est utilise dans les SDN (Software Defined Networks)
+
+**Scenarios pratiques du livre :**
+
+*Scenario :* Des mots de passe sur le reseau sont Pa$$, 1@W2, G7bT3 → Le probleme est la LONGUEUR minimale des mots de passe (4-5 caracteres seulement), pas la complexite
+
+*Scenario :* Des stagiaires travaillent avec differentes equipes et necessitent des privileges differents → Utiliser des privileges bases sur les groupes (creer des groupes par equipe)
+
+*Scenario :* Un employe peut acceder au reseau VPN depuis chez lui mais pas depuis la bibliotheque → C'est une politique basee sur la localisation (location-based policy)
 `,
   keyPoints: [
     'Kerberos utilise un systeme de tickets (TGT + Service Tickets) via le KDC. Il ne transmet jamais le mot de passe sur le reseau. Vulnerable au Kerberoasting et Golden Ticket.',
@@ -550,6 +573,8 @@ L'IGA couvre la gouvernance du cycle de vie des identites :
     'Le PAM (Privileged Access Management) securise les comptes privilegies avec le JIT access, les coffres-forts de mots de passe et l\'enregistrement des sessions.',
     'Le NIST SP 800-63B recommande des mots de passe longs sans expiration periodique, avec verification contre les listes de mots de passe compromis et MFA obligatoire.',
     'Le cycle de vie des identites (Joiner/Mover/Leaver) et les revues d\'acces regulieres sont essentiels pour prevenir le privilege creep et les comptes orphelins.',
+    'SY0-501 : TOTP expire apres 30 secondes, HOTP n\'expire pas tant qu\'il n\'est pas utilise. Le CER (Crossover Error Rate) le plus bas indique le systeme biometrique le plus precis.',
+    'SY0-501 : Les comptes partages empechent l\'identification individuelle (accountability). Les privileges bases sur les groupes simplifient l\'administration IAM.',
   ],
   resources: [
     {
