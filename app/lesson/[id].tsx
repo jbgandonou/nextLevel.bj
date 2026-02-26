@@ -414,9 +414,9 @@ export default function LessonScreen() {
   const remainingMinutes = Math.max(1, Math.round(lesson.estimatedMinutes * (1 - pageProgress)));
 
   return (
-    <>
+    <View style={styles.container}>
       <Stack.Screen options={{ headerShown: false }} />
-      <View style={styles.container}>
+      <View style={{ flex: 1 }}>
         {/* Sticky top progress bar */}
         <View style={styles.topBar}>
           <View style={styles.topBarInner}>
@@ -687,7 +687,7 @@ export default function LessonScreen() {
         </Animated.ScrollView>
       </View>
 
-      {/* Fixed bottom bar — outside ScrollView for reliable touch handling */}
+      {/* Fixed bottom bar — outside ScrollView for reliable touch handling, inside container for absolute positioning */}
       {isLastPage && (
         <View style={[styles.fixedBottomBar, { backgroundColor: isDark ? 'rgba(10,14,26,0.95)' : 'rgba(255,255,255,0.95)', borderTopColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)' }]}>
           {/* Complete button — uses TouchableOpacity for reliable press */}
@@ -747,7 +747,7 @@ export default function LessonScreen() {
         level={level}
         onClose={() => { setShowLevelUp(false); clearNotifications(); }}
       />
-    </>
+    </View>
   );
 }
 
